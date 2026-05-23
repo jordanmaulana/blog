@@ -1,0 +1,61 @@
+# KasirKelontong
+
+KasirKelontong is a cash-first point-of-sale (POS) system built for Indonesian small shops — the neighborhood *warung kelontong* (grocery stand) and similar single- or multi-store owner-operated businesses. One owner can run several stores under a single account, while staff at each store ring up cash sales on an Android tablet.
+
+## What it does
+
+- **Sell at the counter.** Cashiers scan or search products, take cash, give change, and print or share receipts.
+- **Track stock per store.** Every sale automatically reduces inventory; receiving and adjustments are logged so the ledger always balances.
+- **Manage multiple stores.** Owners add stores, assign staff, and see each store's sales and stock independently.
+- **Sell by piece, weight, or bundle.** A product can be priced per unit, per kilogram (for items like rice or sugar), or as a multi-pack (e.g. "12-pack for Rp 50,000").
+- **Look up barcodes.** A built-in catalog suggests product names when you scan a known barcode, so adding new products is faster.
+- **Report on the day.** Owners see sales totals, top products, and per-cashier activity.
+
+## Who it's for
+
+- **Admin (shop owner).** Signs in with email and password from a web browser. Adds stores, products, and staff. Reviews stock and sales. Manages everything except standing at the register.
+- **Cashier (store staff).** Signs in on an Android tablet at the store using the store's short code plus a 4-digit PIN. Sees only that store's products and stock. Cannot see other stores or change settings.
+
+## How it works in practice
+
+1. The owner registers, creates a store, adds products and starting stock.
+2. The owner creates a cashier account for each staff member, with a PIN.
+3. At the store, the cashier opens the tablet app, signs in, and rings up customers.
+4. Each sale subtracts the right quantity from that store's stock in real time.
+5. The owner can log in any time on the web to check totals, restock, or change prices.
+
+## Where it runs
+
+- **Web admin dashboard.** Modern browser, desktop or laptop. Used by owners.
+- **Android tablet POS.** Landscape orientation, optimized for the counter. Used by cashiers. Supports the tablet's camera for barcode scanning.
+- **Cloud backend.** Hosted service; data is stored centrally so the owner and all stores stay in sync.
+
+## Tech stack
+
+- **Backend.** Django 5 + Django REST Framework. PostgreSQL in production, SQLite for local development. Python dependencies managed with `uv`.
+- **Web frontend.** React 19 + Vite + TypeScript. TanStack Router (file-based routing) and TanStack Query for data. Tailwind CSS v4 with shadcn/radix UI primitives. State via jotai, forms via react-hook-form + zod. Package manager: `pnpm`.
+- **Mobile.** Flutter for Android tablet. Riverpod for state, go_router for navigation, dio for HTTP.
+- **Auth.** Two parallel tokens — admin uses DRF `Token`, cashier uses a custom `CashierToken` (store-scoped, 8-hour expiry).
+- **Payments.** Mayar gateway integration is wired only for the shop owner's SaaS subscription billing, not for accepting customer payments at the register.
+- **Deployment.** Docker stack, cloud-deployable. Default timezone Asia/Jakarta.
+
+## What's in this first version
+
+Included:
+
+- Cash sales, multi-store inventory, cashier management, daily sales reports, barcode lookup, bundle and weighted-product pricing.
+
+Not yet included:
+
+- Non-cash payments at the register (no QRIS, e-wallets, or card readers in v1).
+- Offline sales — the tablet needs an internet connection to record a sale.
+- iOS or a dedicated desktop POS app.
+- Push notifications.
+
+The product does integrate with the Mayar payment gateway, but only for **the shop owner's own subscription billing**, not for accepting customer payments at the counter.
+
+## Status
+
+v1, in active development. Feedback from real warung operators drives the roadmap.
+
+For developer setup and architecture, see `README.md` and `CLAUDE.md`.
