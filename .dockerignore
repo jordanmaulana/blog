@@ -1,0 +1,14 @@
+node_modules
+dist
+.astro
+.git
+.gitignore
+.DS_Store
+.env*
+.vscode
+.idea
+*.log
+README.md
+materials
+.remember
+.claude

@@ -1,0 +1,33 @@
+---
+import { getLangFromUrl, useTranslations } from "~/i18n/utils";
+import { socials } from "~/data/socials";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-[var(--color-border)]/60 mt-24">
+  <div class="mx-auto max-w-5xl px-6 py-10 flex flex-col gap-6 text-sm text-[var(--color-fg-soft)] md:flex-row md:items-center md:justify-between">
+    <div>
+      <p>© {year} Jordan Maulana</p>
+      <p class="mt-1 text-xs">{t("footer.copy")}</p>
+    </div>
+    <ul class="flex flex-wrap gap-x-4 gap-y-2">
+      {
+        socials.map((s) => (
+          <li>
+            <a
+              href={s.url}
+              target="_blank"
+              rel="noreferrer"
+              class="transition hover:text-[var(--color-fg)]"
+            >
+              {s.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</footer>

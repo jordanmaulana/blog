@@ -1,0 +1,60 @@
+---
+name: Cariinkerja
+tagline: An AI job-search assistant for Indonesia — scores every posting against your LinkedIn so you stop applying blind.
+url: https://cariinkerja.id
+stack:
+  - Django 5.2
+  - DRF
+  - React 19
+  - Postgres
+  - Celery
+  - Tailwind v4
+  - OpenAI
+status: live
+order: 2
+---
+
+**Cariinkerja** is an AI job-search assistant built for Indonesia. Connect your LinkedIn, set your preferences once, and every day it crawls Indeed and JobStreet, scores each new posting from 0 to 100, and tells you exactly which skills match and which gaps to close — so you stop applying blind.
+
+Live at [cariinkerja.id](https://cariinkerja.id).
+
+## The problem
+
+Job hunting in Indonesia still feels like 2010. You open Indeed in one tab, JobStreet in another, scroll past hundreds of postings, skim long JDs, copy-paste your resume into 200 forms, and hope something sticks.
+
+The brutal part: most of those postings were never going to be a fit. Wrong stack, wrong seniority, wrong location, wrong contract type. You waste your evenings; recruiters waste their inbox. Nobody wins.
+
+## What Cariinkerja does
+
+1. **You connect LinkedIn.** We ingest your profile via Apify, then an LLM cleans and structures it into the shape our assessor needs.
+2. **You set your preferences once.** Job title, remote vs. on-site, full-time vs. freelance, and which source to crawl (Indeed or JobStreet).
+3. **A crawler runs daily for you.** Celery workers pull fresh postings matching your preferences.
+4. **An LLM scores every posting.** GPT-4o reads each job against your profile and returns a structured assessment: a 0–100 fit score, matching hard and soft skills, the gaps to close, and a short verdict in casual Bahasa Indonesia using "kamu."
+
+You open the dashboard, sort by score, focus on the 5–10 jobs that actually fit — not the 200 random ones in your inbox.
+
+## Why a 0–100 score instead of yes/no
+
+Gaps matter. A **72 with two fixable skill gaps** is often a better lead than an **85 you'll never get a callback from**, because the 72 is something you can close in a few weeks of focused learning. We surface both numbers and the gap list so you can make that judgment yourself.
+
+## Pricing
+
+- **Free tier** — covers roughly your first 20 assessments.
+- **30-day subscriptions** — pay-as-you-go, no annual lock-in.
+- **Open-to-Work discount** — toggle "Open to Work" on LinkedIn and the cheapest active plan is automatically discounted.
+
+## Ethos
+
+**Don't sell to people who can't afford it.** If subscribing would make your money situation worse, **don't subscribe.** Use the free tier first.
+
+**Empty LinkedIn = bad assessments.** Garbage in, garbage out. Fill in skills, write an honest "About," list real responsibilities under each role. The quality of your matches is bounded by the quality of your profile.
+
+## Built in the open
+
+Cariinkerja is open source under **AGPL-3.0-or-later**.
+
+**Stack:** Django 5.2 + DRF backend, React 19 + TanStack Router/Query SPA, Postgres, Celery + Redis for the async crawl/assess pipeline, Tailwind v4. Apify for LinkedIn ingest, OpenAI structured output (Pydantic schemas) for scoring, Mayar for payments, Google OAuth for sign-in.
+
+## Status
+
+Live, in production, used by paying Indonesian job seekers every day. Public signups are open at **[cariinkerja.id](https://cariinkerja.id)**.

@@ -1,0 +1,33 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import PostCard from "~/components/PostCard.astro";
+import { getCollection } from "astro:content";
+import { getLangFromUrl, useTranslations } from "~/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft && data.lang === lang)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+---
+
+<BaseLayout title={`${t("nav.blog")} — Jordan Maulana`}>
+  <section class="space-y-8 py-16">
+    <header class="space-y-2">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-accent)]">{t("nav.blog")}</p>
+      <h1 class="text-balance text-4xl font-semibold tracking-tight md:text-5xl">{t("section.posts")}</h1>
+      <p class="max-w-prose text-[var(--color-fg-soft)]">{t("section.posts.sub")}</p>
+    </header>
+
+    <div class="rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-bg-soft)]/40 px-6">
+      {
+        posts.length === 0 ? (
+          <p class="py-8 text-sm text-[var(--color-fg-soft)]">{t("blog.empty")}</p>
+        ) : (
+          posts.map((p) => <PostCard post={p} />)
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>

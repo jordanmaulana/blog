@@ -1,0 +1,70 @@
+---
+import { getLangFromUrl, localizedPath, useTranslations } from "~/i18n/utils";
+import { socials } from "~/data/socials";
+import FadeIn from "./motion/FadeIn.tsx";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const primary = socials.slice(0, 4);
+---
+
+<section class="grid gap-10 pb-12 pt-16 md:grid-cols-[2fr_1fr] md:items-center md:gap-12 md:pb-20 md:pt-24">
+  <FadeIn client:visible className="space-y-6">
+    <p class="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-accent)]">
+      {t("hero.location")}
+    </p>
+    <h1 class="text-balance text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+      {t("hero.title")}
+      <span class="block text-[var(--color-fg-soft)]">{t("hero.role")}</span>
+    </h1>
+    <p class="max-w-prose text-pretty text-base text-[var(--color-fg-soft)] md:text-lg">
+      {t("hero.tagline")}
+    </p>
+    <div class="flex flex-wrap gap-3">
+      <a
+        href={localizedPath(lang, "/about")}
+        class="rounded-full bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-[var(--color-accent-fg)] transition hover:opacity-90"
+      >
+        {t("nav.about")} →
+      </a>
+      <a
+        href={localizedPath(lang, "/blog")}
+        class="rounded-full border border-[var(--color-border)] px-4 py-2 text-sm font-medium text-[var(--color-fg-soft)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-fg)]"
+      >
+        {t("nav.blog")} →
+      </a>
+      {
+        primary.map((s) => (
+          <a
+            href={s.url}
+            target="_blank"
+            rel="noreferrer"
+            class="rounded-full border border-transparent px-4 py-2 text-sm text-[var(--color-fg-soft)] transition hover:border-[var(--color-border)] hover:text-[var(--color-fg)]"
+          >
+            {s.label}
+          </a>
+        ))
+      }
+    </div>
+  </FadeIn>
+
+  <FadeIn client:visible delay={0.15} className="relative justify-self-center md:justify-self-end">
+    <div class="relative aspect-square w-56 overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)] shadow-2xl shadow-[var(--color-accent)]/10 md:w-64">
+      <img
+        src="/me.jpg"
+        alt="Jordan Maulana"
+        width="320"
+        height="320"
+        loading="eager"
+        decoding="async"
+        class="h-full w-full object-cover"
+      />
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[var(--color-bg)]/40 via-transparent to-transparent"></div>
+    </div>
+    <div
+      class="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] blur-2xl"
+      style="background: radial-gradient(circle at 30% 30%, color-mix(in oklch, var(--color-accent) 35%, transparent), transparent 60%);"
+    >
+    </div>
+  </FadeIn>
+</section>

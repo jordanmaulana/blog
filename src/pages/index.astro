@@ -1,0 +1,90 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import Hero from "~/components/Hero.astro";
+import ProductCard from "~/components/ProductCard.astro";
+import PostCard from "~/components/PostCard.astro";
+import FadeIn from "~/components/motion/FadeIn.tsx";
+import { getCollection } from "astro:content";
+import { socials } from "~/data/socials";
+import { getLangFromUrl, localizedPath, useTranslations } from "~/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const products = (await getCollection("products"))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft && data.lang === lang))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 4);
+---
+
+<BaseLayout title={`${t("hero.title")} — ${t("hero.role")}`}>
+  <Hero />
+
+  <FadeIn client:visible className="space-y-8 py-12">
+    <header class="flex items-end justify-between gap-4">
+      <div>
+        <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">{t("section.products")}</h2>
+        <p class="mt-1 text-sm text-[var(--color-fg-soft)]">{t("section.products.sub")}</p>
+      </div>
+      <a
+        href={localizedPath(lang, "/products")}
+        class="hidden text-sm text-[var(--color-fg-soft)] transition hover:text-[var(--color-fg)] md:inline"
+      >
+        {t("nav.products")} →
+      </a>
+    </header>
+    <div class="grid gap-4 md:grid-cols-2">
+      {products.map((p) => <ProductCard product={p} />)}
+    </div>
+  </FadeIn>
+
+  <FadeIn client:visible className="space-y-6 py-12">
+    <header class="flex items-end justify-between gap-4">
+      <div>
+        <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">{t("section.posts")}</h2>
+        <p class="mt-1 text-sm text-[var(--color-fg-soft)]">{t("section.posts.sub")}</p>
+      </div>
+      <a
+        href={localizedPath(lang, "/blog")}
+        class="text-sm text-[var(--color-fg-soft)] transition hover:text-[var(--color-fg)]"
+      >
+        {t("section.posts.all")}
+      </a>
+    </header>
+    <div class="rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-bg-soft)]/40 px-6">
+      {
+        posts.length === 0 ? (
+          <p class="py-8 text-sm text-[var(--color-fg-soft)]">{t("blog.empty")}</p>
+        ) : (
+          posts.map((p) => <PostCard post={p} />)
+        )
+      }
+    </div>
+  </FadeIn>
+
+  <FadeIn client:visible className="space-y-6 py-12">
+    <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">{t("section.elsewhere")}</h2>
+    <ul class="grid gap-3 md:grid-cols-3">
+      {
+        socials.map((s) => (
+          <li>
+            <a
+              href={s.url}
+              target="_blank"
+              rel="noreferrer"
+              class="group flex items-center justify-between rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-bg-soft)]/40 px-4 py-3 transition hover:border-[var(--color-accent)]"
+            >
+              <div>
+                <p class="text-sm font-medium">{s.label}</p>
+                <p class="font-mono text-xs text-[var(--color-fg-soft)]">{s.handle}</p>
+              </div>
+              <span aria-hidden="true" class="text-[var(--color-fg-soft)] transition group-hover:text-[var(--color-accent)]">↗</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </FadeIn>
+</BaseLayout>

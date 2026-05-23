@@ -1,0 +1,50 @@
+---
+import { getLangFromUrl, localizedPath, useTranslations } from "~/i18n/utils";
+import LangSwitcher from "./LangSwitcher.astro";
+import ThemeToggle from "./ThemeToggle.tsx";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const navItems = [
+  { href: localizedPath(lang, "/"), label: t("nav.home") },
+  { href: localizedPath(lang, "/about"), label: t("nav.about") },
+  { href: localizedPath(lang, "/products"), label: t("nav.products") },
+  { href: localizedPath(lang, "/blog"), label: t("nav.blog") },
+];
+
+const current = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<header class="sticky top-0 z-40 border-b border-[var(--color-border)]/60 bg-[var(--color-bg)]/80 backdrop-blur supports-[backdrop-filter]:bg-[var(--color-bg)]/60">
+  <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4">
+    <a href={localizedPath(lang, "/")} class="font-mono text-sm font-semibold tracking-tight">
+      jordan<span class="text-[var(--color-accent)]">.</span>maulana
+    </a>
+    <nav class="hidden gap-6 text-sm text-[var(--color-fg-soft)] md:flex">
+      {
+        navItems.map((item) => {
+          const itemPath = item.href.replace(/\/$/, "") || "/";
+          const isActive =
+            itemPath === current ||
+            (itemPath !== "/" && current.startsWith(itemPath));
+          return (
+            <a
+              href={item.href}
+              class:list={[
+                "transition hover:text-[var(--color-fg)]",
+                isActive && "text-[var(--color-fg)]",
+              ]}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+    <div class="flex items-center gap-2">
+      <LangSwitcher />
+      <ThemeToggle client:load label={t("theme.toggle")} />
+    </div>
+  </div>
+</header>
