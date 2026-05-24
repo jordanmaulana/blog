@@ -1,0 +1,204 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "jordan.maulana" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e6]:
+        - link "Home" [ref=e7] [cursor=pointer]:
+          - /url: /
+        - link "About" [ref=e8] [cursor=pointer]:
+          - /url: /about
+        - link "Products" [ref=e9] [cursor=pointer]:
+          - /url: /products
+        - link "Writing" [ref=e10] [cursor=pointer]:
+          - /url: /blog
+      - generic [ref=e11]:
+        - link "Bahasa Indonesia" [ref=e12] [cursor=pointer]:
+          - /url: /id
+          - generic [ref=e13]: EN
+          - generic [ref=e14]: →
+          - generic [ref=e15]: ID
+        - button "Toggle theme" [ref=e17]:
+          - generic [ref=e18]: ☀
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e23]:
+        - paragraph [ref=e24]: Gresik, East Java, Indonesia
+        - heading "Jordan Maulana Software Engineer & Creator" [level=1] [ref=e25]:
+          - text: Jordan Maulana
+          - generic [ref=e26]: Software Engineer & Creator
+        - paragraph [ref=e27]: 8+ years building Flutter apps and full-stack systems. I lead mobile teams, ship indie products, and write about what I learn.
+        - generic [ref=e28]:
+          - link "About →" [ref=e29] [cursor=pointer]:
+            - /url: /about
+          - link "Writing →" [ref=e30] [cursor=pointer]:
+            - /url: /blog
+          - link "LinkedIn" [ref=e31] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/jordan-maulana/
+          - link "Instagram" [ref=e32] [cursor=pointer]:
+            - /url: https://www.instagram.com/jordan.maulana
+          - link "Threads" [ref=e33] [cursor=pointer]:
+            - /url: https://www.threads.com/@jordan.maulana
+          - link "YouTube" [ref=e34] [cursor=pointer]:
+            - /url: https://www.youtube.com/@jordan.maulana
+      - img "Jordan Maulana" [ref=e39]
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - generic [ref=e44]:
+          - heading "What I'm building" [level=2] [ref=e45]
+          - paragraph [ref=e46]: Side projects that became real products.
+        - link "Products →" [ref=e47] [cursor=pointer]:
+          - /url: /products
+      - generic [ref=e48]:
+        - article [ref=e49]:
+          - generic [ref=e50]:
+            - link "Threadshot" [ref=e51] [cursor=pointer]:
+              - /url: /products/threadshot
+            - generic [ref=e52]: prototype
+          - paragraph [ref=e53]: Turn any public Threads post into a clean, shareable PNG.
+          - list [ref=e54]:
+            - listitem [ref=e55]: FastAPI
+            - listitem [ref=e56]: Playwright
+            - listitem [ref=e57]: Jinja2
+            - listitem [ref=e58]: Tailwind v4
+            - listitem [ref=e59]: Python
+          - generic [ref=e60]:
+            - generic [ref=e61]: Read more →
+            - link "Visit site →" [ref=e62] [cursor=pointer]:
+              - /url: https://threadshot.com
+        - article [ref=e63]:
+          - generic [ref=e64]:
+            - link "Cariinkerja" [ref=e65] [cursor=pointer]:
+              - /url: /products/cariinkerja
+            - generic [ref=e66]: live
+          - paragraph [ref=e67]: An AI job-search assistant for Indonesia — scores every posting against your LinkedIn so you stop applying blind.
+          - list [ref=e68]:
+            - listitem [ref=e69]: Django 5.2
+            - listitem [ref=e70]: DRF
+            - listitem [ref=e71]: React 19
+            - listitem [ref=e72]: Postgres
+            - listitem [ref=e73]: Celery
+          - generic [ref=e74]:
+            - generic [ref=e75]: Read more →
+            - link "Visit site →" [ref=e76] [cursor=pointer]:
+              - /url: https://cariinkerja.id
+        - article [ref=e77]:
+          - generic [ref=e78]:
+            - link "Ngaturduit" [ref=e79] [cursor=pointer]:
+              - /url: /products/ngaturduit
+            - generic [ref=e80]: live
+          - paragraph [ref=e81]: Telegram-first personal finance — capture transactions in chat, see them everywhere.
+          - list [ref=e82]:
+            - listitem [ref=e83]: Django 5.2
+            - listitem [ref=e84]: DRF
+            - listitem [ref=e85]: Postgres
+            - listitem [ref=e86]: Celery
+            - listitem [ref=e87]: python-telegram-bot
+          - generic [ref=e88]:
+            - generic [ref=e89]: Read more →
+            - link "Visit site →" [ref=e90] [cursor=pointer]:
+              - /url: https://ngaturduit.my.id
+        - article [ref=e91]:
+          - generic [ref=e92]:
+            - link "KasirKelontong" [ref=e93] [cursor=pointer]:
+              - /url: /products/kasirkelontong
+            - generic [ref=e94]: wip
+          - paragraph [ref=e95]: Cash-first POS for Indonesian neighborhood warung kelontong — web admin + Android tablet.
+          - list [ref=e96]:
+            - listitem [ref=e97]: Django 5
+            - listitem [ref=e98]: DRF
+            - listitem [ref=e99]: Postgres
+            - listitem [ref=e100]: React 19
+            - listitem [ref=e101]: Vite
+          - generic [ref=e102]:
+            - generic [ref=e103]: Read more →
+            - link "Visit site →" [ref=e104] [cursor=pointer]:
+              - /url: https://kasirkelontong.com
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - heading "Recent writing" [level=2] [ref=e110]
+          - paragraph [ref=e111]: Notes from the workbench.
+        - link "All posts →" [ref=e112] [cursor=pointer]:
+          - /url: /blog
+      - article [ref=e114]:
+        - link "Hello, again May 23, 2026 Re-launching this site as a place to think out loud — about Flutter, Django, indie products, and the messy bits in between." [ref=e115] [cursor=pointer]:
+          - /url: /blog/hello-world
+          - generic [ref=e116]:
+            - heading "Hello, again" [level=3] [ref=e117]
+            - time [ref=e118]: May 23, 2026
+          - paragraph [ref=e119]: Re-launching this site as a place to think out loud — about Flutter, Django, indie products, and the messy bits in between.
+        - list [ref=e120]:
+          - listitem [ref=e121]: "#meta"
+          - listitem [ref=e122]: "#announcement"
+    - generic [ref=e125]:
+      - heading "Find me elsewhere" [level=2] [ref=e126]
+      - list [ref=e127]:
+        - listitem [ref=e128]:
+          - link "LinkedIn jordan-maulana" [ref=e129] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/jordan-maulana/
+            - generic [ref=e130]:
+              - paragraph [ref=e131]: LinkedIn
+              - paragraph [ref=e132]: jordan-maulana
+            - generic [ref=e133]: ↗
+        - listitem [ref=e134]:
+          - link "Instagram @jordan.maulana" [ref=e135] [cursor=pointer]:
+            - /url: https://www.instagram.com/jordan.maulana
+            - generic [ref=e136]:
+              - paragraph [ref=e137]: Instagram
+              - paragraph [ref=e138]: "@jordan.maulana"
+            - generic [ref=e139]: ↗
+        - listitem [ref=e140]:
+          - link "Threads @jordan.maulana" [ref=e141] [cursor=pointer]:
+            - /url: https://www.threads.com/@jordan.maulana
+            - generic [ref=e142]:
+              - paragraph [ref=e143]: Threads
+              - paragraph [ref=e144]: "@jordan.maulana"
+            - generic [ref=e145]: ↗
+        - listitem [ref=e146]:
+          - link "YouTube @jordan.maulana" [ref=e147] [cursor=pointer]:
+            - /url: https://www.youtube.com/@jordan.maulana
+            - generic [ref=e148]:
+              - paragraph [ref=e149]: YouTube
+              - paragraph [ref=e150]: "@jordan.maulana"
+            - generic [ref=e151]: ↗
+        - listitem [ref=e152]:
+          - link "Medium @jordanmaulana26" [ref=e153] [cursor=pointer]:
+            - /url: https://medium.com/@jordanmaulana26
+            - generic [ref=e154]:
+              - paragraph [ref=e155]: Medium
+              - paragraph [ref=e156]: "@jordanmaulana26"
+            - generic [ref=e157]: ↗
+        - listitem [ref=e158]:
+          - link "Shutterstock isenjo" [ref=e159] [cursor=pointer]:
+            - /url: https://www.shutterstock.com/g/isenjo
+            - generic [ref=e160]:
+              - paragraph [ref=e161]: Shutterstock
+              - paragraph [ref=e162]: isenjo
+            - generic [ref=e163]: ↗
+  - contentinfo [ref=e164]:
+    - generic [ref=e165]:
+      - generic [ref=e166]:
+        - paragraph [ref=e167]: © 2026 Jordan Maulana
+        - paragraph [ref=e168]: Built with Astro. Open to good problems.
+      - list [ref=e169]:
+        - listitem [ref=e170]:
+          - link "LinkedIn" [ref=e171] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/jordan-maulana/
+        - listitem [ref=e172]:
+          - link "Instagram" [ref=e173] [cursor=pointer]:
+            - /url: https://www.instagram.com/jordan.maulana
+        - listitem [ref=e174]:
+          - link "Threads" [ref=e175] [cursor=pointer]:
+            - /url: https://www.threads.com/@jordan.maulana
+        - listitem [ref=e176]:
+          - link "YouTube" [ref=e177] [cursor=pointer]:
+            - /url: https://www.youtube.com/@jordan.maulana
+        - listitem [ref=e178]:
+          - link "Medium" [ref=e179] [cursor=pointer]:
+            - /url: https://medium.com/@jordanmaulana26
+        - listitem [ref=e180]:
+          - link "Shutterstock" [ref=e181] [cursor=pointer]:
+            - /url: https://www.shutterstock.com/g/isenjo
