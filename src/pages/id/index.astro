@@ -2,6 +2,7 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import Hero from "~/components/Hero.astro";
 import ProductCard from "~/components/ProductCard.astro";
+import LapakCard from "~/components/LapakCard.astro";
 import PostCard from "~/components/PostCard.astro";
 import FadeIn from "~/components/motion/FadeIn.tsx";
 import { getCollection } from "astro:content";
@@ -13,6 +14,10 @@ const t = useTranslations(lang);
 
 const products = (await getCollection("products"))
   .sort((a, b) => a.data.order - b.data.order);
+
+const lapakItems = (await getCollection("lapak", ({ data }) => data.status === "available"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
@@ -39,6 +44,28 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
       {products.map((p) => <ProductCard product={p} />)}
     </div>
   </FadeIn>
+
+  {
+    lapakItems.length > 0 && (
+      <FadeIn client:visible className="space-y-6 py-12">
+        <header class="flex items-end justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">{t("section.lapak")}</h2>
+            <p class="mt-1 text-sm text-[var(--color-fg-soft)]">{t("section.lapak.sub")}</p>
+          </div>
+          <a
+            href={localizedPath(lang, "/lapak")}
+            class="text-sm text-[var(--color-fg-soft)] transition hover:text-[var(--color-fg)]"
+          >
+            {t("section.lapak.all")}
+          </a>
+        </header>
+        <div class="grid gap-4 md:grid-cols-3">
+          {lapakItems.map((item) => <LapakCard item={item} />)}
+        </div>
+      </FadeIn>
+    )
+  }
 
   <FadeIn client:visible className="space-y-6 py-12">
     <header class="flex items-end justify-between gap-4">

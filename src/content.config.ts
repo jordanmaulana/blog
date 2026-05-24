@@ -27,4 +27,19 @@ const products = defineCollection({
   }),
 });
 
-export const collections = { blog, products };
+const lapak = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/lapak" }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      tagline: z.string(),
+      price: z.number().int(),
+      negotiable: z.boolean().default(false),
+      condition: z.enum(["like-new", "good", "fair"]),
+      status: z.enum(["available", "reserved", "sold"]).default("available"),
+      photos: z.array(image()).min(1),
+      order: z.number().default(99),
+    }),
+});
+
+export const collections = { blog, products, lapak };

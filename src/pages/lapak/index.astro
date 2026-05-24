@@ -1,0 +1,46 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import LapakCard from "~/components/LapakCard.astro";
+import { getCollection } from "astro:content";
+import { getLangFromUrl, useTranslations } from "~/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const statusRank: Record<"available" | "reserved" | "sold", number> = {
+  available: 0,
+  reserved: 1,
+  sold: 2,
+};
+
+const items = (await getCollection("lapak")).sort(
+  (a, b) =>
+    statusRank[a.data.status] - statusRank[b.data.status] ||
+    a.data.order - b.data.order,
+);
+---
+
+<BaseLayout title={`${t("nav.lapak")} — Jordan Maulana`}>
+  <section class="space-y-8 py-16">
+    <header class="space-y-2">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-accent)]">
+        {t("nav.lapak")}
+      </p>
+      <h1 class="text-balance text-4xl font-semibold tracking-tight md:text-5xl">
+        {t("section.lapak")}
+      </h1>
+      <p class="max-w-prose text-[var(--color-fg-soft)]">{t("section.lapak.sub")}</p>
+    </header>
+    {
+      items.length === 0 ? (
+        <p class="text-sm text-[var(--color-fg-soft)]">{t("lapak.empty")}</p>
+      ) : (
+        <div class="grid gap-4 md:grid-cols-2">
+          {items.map((item) => (
+            <LapakCard item={item} />
+          ))}
+        </div>
+      )
+    }
+  </section>
+</BaseLayout>
