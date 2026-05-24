@@ -50,6 +50,7 @@ export const ui = {
     "footer.copy": "Built with Astro. Open to good problems.",
     "lang.switchTo": "Bahasa Indonesia",
     "theme.toggle": "Toggle theme",
+    "about.portfolio": "View career portfolio →",
   },
   id: {
     "nav.home": "Beranda",
@@ -93,6 +94,7 @@ export const ui = {
     "footer.copy": "Dibangun dengan Astro. Terbuka untuk masalah seru.",
     "lang.switchTo": "English",
     "theme.toggle": "Ganti tema",
+    "about.portfolio": "Lihat portofolio karier →",
   },
 } as const satisfies Record<Lang, Record<string, string>>;
 

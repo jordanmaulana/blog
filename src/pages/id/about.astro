@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
-import { profile, experience, education, certifications, skillGroups } from "~/data/about";
+import { profile, experience, education, certifications, skillGroups, portfolioUrl } from "~/data/about";
 import { getLangFromUrl, useTranslations } from "~/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -15,6 +15,15 @@ const t = useTranslations(lang);
         <h1 class="text-balance text-4xl font-semibold tracking-tight md:text-5xl">{profile.name}</h1>
         <p class="text-lg text-[var(--color-fg-soft)]">{profile.role}</p>
         <p class="font-mono text-xs text-[var(--color-fg-soft)]">{profile.location}</p>
+        <a
+          href={portfolioUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-[var(--color-border)] px-4 py-1.5 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-fg)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+        >
+          {t("about.portfolio")}
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
       <div class="h-32 w-32 overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)] md:h-40 md:w-40">
         <img src="/me.jpg" alt={profile.name} class="h-full w-full object-cover" />

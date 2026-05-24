@@ -31,6 +31,8 @@ export const profile = {
     "Seasoned Software Engineer with 8+ years of experience in Flutter and full-stack development. Proven expertise in leading mobile teams, delivering scalable apps, and mentoring developers. Strong track record of enhancing development efficiency and launching dozens of successful applications. Adept at bridging technical and business needs, ensuring alignment between features and organizational goals. Passionate about knowledge sharing and building learning cultures in tech communities.",
 } as const;
 
+export const portfolioUrl = "https://drive.google.com/file/d/1vTXu9jBJf_9Q6rUq1loilNIl-VDc6EDO/view?usp=sharing";
+
 export const experience: Job[] = [
   {
     role: "Senior Software Engineer",
