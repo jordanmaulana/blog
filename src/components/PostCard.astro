@@ -8,7 +8,7 @@ interface Props {
 
 const { post } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-const slug = post.id.replace(/^(en|id)\//, "").replace(/\.mdx?$/, "");
+const slug = post.id.replace(/\.mdx?$/, "");
 const href = localizedPath(lang, `/blog/${slug}`);
 ---
 
