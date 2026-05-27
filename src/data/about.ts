@@ -41,21 +41,17 @@ export const experience: Job[] = [
     start: "Dec 2025",
     end: "Present",
     location: "Remote",
-  },
-  {
-    role: "Software Engineer",
-    company: "Elite Digital",
-    type: "Part-time",
-    start: "Dec 2025",
-    end: "Feb 2026",
-    location: "Czechia · Remote",
+    bullets: [
+      "Hands-on development for client requested apps and internal tools.",
+      "Creating meaningful tools across the apps to improve development efficiency and experience."
+    ],
   },
   {
     role: "Software Engineer",
     company: "Elite Digital",
     type: "Full-time",
     start: "Aug 2025",
-    end: "Dec 2025",
+    end: "Feb 2026",
     location: "Czechia · Remote",
     bullets: [
       "Refactored and optimized ultra-complex n8n workflow.",
@@ -157,7 +153,7 @@ export const certifications: Cert[] = [
 export const skillGroups: { label: string; items: string[] }[] = [
   {
     label: "Languages",
-    items: ["Dart", "TypeScript", "Python", "Kotlin", "Java", "SQL"],
+    items: ["Dart", "TypeScript", "Python", "Kotlin", "Java", "PostgreSQL"],
   },
   {
     label: "Frameworks",
@@ -165,7 +161,7 @@ export const skillGroups: { label: string; items: string[] }[] = [
   },
   {
     label: "Platforms & Tools",
-    items: ["Firebase", "Cloud Firestore", "REST APIs", "n8n", "Android Studio", "Git", "GitHub", "MySQL"],
+    items: ["Firebase", "Cloud Firestore", "REST APIs", "n8n", "Android Studio", "Git", "GitHub", "PostgreSQL", "Claude Code"],
   },
   {
     label: "Leadership",
@@ -185,7 +181,6 @@ export const skillGroups: { label: string; items: string[] }[] = [
       "Workflow Analysis",
       "Workflow Management",
       "Machine Learning",
-      "Web3",
       "Raspberry Pi",
       "Arduino",
     ],
