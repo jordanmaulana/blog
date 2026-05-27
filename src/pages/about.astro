@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import meImage from "~/assets/me.jpg";
 import { profile, experience, education, certifications, skillGroups, portfolioUrl } from "~/data/about";
 import { getLangFromUrl, useTranslations } from "~/i18n/utils";
 
@@ -26,7 +28,7 @@ const t = useTranslations(lang);
         </a>
       </div>
       <div class="h-32 w-32 overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)] md:h-40 md:w-40">
-        <img src="/me.jpg" alt={profile.name} class="h-full w-full object-cover" />
+        <Image src={meImage} alt={profile.name} width={320} class="h-full w-full object-cover" />
       </div>
     </header>
 

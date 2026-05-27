@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import meImage from "~/assets/me.jpg";
 import { getLangFromUrl, localizedPath, useTranslations } from "~/i18n/utils";
 import { socials } from "~/data/socials";
 import FadeIn from "./motion/FadeIn.tsx";
@@ -50,13 +52,11 @@ const primary = socials.slice(0, 4);
 
   <FadeIn client:visible delay={0.15} className="relative justify-self-center md:justify-self-end">
     <div class="relative aspect-square w-56 overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)] shadow-2xl shadow-[var(--color-accent)]/10 md:w-64">
-      <img
-        src="/me.jpg"
+      <Image
+        src={meImage}
         alt="Jordan Maulana"
-        width="320"
-        height="320"
+        width={512}
         loading="eager"
-        decoding="async"
         class="h-full w-full object-cover"
       />
       <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[var(--color-bg)]/40 via-transparent to-transparent"></div>
