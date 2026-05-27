@@ -1,10 +1,12 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 import { render } from "astro:content";
 
 interface Props {
   entry: CollectionEntry<"gears">;
-  ogImage: string | null;
+  ogImage: ImageMetadata | null;
 }
 
 const { entry, ogImage } = Astro.props;
@@ -22,7 +24,7 @@ const { Content } = await render(entry);
   >
     {
       ogImage ? (
-        <img
+        <Image
           src={ogImage}
           alt={name}
           loading="lazy"

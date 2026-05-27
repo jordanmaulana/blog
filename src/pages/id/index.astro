@@ -9,7 +9,7 @@ import FadeIn from "~/components/motion/FadeIn.tsx";
 import { getCollection } from "astro:content";
 import { socials } from "~/data/socials";
 import { getLangFromUrl, localizedPath, useTranslations } from "~/i18n/utils";
-import { getOgImage } from "~/lib/og-image";
+import { getOgImageMetadata } from "~/lib/og-lookup";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -25,9 +25,10 @@ const gearItems = (await getCollection("gears"))
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 3);
 
-const gearCards = await Promise.all(
-  gearItems.map(async (entry) => ({ entry, ogImage: await getOgImage(entry.data.url) })),
-);
+const gearCards = gearItems.map((entry) => ({
+  entry,
+  ogImage: getOgImageMetadata(entry.data.url),
+}));
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())

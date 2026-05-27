@@ -4,7 +4,7 @@ import GearCard from "~/components/GearCard.astro";
 import GearCategoryNav from "~/components/GearCategoryNav.astro";
 import { getCollection } from "astro:content";
 import { getLangFromUrl, useTranslations } from "~/i18n/utils";
-import { getOgImage } from "~/lib/og-image";
+import { getOgImageMetadata } from "~/lib/og-lookup";
 import { getUniqueCategories } from "~/lib/gear-categories";
 
 const lang = getLangFromUrl(Astro.url);
@@ -15,9 +15,10 @@ const gears = (await getCollection("gears"))
 
 const categories = getUniqueCategories(gears);
 
-const cards = await Promise.all(
-  gears.map(async (entry) => ({ entry, ogImage: await getOgImage(entry.data.url) })),
-);
+const cards = gears.map((entry) => ({
+  entry,
+  ogImage: getOgImageMetadata(entry.data.url),
+}));
 ---
 
 <BaseLayout title={`${t("nav.gears")} — Jordan Maulana`}>

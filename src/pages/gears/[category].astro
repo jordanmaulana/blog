@@ -4,7 +4,7 @@ import GearCard from "~/components/GearCard.astro";
 import GearCategoryNav from "~/components/GearCategoryNav.astro";
 import { getCollection } from "astro:content";
 import { getLangFromUrl, useTranslations } from "~/i18n/utils";
-import { getOgImage } from "~/lib/og-image";
+import { getOgImageMetadata } from "~/lib/og-lookup";
 import { getUniqueCategories, slugifyCategory } from "~/lib/gear-categories";
 
 export async function getStaticPaths() {
@@ -30,12 +30,10 @@ const allGears = (await getCollection("gears")).sort(
 const categories = getUniqueCategories(allGears);
 const gears = allGears.filter((g) => g.data.category === category);
 
-const cards = await Promise.all(
-  gears.map(async (entry) => ({
-    entry,
-    ogImage: await getOgImage(entry.data.url),
-  })),
-);
+const cards = gears.map((entry) => ({
+  entry,
+  ogImage: getOgImageMetadata(entry.data.url),
+}));
 ---
 
 <BaseLayout title={`${t("nav.gears")} — ${category} — Jordan Maulana`}>

@@ -4,11 +4,13 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
+import ogPrefetch from "./src/integrations/og-prefetch.ts";
 
 export default defineConfig({
   site: "https://jordanmaulana.com",
   trailingSlash: "never",
   integrations: [
+    ogPrefetch(),
     mdx(),
     react(),
     sitemap({

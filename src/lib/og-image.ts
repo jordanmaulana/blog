@@ -3,14 +3,13 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import ogs from "open-graph-scraper";
 
-const CACHE_DIR = path.resolve(process.cwd(), "public/og-cache");
-const PUBLIC_PREFIX = "/og-cache";
+const CACHE_DIR = path.resolve(process.cwd(), "src/assets/og-cache");
 
 const USER_AGENT = "Twitterbot/1.0";
 
 const inFlight = new Map<string, Promise<string | null>>();
 
-function hashUrl(url: string): string {
+export function hashUrl(url: string): string {
   return crypto.createHash("sha1").update(url).digest("hex").slice(0, 16);
 }
 
@@ -29,7 +28,7 @@ async function findCached(hash: string): Promise<string | null> {
   try {
     const files = await fs.readdir(CACHE_DIR);
     const match = files.find((f) => f.startsWith(`${hash}.`));
-    return match ? `${PUBLIC_PREFIX}/${match}` : null;
+    return match ?? null;
   } catch {
     return null;
   }
@@ -50,7 +49,7 @@ async function downloadImage(imageUrl: string, hash: string): Promise<string | n
     await fs.mkdir(CACHE_DIR, { recursive: true });
     const buf = Buffer.from(await res.arrayBuffer());
     await fs.writeFile(filepath, buf);
-    return `${PUBLIC_PREFIX}/${filename}`;
+    return filename;
   } catch {
     return null;
   }
