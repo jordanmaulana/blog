@@ -36,8 +36,8 @@ const items = (await getCollection("lapak")).sort(
         <p class="text-sm text-[var(--color-fg-soft)]">{t("lapak.empty")}</p>
       ) : (
         <div class="grid gap-4 md:grid-cols-2">
-          {items.map((item) => (
-            <LapakCard item={item} />
+          {items.map((item, i) => (
+            <LapakCard item={item} loading={i < 2 ? "eager" : "lazy"} />
           ))}
         </div>
       )

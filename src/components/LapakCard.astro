@@ -6,9 +6,10 @@ import { formatIDR } from "~/utils/format";
 
 interface Props {
   item: CollectionEntry<"lapak">;
+  loading?: "eager" | "lazy";
 }
 
-const { item } = Astro.props;
+const { item, loading = "lazy" } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const { name, tagline, price, negotiable, condition, status, photos } = item.data;
@@ -38,6 +39,7 @@ const isAvailable = status === "available";
       alt={name}
       widths={[320, 480, 640]}
       sizes="(min-width: 768px) 320px, 100vw"
+      loading={loading}
       class="h-full w-full object-cover transition group-hover:scale-[1.02]"
     />
   </a>
