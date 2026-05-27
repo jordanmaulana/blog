@@ -1,0 +1,45 @@
+---
+import { localizedPath, useTranslations } from "~/i18n/utils";
+import type { Lang } from "~/i18n/ui";
+import { slugifyCategory } from "~/lib/gear-categories";
+
+interface Props {
+  lang: Lang;
+  categories: string[];
+  activeCategory?: string;
+}
+
+const { lang, categories, activeCategory } = Astro.props;
+const t = useTranslations(lang);
+
+const base =
+  "inline-flex items-center rounded-full border px-3 py-1 font-mono text-xs uppercase tracking-[0.2em] transition";
+const active =
+  "border-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]";
+const inactive =
+  "border-[var(--color-border)] text-[var(--color-fg-soft)] hover:border-[var(--color-accent)] hover:text-[var(--color-fg)]";
+---
+
+<nav class="flex flex-wrap gap-2" aria-label={t("gears.category.nav")}>
+  <a
+    href={localizedPath(lang, "/gears")}
+    class:list={[base, activeCategory ? inactive : active]}
+    aria-current={activeCategory ? undefined : "page"}
+  >
+    {t("gears.category.all")}
+  </a>
+  {
+    categories.map((cat) => {
+      const isActive = activeCategory === cat;
+      return (
+        <a
+          href={localizedPath(lang, `/gears/${slugifyCategory(cat)}`)}
+          class:list={[base, isActive ? active : inactive]}
+          aria-current={isActive ? "page" : undefined}
+        >
+          {cat}
+        </a>
+      );
+    })
+  }
+</nav>

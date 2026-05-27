@@ -1,0 +1,41 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import GearCard from "~/components/GearCard.astro";
+import GearCategoryNav from "~/components/GearCategoryNav.astro";
+import { getCollection } from "astro:content";
+import { getLangFromUrl, useTranslations } from "~/i18n/utils";
+import { getOgImage } from "~/lib/og-image";
+import { getUniqueCategories } from "~/lib/gear-categories";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const gears = (await getCollection("gears"))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const categories = getUniqueCategories(gears);
+
+const cards = await Promise.all(
+  gears.map(async (entry) => ({ entry, ogImage: await getOgImage(entry.data.url) })),
+);
+---
+
+<BaseLayout title={`${t("nav.gears")} — Jordan Maulana`}>
+  <section class="space-y-8 py-16">
+    <header class="space-y-2">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-accent)]">{t("nav.gears")}</p>
+      <h1 class="text-balance text-4xl font-semibold tracking-tight md:text-5xl">{t("section.gears")}</h1>
+      <p class="max-w-prose text-[var(--color-fg-soft)]">{t("section.gears.sub")}</p>
+    </header>
+    <GearCategoryNav lang={lang} categories={categories} />
+    {
+      cards.length === 0 ? (
+        <p class="text-sm text-[var(--color-fg-soft)]">{t("gears.empty")}</p>
+      ) : (
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {cards.map(({ entry, ogImage }) => <GearCard entry={entry} ogImage={ogImage} />)}
+        </div>
+      )
+    }
+  </section>
+</BaseLayout>

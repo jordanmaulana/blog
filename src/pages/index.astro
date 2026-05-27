@@ -3,11 +3,13 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 import Hero from "~/components/Hero.astro";
 import ProductCard from "~/components/ProductCard.astro";
 import LapakCard from "~/components/LapakCard.astro";
+import GearCard from "~/components/GearCard.astro";
 import PostCard from "~/components/PostCard.astro";
 import FadeIn from "~/components/motion/FadeIn.tsx";
 import { getCollection } from "astro:content";
 import { socials } from "~/data/socials";
 import { getLangFromUrl, localizedPath, useTranslations } from "~/i18n/utils";
+import { getOgImage } from "~/lib/og-image";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -18,6 +20,14 @@ const products = (await getCollection("products"))
 const lapakItems = (await getCollection("lapak", ({ data }) => data.status === "available"))
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 3);
+
+const gearItems = (await getCollection("gears"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const gearCards = await Promise.all(
+  gearItems.map(async (entry) => ({ entry, ogImage: await getOgImage(entry.data.url) })),
+);
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
@@ -44,6 +54,28 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
       {products.map((p) => <ProductCard product={p} />)}
     </div>
   </FadeIn>
+
+  {
+    gearCards.length > 0 && (
+      <FadeIn client:visible className="space-y-10 py-12">
+        <header class="flex items-end justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">{t("section.gears")}</h2>
+            <p class="mt-1 text-sm text-[var(--color-fg-soft)]">{t("section.gears.sub")}</p>
+          </div>
+          <a
+            href={localizedPath(lang, "/gears")}
+            class="text-sm text-[var(--color-fg-soft)] transition hover:text-[var(--color-fg)]"
+          >
+            {t("section.gears.all")}
+          </a>
+        </header>
+        <div class="grid gap-4 md:grid-cols-3 mt-4">
+          {gearCards.map(({ entry, ogImage }) => <GearCard entry={entry} ogImage={ogImage} />)}
+        </div>
+      </FadeIn>
+    )
+  }
 
   {
     lapakItems.length > 0 && (

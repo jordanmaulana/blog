@@ -42,4 +42,14 @@ const lapak = defineCollection({
     }),
 });
 
-export const collections = { blog, products, lapak };
+const gears = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/gears" }),
+  schema: z.object({
+    name: z.string(),
+    url: z.string().url(),
+    category: z.string(),
+    order: z.number().default(99),
+  }),
+});
+
+export const collections = { blog, products, lapak, gears };
