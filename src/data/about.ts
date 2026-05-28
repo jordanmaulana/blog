@@ -28,7 +28,7 @@ export const profile = {
   role: "Software Engineer | Creator",
   location: "Gresik, East Java, Indonesia",
   summary:
-    "Seasoned Software Engineer with 8+ years of experience in Flutter and full-stack development. Proven expertise in leading mobile teams, delivering scalable apps, and mentoring developers. Strong track record of enhancing development efficiency and launching dozens of successful applications. Adept at bridging technical and business needs, ensuring alignment between features and organizational goals. Passionate about knowledge sharing and building learning cultures in tech communities.",
+    "Eight years of building software, mostly mobile. Flutter is home, but I've done plenty of full-stack work with Django, React, and other tools along the way. I've led mobile teams, shipped 20+ production apps, and helped junior developers grow into confident engineers. \"Creator\" in my title? Not only about content creation. I share the journey, and build things that I use myself.",
 } as const;
 
 export const portfolioUrl = "https://drive.google.com/file/d/1vTXu9jBJf_9Q6rUq1loilNIl-VDc6EDO/view?usp=sharing";
@@ -40,10 +40,10 @@ export const experience: Job[] = [
     type: "Full-time",
     start: "Dec 2025",
     end: "Present",
-    location: "Remote",
+    location: "Japan · Remote",
     bullets: [
-      "Hands-on development for client requested apps and internal tools.",
-      "Creating meaningful tools across the apps to improve development efficiency and experience."
+      "Building a deep investment analysis platform for evaluating potential startups.",
+      "Modernizing a legacy codebase for a major global financial institution, collaborating with engineers across multiple countries.",
     ],
   },
   {
@@ -54,8 +54,8 @@ export const experience: Job[] = [
     end: "Feb 2026",
     location: "Czechia · Remote",
     bullets: [
-      "Refactored and optimized ultra-complex n8n workflow.",
-      "Researched and developed Cursor-powered Laravel apps; some leveraging GitHub Spec Kit.",
+      "Untangled and optimized an ultra-complex n8n automation workflow. Cut failure points and sped up execution.",
+      "Built Cursor-powered Laravel apps, some leveraging GitHub Spec Kit for rapid prototyping.",
     ],
   },
   {
@@ -75,9 +75,9 @@ export const experience: Job[] = [
     end: "Jun 2025",
     location: "Singapore · Remote",
     bullets: [
-      "Built and maintained apps with Django (Python) and ReactJS — kept systems stable while shipping new features.",
-      "Became the team's unofficial historian of business logic.",
-      "Bridged technical trade-offs and product decisions in plain language.",
+      "Built and maintained apps with Django and React. Kept systems stable while shipping new features.",
+      "Became the team's go-to person for business logic context. If nobody else remembered why something worked that way, I did.",
+      "Translated technical trade-offs into plain language so product decisions moved faster.",
     ],
   },
   {
@@ -88,9 +88,9 @@ export const experience: Job[] = [
     end: "Jul 2024",
     location: "Singapore",
     bullets: [
-      "Orchestrated mobile projects to meet deadlines.",
+      "Led a mobile team through planning, priorities, and delivery.",
       "Mentored junior developers until they were confidently shipping features with fewer bugs.",
-      "Set clear priorities so the team focused on the highest-impact work.",
+      "Set clear priorities so the team focused on what mattered most.",
       "Shipped 5+ production Flutter apps.",
     ],
   },
@@ -102,9 +102,9 @@ export const experience: Job[] = [
     end: "May 2021",
     location: "Surabaya, East Java, Indonesia",
     bullets: [
-      "Helped TwisCode build a reputation as East Indonesia's leading mobile dev agency — led teams to ship 20+ apps.",
-      "Guided a squad of mobile developers through debugging, feature delivery, and scheduling.",
-      "Partnered with PMs to balance resources, deadlines, and client expectations.",
+      "Helped TwisCode become East Indonesia's leading mobile dev agency. Led teams that shipped 20+ apps.",
+      "Guided mobile developers through debugging sessions, feature delivery, and sprint planning.",
+      "Worked with PMs to balance resources, deadlines, and client expectations.",
     ],
   },
   {
@@ -115,8 +115,8 @@ export const experience: Job[] = [
     end: "Jul 2019",
     location: "Gresik, East Java, Indonesia",
     bullets: [
-      "Designed and maintained POS applications for SMEs.",
-      "Collaborated with stakeholders on user-focused features.",
+      "Built and maintained POS applications for small and medium businesses.",
+      "Worked directly with stakeholders to design features around real user workflows.",
     ],
   },
 ];
@@ -153,11 +153,11 @@ export const certifications: Cert[] = [
 export const skillGroups: { label: string; items: string[] }[] = [
   {
     label: "Languages",
-    items: ["Dart", "TypeScript", "Python", "Kotlin", "Java", "PostgreSQL"],
+    items: ["Dart", "TypeScript", "Python", "Kotlin", "Java"],
   },
   {
     label: "Frameworks",
-    items: ["Flutter", "React.js", "Next.js", "Django", "Django REST Framework", "Laravel", "Tailwind CSS"],
+    items: ["Flutter", "React.js", "Next.js", "Astro", "Django", "Django REST Framework", "Laravel", "Tailwind CSS"],
   },
   {
     label: "Platforms & Tools",
@@ -168,7 +168,6 @@ export const skillGroups: { label: string; items: string[] }[] = [
     items: [
       "Team Mentoring",
       "Team Management",
-      "Leadership",
       "Collaborative Problem Solving",
       "Client Communication",
       "Project Management",
@@ -181,8 +180,6 @@ export const skillGroups: { label: string; items: string[] }[] = [
       "Workflow Analysis",
       "Workflow Management",
       "Machine Learning",
-      "Raspberry Pi",
-      "Arduino",
     ],
   },
 ];
