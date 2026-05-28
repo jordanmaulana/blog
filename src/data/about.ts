@@ -26,7 +26,7 @@ export type Education = {
 export const profile = {
   name: "Jordan Maulana",
   role: "Software Engineer | Creator",
-  location: "Gresik, East Java, Indonesia",
+  location: "Malang, East Java, Indonesia",
   summary:
     "Eight years of building software, mostly mobile. Flutter is home, but I've done plenty of full-stack work with Django, React, and other tools along the way. I've led mobile teams, shipped 20+ production apps, and helped junior developers grow into confident engineers. \"Creator\" in my title? Not only about content creation. I share the journey, and build things that I use myself.",
 } as const;

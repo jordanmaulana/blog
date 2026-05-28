@@ -17,7 +17,7 @@ export const ui = {
     "nav.blog": "Blog",
     "hero.title": "Jordan Maulana",
     "hero.role": "Software Engineer & Creator",
-    "hero.location": "Gresik, East Java, Indonesia",
+    "hero.location": "Malang, East Java, Indonesia",
     "hero.tagline":
       "8+ years building Flutter apps and full-stack systems. I lead mobile teams, ship indie products, and write about what I learn.",
     "section.products": "What I'm building",
@@ -68,7 +68,7 @@ export const ui = {
     "nav.blog": "Tulisan",
     "hero.title": "Jordan Maulana",
     "hero.role": "Software Engineer & Pencipta Produk",
-    "hero.location": "Gresik, Jawa Timur, Indonesia",
+    "hero.location": "Malang, Jawa Timur, Indonesia",
     "hero.tagline":
       "8+ tahun bangun aplikasi Flutter dan sistem full-stack. Mimpin tim mobile, rilis produk indie, dan nulis hasil belajar di sini.",
     "section.products": "Yang lagi aku bangun",
