@@ -21,15 +21,15 @@ const t = useTranslations(lang);
   <article class="space-y-8 py-12">
     <a
       href={localizedPath(lang, "/blog")}
-      class="inline-block text-sm text-[var(--color-fg-soft)] transition hover:text-[var(--color-fg)]"
+      class="inline-block text-sm text-fg-soft transition hover:text-fg"
     >
       {t("blog.back")}
     </a>
 
     <header class="space-y-3">
       <h1 class="text-balance text-4xl font-semibold tracking-tight md:text-5xl">{post.data.title}</h1>
-      <p class="max-w-prose text-lg text-[var(--color-fg-soft)]">{post.data.description}</p>
-      <p class="font-mono text-xs text-[var(--color-fg-soft)]">
+      <p class="max-w-prose text-lg text-fg-soft">{post.data.description}</p>
+      <p class="font-mono text-xs text-fg-soft">
         {t("blog.published")} {formatDate(post.data.pubDate, lang)}
         {post.data.updatedDate && ` · ${t("blog.updated")} ${formatDate(post.data.updatedDate, lang)}`}
       </p>
@@ -37,7 +37,7 @@ const t = useTranslations(lang);
         post.data.tags.length > 0 && (
           <ul class="flex flex-wrap gap-1.5">
             {post.data.tags.map((tag) => (
-              <li class="rounded-full border border-[var(--color-border)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[var(--color-fg-soft)]">
+              <li class="rounded-full border border-border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-fg-soft">
                 #{tag}
               </li>
             ))}
@@ -46,7 +46,7 @@ const t = useTranslations(lang);
       }
     </header>
 
-    <div class="prose prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-[var(--color-accent)] prose-strong:text-[var(--color-fg)] prose-code:rounded prose-code:bg-[var(--color-bg-soft)] prose-code:px-1 prose-code:py-0.5">
+    <div class="prose prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-accent prose-strong:text-fg prose-code:rounded prose-code:bg-bg-soft prose-code:px-1 prose-code:py-0.5">
       <Content />
     </div>
   </article>

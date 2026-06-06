@@ -12,11 +12,12 @@ interface Props {
 const { item, loading = "lazy" } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const { name, tagline, price, negotiable, condition, status, photos } = item.data;
+const { name, tagline, price, negotiable, condition, status, photos } =
+  item.data;
 const href = localizedPath(lang, `/lapak/${item.id}`);
 
 const statusClass: Record<typeof status, string> = {
-  available: "bg-[var(--color-accent)]/15 text-[var(--color-accent)]",
+  available: "bg-accent/15 text-accent",
   reserved: "bg-yellow-400/15 text-yellow-300",
   sold: "bg-red-400/15 text-red-300",
 };
@@ -28,12 +29,16 @@ const isAvailable = status === "available";
 
 <article
   class:list={[
-    "group relative flex flex-col gap-3 overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-bg-soft)]/40 transition",
-    isAvailable && "hover:border-[var(--color-accent)] hover:shadow-lg hover:shadow-[var(--color-accent)]/10",
+    "group relative flex flex-col gap-3 overflow-hidden rounded-(--radius-card) border border-border bg-bg-soft/40 transition",
+    isAvailable &&
+      "hover:border-accent hover:shadow-lg hover:shadow-(--color-accent)/10",
     !isAvailable && "opacity-60",
   ]}
 >
-  <a href={href} class="relative block aspect-[4/3] overflow-hidden after:absolute after:inset-0">
+  <a
+    href={href}
+    class="relative block aspect-4/3 overflow-hidden after:absolute after:inset-0"
+  >
     <Image
       src={photos[0]}
       alt={name}
@@ -49,23 +54,23 @@ const isAvailable = status === "available";
         {name}
       </h3>
       <span
-        class={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider ${statusClass[status]}`}
+        class={`shrink-0 rounded-full px-4 py-0.5 text-[10px] font-medium uppercase tracking-wider ${statusClass[status]}`}
       >
         {statusLabel}
       </span>
     </header>
-    <div class="flex items-baseline gap-2">
-      <span class="text-lg font-semibold text-[var(--color-fg)]">{formatIDR(price)}</span>
+    <div class="flex items-center gap-2">
+      <span class="text-lg font-semibold text-fg">{formatIDR(price)}</span>
       {
         negotiable && (
-          <span class="rounded-full border border-[var(--color-border)] px-1.5 py-0.5 font-mono text-[10px] text-[var(--color-fg-soft)]">
+          <span class="rounded-full border border-borderfont-mono text-[10px] text-fg-soft px-2">
             {t("lapak.price.negotiable")}
           </span>
         )
       }
     </div>
-    <p class="text-sm text-[var(--color-fg-soft)]">{tagline}</p>
-    <footer class="mt-1 flex items-center justify-between text-xs text-[var(--color-fg-soft)]">
+    <p class="text-sm text-fg-soft">{tagline}</p>
+    <footer class="mt-1 flex items-center justify-between text-xs text-fg-soft">
       <span class="font-mono">{conditionLabel}</span>
     </footer>
   </div>

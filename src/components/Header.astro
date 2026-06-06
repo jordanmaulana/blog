@@ -18,12 +18,19 @@ const navItems = [
 const current = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
-<header class="sticky top-0 z-40 border-b border-[var(--color-border)]/60 bg-[var(--color-bg)]/80 backdrop-blur supports-[backdrop-filter]:bg-[var(--color-bg)]/60">
-  <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4">
-    <a href={localizedPath(lang, "/")} class="font-mono text-sm font-semibold tracking-tight">
-      jordan<span class="text-[var(--color-accent)]">.</span>maulana
+<header
+  class="sticky top-0 z-40 border-b border-border/60 bg-bg/80 backdrop-blur supports-backdrop-filter:bg-bg/60"
+>
+  <div
+    class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4"
+  >
+    <a
+      href={localizedPath(lang, "/")}
+      class="font-mono text-sm font-semibold tracking-tight"
+    >
+      jordan<span class="text-accent">.</span>maulana
     </a>
-    <nav class="hidden gap-6 text-sm text-[var(--color-fg-soft)] md:flex">
+    <nav class="hidden gap-6 text-sm text-fg-soft md:flex">
       {
         navItems.map((item) => {
           const itemPath = item.href.replace(/\/$/, "") || "/";
@@ -33,10 +40,7 @@ const current = Astro.url.pathname.replace(/\/$/, "") || "/";
           return (
             <a
               href={item.href}
-              class:list={[
-                "transition hover:text-[var(--color-fg)]",
-                isActive && "text-[var(--color-fg)]",
-              ]}
+              class:list={["transition hover:text-fg", isActive && "text-fg"]}
             >
               {item.label}
             </a>

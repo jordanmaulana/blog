@@ -23,17 +23,19 @@ const items = (await getCollection("lapak")).sort(
 <BaseLayout title={`${t("nav.lapak")} — Jordan Maulana`}>
   <section class="space-y-8 py-16">
     <header class="space-y-2">
-      <p class="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-accent)]">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">
         {t("nav.lapak")}
       </p>
-      <h1 class="text-balance text-4xl font-semibold tracking-tight md:text-5xl">
+      <h1
+        class="text-balance text-4xl font-semibold tracking-tight md:text-5xl"
+      >
         {t("section.lapak")}
       </h1>
-      <p class="max-w-prose text-[var(--color-fg-soft)]">{t("section.lapak.sub")}</p>
+      <p class="max-w-prose text-fg-soft">{t("section.lapak.sub")}</p>
     </header>
     {
       items.length === 0 ? (
-        <p class="text-sm text-[var(--color-fg-soft)]">{t("lapak.empty")}</p>
+        <p class="text-sm text-fg-soft">{t("lapak.empty")}</p>
       ) : (
         <div class="grid gap-4 md:grid-cols-2">
           {items.map((item, i) => (

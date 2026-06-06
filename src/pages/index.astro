@@ -14,10 +14,13 @@ import { getOgImageMetadata } from "~/lib/og-lookup";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const products = (await getCollection("products"))
-  .sort((a, b) => a.data.order - b.data.order);
+const products = (await getCollection("products")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 
-const lapakItems = (await getCollection("lapak", ({ data }) => data.status === "available"))
+const lapakItems = (
+  await getCollection("lapak", ({ data }) => data.status === "available")
+)
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 3);
 
@@ -41,12 +44,14 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
   <FadeIn client:visible className="space-y-10 py-8">
     <header class="flex items-end justify-between gap-4">
       <div>
-        <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">{t("section.products")}</h2>
-        <p class="mt-1 text-sm text-[var(--color-fg-soft)]">{t("section.products.sub")}</p>
+        <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">
+          {t("section.products")}
+        </h2>
+        <p class="mt-1 text-sm text-fg-soft">{t("section.products.sub")}</p>
       </div>
       <a
         href={localizedPath(lang, "/products")}
-        class="hidden text-sm text-[var(--color-fg-soft)] transition hover:text-[var(--color-fg)] md:inline"
+        class="hidden text-sm text-fg-soft transition hover:text-fg md:inline"
       >
         {t("nav.products")} →
       </a>
@@ -61,18 +66,22 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
       <FadeIn client:visible className="space-y-10 py-12">
         <header class="flex items-end justify-between gap-4">
           <div>
-            <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">{t("section.gears")}</h2>
-            <p class="mt-1 text-sm text-[var(--color-fg-soft)]">{t("section.gears.sub")}</p>
+            <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">
+              {t("section.gears")}
+            </h2>
+            <p class="mt-1 text-sm text-fg-soft">{t("section.gears.sub")}</p>
           </div>
           <a
             href={localizedPath(lang, "/gears")}
-            class="text-sm text-[var(--color-fg-soft)] transition hover:text-[var(--color-fg)]"
+            class="text-sm text-fg-soft transition hover:text-fg"
           >
             {t("section.gears.all")}
           </a>
         </header>
         <div class="grid gap-4 md:grid-cols-3 mt-4">
-          {gearCards.map(({ entry, ogImage }) => <GearCard entry={entry} ogImage={ogImage} />)}
+          {gearCards.map(({ entry, ogImage }) => (
+            <GearCard entry={entry} ogImage={ogImage} />
+          ))}
         </div>
       </FadeIn>
     )
@@ -83,18 +92,22 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
       <FadeIn client:visible className="space-y-10 py-12">
         <header class="flex items-end justify-between gap-4">
           <div>
-            <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">{t("section.lapak")}</h2>
-            <p class="mt-1 text-sm text-[var(--color-fg-soft)]">{t("section.lapak.sub")}</p>
+            <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">
+              {t("section.lapak")}
+            </h2>
+            <p class="mt-1 text-sm text-fg-soft">{t("section.lapak.sub")}</p>
           </div>
           <a
             href={localizedPath(lang, "/lapak")}
-            class="text-sm text-[var(--color-fg-soft)] transition hover:text-[var(--color-fg)]"
+            class="text-sm text-fg-soft transition hover:text-fg"
           >
             {t("section.lapak.all")}
           </a>
         </header>
         <div class="grid gap-4 md:grid-cols-3 mt-4">
-          {lapakItems.map((item) => <LapakCard item={item} />)}
+          {lapakItems.map((item) => (
+            <LapakCard item={item} />
+          ))}
         </div>
       </FadeIn>
     )
@@ -103,20 +116,24 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
   <FadeIn client:visible className="space-y-10 py-12">
     <header class="flex items-end justify-between gap-4">
       <div>
-        <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">{t("section.posts")}</h2>
-        <p class="mt-1 text-sm text-[var(--color-fg-soft)]">{t("section.posts.sub")}</p>
+        <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">
+          {t("section.posts")}
+        </h2>
+        <p class="mt-1 text-sm text-fg-soft">{t("section.posts.sub")}</p>
       </div>
       <a
         href={localizedPath(lang, "/blog")}
-        class="text-sm text-[var(--color-fg-soft)] transition hover:text-[var(--color-fg)]"
+        class="text-sm text-fg-soft transition hover:text-fg"
       >
         {t("section.posts.all")}
       </a>
     </header>
-    <div class="mt-4 rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-bg-soft)]/40 px-6 py-2">
+    <div
+      class="mt-4 rounded-(--radius-card) border border-border bg-bg-soft/40 px-6 py-2"
+    >
       {
         posts.length === 0 ? (
-          <p class="py-8 text-sm text-[var(--color-fg-soft)]">{t("blog.empty")}</p>
+          <p class="py-8 text-sm text-fg-soft">{t("blog.empty")}</p>
         ) : (
           posts.map((p) => <PostCard post={p} />)
         )
@@ -125,7 +142,9 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
   </FadeIn>
 
   <FadeIn client:visible className="space-y-10 py-12">
-    <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">{t("section.elsewhere")}</h2>
+    <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">
+      {t("section.elsewhere")}
+    </h2>
     <ul class="grid gap-3 md:grid-cols-3 mt-4">
       {
         socials.map((s) => (
@@ -134,13 +153,18 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
               href={s.url}
               target="_blank"
               rel="noreferrer"
-              class="group flex items-center justify-between rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-bg-soft)]/40 px-4 py-3 transition hover:border-[var(--color-accent)]"
+              class="group flex items-center justify-between rounded-(--radius-card) border border-border bg-bg-soft/40 px-4 py-3 transition hover:border-accent"
             >
               <div>
                 <p class="text-sm font-medium">{s.label}</p>
-                <p class="font-mono text-xs text-[var(--color-fg-soft)]">{s.handle}</p>
+                <p class="font-mono text-xs text-fg-soft">{s.handle}</p>
               </div>
-              <span aria-hidden="true" class="text-[var(--color-fg-soft)] transition group-hover:text-[var(--color-accent)]">↗</span>
+              <span
+                aria-hidden="true"
+                class="text-fg-soft transition group-hover:text-accent"
+              >
+                ↗
+              </span>
             </a>
           </li>
         ))

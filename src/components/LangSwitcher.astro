@@ -1,5 +1,10 @@
 ---
-import { getLangFromUrl, otherLang, switchLangPath, useTranslations } from "~/i18n/utils";
+import {
+  getLangFromUrl,
+  otherLang,
+  switchLangPath,
+  useTranslations,
+} from "~/i18n/utils";
 import { localeLabels } from "~/i18n/ui";
 
 const lang = getLangFromUrl(Astro.url);
@@ -12,7 +17,7 @@ const href = switchLangPath(Astro.url, target);
   href={href}
   aria-label={t("lang.switchTo")}
   title={t("lang.switchTo")}
-  class="inline-flex h-9 items-center gap-1 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-soft)] px-3 text-xs font-medium uppercase tracking-wider text-[var(--color-fg-soft)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-fg)]"
+  class="inline-flex h-9 items-center gap-1 rounded-full border border-border bg-bg-soft px-3 text-xs font-medium uppercase tracking-wider text-fg-soft transition hover:border-accent hover:text-fg"
 >
   <span>{localeLabels[lang]}</span>
   <span aria-hidden="true">→</span>
