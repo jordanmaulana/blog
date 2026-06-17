@@ -20,14 +20,16 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
       <p class="max-w-prose text-fg-soft">{t("section.posts.sub")}</p>
     </header>
 
-    <div class="rounded-(--radius-card) border border-border bg-bg-soft/40 px-6">
-      {
-        posts.length === 0 ? (
-          <p class="py-8 text-sm text-fg-soft">{t("blog.empty")}</p>
-        ) : (
-          posts.map((p) => <PostCard post={p} />)
-        )
-      }
-    </div>
+    {
+      posts.length === 0 ? (
+        <p class="rounded-(--radius-card) border border-border bg-bg-soft/40 px-6 py-8 text-sm text-fg-soft">
+          {t("blog.empty")}
+        </p>
+      ) : (
+        <div class="space-y-3">
+          {posts.map((p) => <PostCard post={p} />)}
+        </div>
+      )
+    }
   </section>
 </BaseLayout>
