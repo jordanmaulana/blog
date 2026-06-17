@@ -13,9 +13,9 @@ const products = (await getCollection("products"))
 <BaseLayout title={`${t("nav.products")} — Jordan Maulana`}>
   <section class="space-y-8 py-16">
     <header class="space-y-2">
-      <p class="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-accent)]">{t("nav.products")}</p>
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">{t("nav.products")}</p>
       <h1 class="text-balance text-4xl font-semibold tracking-tight md:text-5xl">{t("section.products")}</h1>
-      <p class="max-w-prose text-[var(--color-fg-soft)]">{t("section.products.sub")}</p>
+      <p class="max-w-prose text-fg-soft">{t("section.products.sub")}</p>
     </header>
     <div class="grid gap-4 md:grid-cols-2">
       {products.map((p) => <ProductCard product={p} />)}

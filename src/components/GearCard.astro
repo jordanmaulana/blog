@@ -14,12 +14,14 @@ const { name, url } = entry.data;
 const { Content } = await render(entry);
 ---
 
-<article class="group flex flex-col overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-bg-soft)]/40 transition hover:border-[var(--color-accent)] hover:shadow-lg hover:shadow-[var(--color-accent)]/10">
+<article
+  class="group flex flex-col overflow-hidden rounded-(--radius-card) border border-border bg-bg-soft/40 transition hover:border-accent hover:shadow-lg hover:shadow-(--color-accent)/10"
+>
   <a
     href={url}
     target="_blank"
     rel="noreferrer"
-    class="relative block aspect-video overflow-hidden bg-[var(--color-bg-soft)]"
+    class="relative block aspect-video overflow-hidden bg-bg-soft"
     aria-label={name}
   >
     {
@@ -32,7 +34,7 @@ const { Content } = await render(entry);
           class="h-full w-full object-cover transition group-hover:scale-[1.02]"
         />
       ) : (
-        <div class="flex h-full w-full items-center justify-center font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-fg-soft)]">
+        <div class="flex h-full w-full items-center justify-center font-mono text-xs uppercase tracking-[0.25em] text-fg-soft">
           no preview
         </div>
       )
@@ -44,13 +46,15 @@ const { Content } = await render(entry);
         href={url}
         target="_blank"
         rel="noreferrer"
-        class="text-base font-semibold tracking-tight transition hover:text-[var(--color-accent)]"
+        class="text-base font-semibold tracking-tight transition hover:text-accent"
       >
         {name}
       </a>
-      <span aria-hidden="true" class="text-[var(--color-fg-soft)]">↗</span>
+      <span aria-hidden="true" class="text-fg-soft">↗</span>
     </header>
-    <div class="prose prose-sm prose-invert max-w-none text-sm text-[var(--color-fg-soft)] prose-a:text-[var(--color-accent)] prose-strong:text-[var(--color-fg)] prose-p:my-0 prose-ul:my-1">
+    <div
+      class="prose prose-sm prose-invert max-w-none text-sm text-fg-soft prose-a:text-accent prose-strong:text-fg prose-p:my-0 prose-ul:my-1"
+    >
       <Content />
     </div>
   </div>

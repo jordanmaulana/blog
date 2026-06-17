@@ -10,28 +10,32 @@ const t = useTranslations(lang);
 const primary = socials.slice(0, 4);
 ---
 
-<section class="grid gap-12 pb-12 pt-20 md:grid-cols-[2fr_1fr] md:items-center md:gap-16 md:pb-20 md:pt-28">
+<section
+  class="grid gap-12 pb-12 pt-20 md:grid-cols-[2fr_1fr] md:items-center md:gap-16 md:pb-20 md:pt-28"
+>
   <FadeIn client:visible className="space-y-8">
-    <p class="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-accent)]">
+    <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">
       {t("hero.location")}
     </p>
-    <h1 class="text-balance text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+    <h1
+      class="text-balance text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl"
+    >
       {t("hero.title")}
-      <span class="block text-[var(--color-fg-soft)]">{t("hero.role")}</span>
+      <span class="block text-fg-soft">{t("hero.role")}</span>
     </h1>
-    <p class="max-w-prose text-pretty text-base text-[var(--color-fg-soft)] md:text-lg">
+    <p class="max-w-prose text-pretty text-base text-fg-soft md:text-lg">
       {t("hero.tagline")}
     </p>
     <div class="flex flex-wrap gap-3 pt-2">
       <a
         href={localizedPath(lang, "/about")}
-        class="rounded-full bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-[var(--color-accent-fg)] transition hover:opacity-90"
+        class="rounded-full bg-accent-sm font-medium text-accent-fg transition hover:opacity-90"
       >
         {t("nav.about")} →
       </a>
       <a
         href={localizedPath(lang, "/blog")}
-        class="rounded-full border border-[var(--color-border)] px-4 py-2 text-sm font-medium text-[var(--color-fg-soft)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-fg)]"
+        class="rounded-full border border-border px-4 py-2 text-sm font-medium text-fg-soft transition hover:border-accentr(--color-fg)]"
       >
         {t("nav.blog")} →
       </a>
@@ -41,7 +45,7 @@ const primary = socials.slice(0, 4);
             href={s.url}
             target="_blank"
             rel="noreferrer"
-            class="rounded-full border border-transparent px-4 py-2 text-sm text-[var(--color-fg-soft)] transition hover:border-[var(--color-border)] hover:text-[var(--color-fg)]"
+            class="rounded-full border border-transparent px-4 py-2 text-sm text-fg-soft transition hover:border-border hover:text-fg"
           >
             {s.label}
           </a>
@@ -50,8 +54,14 @@ const primary = socials.slice(0, 4);
     </div>
   </FadeIn>
 
-  <FadeIn client:visible delay={0.15} className="relative justify-self-center md:justify-self-end">
-    <div class="relative aspect-square w-56 overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)] shadow-2xl shadow-[var(--color-accent)]/10 md:w-64">
+  <FadeIn
+    client:visible
+    delay={0.15}
+    className="relative justify-self-center md:justify-self-end"
+  >
+    <div
+      class="relative aspect-square w-56 overflow-hidden rounded-(--radius-card) border border-border shadow-2xl shadow-(--color-accent)/10 md:w-64"
+    >
       <Image
         src={meImage}
         alt="Jordan Maulana"
@@ -59,10 +69,13 @@ const primary = socials.slice(0, 4);
         loading="eager"
         class="h-full w-full object-cover"
       />
-      <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[var(--color-bg)]/40 via-transparent to-transparent"></div>
+      <div
+        class="pointer-events-none absolute inset-0 bg-linear-to-tr from-bg/40 via-transparent to-transparent"
+      >
+      </div>
     </div>
     <div
-      class="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] blur-2xl"
+      class="pointer-events-none absolute -inset-6 -z-10 rounded-4xl blur-2xl"
       style="background: radial-gradient(circle at 30% 30%, color-mix(in oklch, var(--color-accent) 35%, transparent), transparent 60%);"
     >
     </div>

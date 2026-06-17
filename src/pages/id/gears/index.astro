@@ -24,14 +24,14 @@ const cards = gears.map((entry) => ({
 <BaseLayout title={`${t("nav.gears")} — Jordan Maulana`}>
   <section class="space-y-8 py-16">
     <header class="space-y-2">
-      <p class="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-accent)]">{t("nav.gears")}</p>
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">{t("nav.gears")}</p>
       <h1 class="text-balance text-4xl font-semibold tracking-tight md:text-5xl">{t("section.gears")}</h1>
-      <p class="max-w-prose text-[var(--color-fg-soft)]">{t("section.gears.sub")}</p>
+      <p class="max-w-prose text-fg-soft">{t("section.gears.sub")}</p>
     </header>
     <GearCategoryNav lang={lang} categories={categories} />
     {
       cards.length === 0 ? (
-        <p class="text-sm text-[var(--color-fg-soft)]">{t("gears.empty")}</p>
+        <p class="text-sm text-fg-soft">{t("gears.empty")}</p>
       ) : (
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {cards.map(({ entry, ogImage }) => <GearCard entry={entry} ogImage={ogImage} />)}

@@ -18,13 +18,14 @@ const { item } = Astro.props;
 const { Content } = await render(item);
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const { name, tagline, price, negotiable, condition, status, photos } = item.data;
+const { name, tagline, price, negotiable, condition, status, photos } =
+  item.data;
 
 const ig = socials.find((s) => s.label === "Instagram")?.url;
 const threads = socials.find((s) => s.label === "Threads")?.url;
 
 const statusClass: Record<typeof status, string> = {
-  available: "bg-[var(--color-accent)]/15 text-[var(--color-accent)]",
+  available: "bg-accent/15 text-accent",
   reserved: "bg-yellow-400/15 text-yellow-300",
   sold: "bg-red-400/15 text-red-300",
 };
@@ -39,12 +40,14 @@ const [cover, ...rest] = photos;
   <article class="space-y-8 py-12">
     <a
       href={localizedPath(lang, "/lapak")}
-      class="inline-block text-sm text-[var(--color-fg-soft)] transition hover:text-[var(--color-fg)]"
+      class="inline-block text-sm text-fg-soft transition hover:text-fg"
     >
       {t("lapak.back")}
     </a>
 
-    <div class="overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-bg-soft)]/40">
+    <div
+      class="overflow-hidden rounded-(--radius-card) border border-border bg-bg-soft/40"
+    >
       <Image
         src={cover}
         alt={name}
@@ -64,7 +67,7 @@ const [cover, ...rest] = photos;
               alt={name}
               widths={[160, 240]}
               sizes="160px"
-              class="h-32 w-40 shrink-0 rounded-[var(--radius-card)] border border-[var(--color-border)] object-cover"
+              class="h-32 w-40 shrink-0 rounded-(--radius-card) border border-border object-cover"
             />
           ))}
         </div>
@@ -72,19 +75,29 @@ const [cover, ...rest] = photos;
     }
 
     <header class="space-y-4">
-      <div class="flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-[0.25em]">
-        <span class={`rounded-full px-2 py-0.5 ${statusClass[status]}`}>{statusLabel}</span>
-        <span class="rounded-full border border-[var(--color-border)] px-2 py-0.5 text-[var(--color-fg-soft)]">
+      <div
+        class="flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-[0.25em]"
+      >
+        <span class={`rounded-full px-2 py-0.5 ${statusClass[status]}`}
+          >{statusLabel}</span
+        >
+        <span
+          class="rounded-full border border-border px-2 py-0.5 text-fg-soft"
+        >
           {conditionLabel}
         </span>
       </div>
-      <h1 class="text-balance text-4xl font-semibold tracking-tight md:text-5xl">{name}</h1>
-      <p class="max-w-prose text-lg text-[var(--color-fg-soft)]">{tagline}</p>
+      <h1
+        class="text-balance text-4xl font-semibold tracking-tight md:text-5xl"
+      >
+        {name}
+      </h1>
+      <p class="max-w-prose text-lg text-fg-soft">{tagline}</p>
       <div class="flex flex-wrap items-baseline gap-3">
-        <span class="text-3xl font-semibold text-[var(--color-fg)]">{formatIDR(price)}</span>
+        <span class="text-3xl font-semibold text-fg">{formatIDR(price)}</span>
         {
           negotiable && (
-            <span class="rounded-full border border-[var(--color-border)] px-2 py-0.5 font-mono text-xs text-[var(--color-fg-soft)]">
+            <span class="rounded-full border border-border px-2 py-0.5 font-mono text-xs text-fg-soft">
               {t("lapak.price.negotiable")}
             </span>
           )
@@ -99,7 +112,7 @@ const [cover, ...rest] = photos;
                 href={ig}
                 target="_blank"
                 rel="noreferrer"
-                class="rounded-full bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-[var(--color-accent-fg)] transition hover:opacity-90"
+                class="rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-fg transition hover:opacity-90"
               >
                 {t("lapak.contact.ig")}
               </a>
@@ -109,21 +122,25 @@ const [cover, ...rest] = photos;
                 href={threads}
                 target="_blank"
                 rel="noreferrer"
-                class="rounded-full border border-[var(--color-border)] px-4 py-2 text-sm font-medium transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+                class="rounded-full border border-border px-4 py-2 text-sm font-medium transition hover:border-accent hover:text-accent"
               >
                 {t("lapak.contact.threads")}
               </a>
             )}
           </div>
         ) : (
-          <div class="rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-bg-soft)]/60 px-4 py-3 text-sm text-[var(--color-fg-soft)]">
-            {status === "sold" ? t("lapak.sold.banner") : t("lapak.reserved.banner")}
+          <div class="rounded-(--radius-card) border border-border bg-bg-soft/60 px-4 py-3 text-sm text-fg-soft">
+            {status === "sold"
+              ? t("lapak.sold.banner")
+              : t("lapak.reserved.banner")}
           </div>
         )
       }
     </header>
 
-    <div class="prose prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-[var(--color-accent)] prose-strong:text-[var(--color-fg)] prose-code:rounded prose-code:bg-[var(--color-bg-soft)] prose-code:px-1 prose-code:py-0.5">
+    <div
+      class="prose prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-accent prose-strong:text-fg prose-code:rounded prose-code:bg-bg-soft prose-code:px-1 prose-code:py-0.5"
+    >
       <Content />
     </div>
   </article>

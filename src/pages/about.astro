@@ -2,61 +2,88 @@
 import { Image } from "astro:assets";
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import meImage from "~/assets/me.jpg";
-import { profile, experience, education, certifications, skillGroups, portfolioUrl } from "~/data/about";
+import {
+  profile,
+  experience,
+  education,
+  certifications,
+  skillGroups,
+  portfolioUrl,
+} from "~/data/about";
 import { getLangFromUrl, useTranslations } from "~/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<BaseLayout title={`${t("nav.about")} — Jordan Maulana`} description={profile.summary}>
+<BaseLayout
+  title={`${t("nav.about")} — Jordan Maulana`}
+  description={profile.summary}
+>
   <section class="space-y-12 py-16">
     <header class="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
       <div class="space-y-3">
-        <p class="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-accent)]">{t("nav.about")}</p>
-        <h1 class="text-balance text-4xl font-semibold tracking-tight md:text-5xl">{profile.name}</h1>
-        <p class="text-lg text-[var(--color-fg-soft)]">{profile.role}</p>
-        <p class="font-mono text-xs text-[var(--color-fg-soft)]">{profile.location}</p>
+        <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+          {t("nav.about")}
+        </p>
+        <h1
+          class="text-balance text-4xl font-semibold tracking-tight md:text-5xl"
+        >
+          {profile.name}
+        </h1>
+        <p class="text-lg text-fg-soft">{profile.role}</p>
+        <p class="font-mono text-xs text-fg-soft">{profile.location}</p>
         <a
           href={portfolioUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-[var(--color-border)] px-4 py-1.5 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-fg)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+          class="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-border px-4 py-1.5 font-mono text-xs uppercase tracking-[0.2em] text-fg transition-colors hover:border-accent hover:text-accent"
         >
           {t("about.portfolio")}
           <span aria-hidden="true">↗</span>
         </a>
       </div>
-      <div class="h-32 w-32 overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)] md:h-40 md:w-40">
-        <Image src={meImage} alt={profile.name} width={320} class="h-full w-full object-cover" />
+      <div
+        class="h-32 w-32 overflow-hidden rounded-(--radius-card) border border-border md:h-40 md:w-40"
+      >
+        <Image
+          src={meImage}
+          alt={profile.name}
+          width={320}
+          class="h-full w-full object-cover"
+        />
       </div>
     </header>
 
-    <p class="max-w-prose text-pretty text-base leading-relaxed text-[var(--color-fg-soft)] md:text-lg">{profile.summary}</p>
+    <p
+      class="max-w-prose text-pretty text-base leading-relaxed text-fg-soft md:text-lg"
+    >
+      {profile.summary}
+    </p>
 
     <section class="space-y-6">
       <h2 class="text-2xl font-semibold tracking-tight">Experience</h2>
-      <ol class="space-y-8 border-l border-[var(--color-border)] pl-6">
+      <ol class="space-y-8 border-l border-border pl-6">
         {
           experience.map((job) => (
             <li class="relative">
               <span
-                class="absolute -left-[29px] top-2 inline-block h-2.5 w-2.5 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]"
+                class="absolute -left-7.25 top-2 inline-block h-2.5 w-2.5 rounded-full border border-border bg-bg"
                 aria-hidden="true"
               />
               <header class="flex flex-wrap items-baseline justify-between gap-2">
                 <h3 class="text-base font-semibold tracking-tight">
-                  {job.role} <span class="text-[var(--color-fg-soft)]">· {job.company}</span>
+                  {job.role} <span class="text-fg-soft">· {job.company}</span>
                 </h3>
-                <time class="font-mono text-xs text-[var(--color-fg-soft)]">
+                <time class="font-mono text-xs text-fg-soft">
                   {job.start} — {job.end}
                 </time>
               </header>
-              <p class="font-mono text-xs text-[var(--color-fg-soft)]">
+              <p class="font-mono text-xs text-fg-soft">
                 {job.type} · {job.location}
               </p>
               {job.bullets && (
-                <ul class="mt-3 list-disc space-y-1 pl-5 text-sm text-[var(--color-fg-soft)]">
+                <ul class="mt-3 list-disc space-y-1 pl-5 text-sm text-fg-soft">
                   {job.bullets.map((b) => (
                     <li>{b}</li>
                   ))}
@@ -73,11 +100,11 @@ const t = useTranslations(lang);
       <ul class="grid gap-4 md:grid-cols-2">
         {
           education.map((e) => (
-            <li class="rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-bg-soft)]/40 p-5">
+            <li class="rounded-(--radius-card) border border-border bg-bg-soft/40 p-5">
               <h3 class="font-semibold tracking-tight">{e.school}</h3>
-              <p class="text-sm text-[var(--color-fg-soft)]">{e.degree}</p>
-              <p class="mt-1 font-mono text-xs text-[var(--color-fg-soft)]">{e.period}</p>
-              {e.note && <p class="mt-2 text-xs text-[var(--color-fg-soft)]">{e.note}</p>}
+              <p class="text-sm text-fg-soft">{e.degree}</p>
+              <p class="mt-1 font-mono text-xs text-fg-soft">{e.period}</p>
+              {e.note && <p class="mt-2 text-xs text-fg-soft">{e.note}</p>}
             </li>
           ))
         }
@@ -90,12 +117,12 @@ const t = useTranslations(lang);
         {
           skillGroups.map((g) => (
             <div>
-              <h3 class="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-fg-soft)]">
+              <h3 class="font-mono text-xs uppercase tracking-[0.25em] text-fg-soft">
                 {g.label}
               </h3>
               <ul class="mt-3 flex flex-wrap gap-1.5">
                 {g.items.map((s) => (
-                  <li class="rounded-full border border-[var(--color-border)] px-2 py-0.5 font-mono text-[11px]">
+                  <li class="rounded-full border border-border px-2 py-0.5 font-mono text-[11px]">
                     {s}
                   </li>
                 ))}
@@ -111,12 +138,12 @@ const t = useTranslations(lang);
       <ul class="space-y-3">
         {
           certifications.map((c) => (
-            <li class="flex flex-col gap-1 border-b border-[var(--color-border)]/60 pb-3 last:border-b-0 md:flex-row md:items-baseline md:justify-between">
+            <li class="flex flex-col gap-1 border-b border-border/60 pb-3 last:border-b-0 md:flex-row md:items-baseline md:justify-between">
               <div>
                 <p class="font-medium">{c.name}</p>
-                <p class="text-sm text-[var(--color-fg-soft)]">{c.issuer}</p>
+                <p class="text-sm text-fg-soft">{c.issuer}</p>
               </div>
-              <p class="font-mono text-xs text-[var(--color-fg-soft)]">
+              <p class="font-mono text-xs text-fg-soft">
                 {c.issued}
                 {c.expires && ` — ${c.expires}`}
                 {c.credentialId && ` · ${c.credentialId}`}

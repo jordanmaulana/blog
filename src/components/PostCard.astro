@@ -12,26 +12,28 @@ const slug = post.id.replace(/\.mdx?$/, "");
 const href = localizedPath(lang, `/blog/${slug}`);
 ---
 
-<article class="group flex flex-col gap-2 border-b border-[var(--color-border)]/60 py-6 last:border-b-0">
+<article class="group flex flex-col gap-2 border-b border-border/60er-b-0">
   <a href={href} class="group/inner">
     <header class="flex items-baseline justify-between gap-3">
-      <h3 class="text-base font-semibold tracking-tight transition group-hover/inner:text-[var(--color-accent)]">
+      <h3
+        class="text-base font-semibold tracking-tight transition group-hover/inner:text-accent"
+      >
         {post.data.title}
       </h3>
       <time
         datetime={post.data.pubDate.toISOString()}
-        class="shrink-0 font-mono text-xs text-[var(--color-fg-soft)]"
+        class="shrink-0 font-mono text-xs text-fg-soft"
       >
         {formatDate(post.data.pubDate, lang)}
       </time>
     </header>
-    <p class="text-sm text-[var(--color-fg-soft)]">{post.data.description}</p>
+    <p class="text-sm text-fg-soft">{post.data.description}</p>
   </a>
   {
     post.data.tags.length > 0 && (
       <ul class="flex flex-wrap gap-1.5">
         {post.data.tags.map((tag) => (
-          <li class="font-mono text-[10px] uppercase tracking-wider text-[var(--color-fg-soft)]/80">
+          <li class="font-mono text-[10px] uppercase tracking-wider text-fg-soft/80">
             #{tag}
           </li>
         ))}
