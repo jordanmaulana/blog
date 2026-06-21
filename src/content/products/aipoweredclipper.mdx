@@ -1,0 +1,58 @@
+---
+name: Claude-Powered Clipper
+tagline: Turn any YouTube video into vertical short-form clips — captions, silence removal, face-tracked crop — driven entirely by your own Claude Code.
+url: https://github.com/jordanmaulana/claude-powered-clipper
+stack:
+  - Python
+  - FFmpeg
+  - Whisper
+  - OpenCV / YuNet
+  - uv
+  - Claude Code
+status: prototype
+order: 5
+---
+
+**Claude-Powered Clipper** turns a YouTube video into N vertical short clips (1080×1920) with burned captions, silence removal, and face-tracked cropping. There's no UI and nothing to host — you open the repo in your own Claude Code and just say what you want:
+
+> Clip this https://www.youtube.com/watch?v=… into 10 meaningful insight clips.
+
+Claude downloads the video, transcribes it locally with Whisper, picks the segments, and renders the finished mp4s.
+
+## Why
+
+Manual clipping is a grind: download the source, transcribe it, scrub for the good 30 seconds, crop it to vertical, snap captions to the words, strip the dead air. The only part that actually needs a human is deciding *which* moments are worth clipping. This tool automates everything else and hands that one judgment call to you (or Claude).
+
+It's a bring-your-own-AI tool, not a service. You run it on your own machine with your own Claude Code — nothing is uploaded to a third party.
+
+## How it works
+
+The whole flow is a small set of Python scripts. Driven through Claude Code it's a single sentence; by hand it's six steps, and clip selection is the only one that needs a human.
+
+1. **Setup** — `uv sync`, then `uv run scripts/doctor.py` verifies FFmpeg and downloads the YuNet face model.
+2. **Download** — `scripts/download.py "<youtube-url>"` pulls the source video.
+3. **Transcribe** — `scripts/transcribe.py work/<id>` produces word-level timestamps and a markdown transcript via local Whisper.
+4. **Proof-read** — review `transcript.md`, write `corrections.json` (substitutions only, no additions), and apply it idempotently with `scripts/correct.py`.
+5. **Select clips** — pick self-contained 20–60s segments with a strong opening hook that land on a completed statement, and write `clips.json` with each clip's slug, title, hook, and viewer-facing summary.
+6. **Render** — `scripts/render.py work/<id>` outputs the final mp4s with face-tracked cropping, silence removal, and captions.
+
+## Features
+
+- **Face-tracked vertical crop** with active-speaker detection — follows the right person across a multi-host podcast.
+- **Word-boundary snapping** so cuts never clip a syllable, with warnings when a clip lands mid-statement.
+- **Silence removal** to tighten the pacing for short-form.
+- **Burned-in captions**, with an optional karaoke style that highlights each word as it's spoken.
+- **Concurrent rendering** with a configurable job limit.
+- **Debug mode** that visualizes the crop window and detected faces.
+
+## Stack
+
+- **Python** + **FFmpeg** — the rendering pipeline.
+- **Whisper** — local speech-to-text, so transcription never leaves your machine.
+- **OpenCV / YuNet** — face detection driving the active-speaker crop.
+- **uv** — dependency management (`brew install ffmpeg && uv sync && uv run scripts/doctor.py`).
+- **Claude Code** — the driver; you describe the clips, it runs the pipeline.
+
+## Status
+
+Open-source and run-it-yourself — not a hosted product. Bring your own Claude Code, clone the repo, and clip. Source is on [GitHub](https://github.com/jordanmaulana/claude-powered-clipper).
