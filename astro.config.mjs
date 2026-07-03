@@ -14,9 +14,11 @@ export default defineConfig({
     mdx(),
     react(),
     sitemap({
-      i18n: {
-        defaultLocale: "en",
-        locales: { en: "en", id: "id-ID" },
+      // Consolidated to EN canonicals: keep only canonical URLs out of the sitemap,
+      // and drop hreflang alternates (the /id/* pages are duplicates, not translations).
+      filter: (page) => {
+        const p = new URL(page).pathname;
+        return p !== "/id" && !p.startsWith("/id/");
       },
     }),
   ],
