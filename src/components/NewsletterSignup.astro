@@ -37,6 +37,7 @@ const enabled = Boolean(action);
       placeholder={t("newsletter.placeholder")}
       class="w-full flex-1 rounded-full border border-border bg-bg px-4 py-2 text-sm text-fg placeholder:text-fg-soft focus:border-accent focus:outline-none disabled:opacity-60"
     />
+    <input type="hidden" name="embed" value="1" />
     <button
       type="submit"
       disabled={!enabled}
