@@ -28,14 +28,20 @@ const primary = socials.slice(0, 4);
     </p>
     <div class="flex flex-wrap gap-3 pt-2">
       <a
+        href={localizedPath(lang, "/work")}
+        class="rounded-full bg-accent px-5 py-2 text-sm font-medium text-accent-fg transition hover:opacity-90"
+      >
+        {t("nav.work")} →
+      </a>
+      <a
         href={localizedPath(lang, "/about")}
-        class="rounded-full bg-accent-sm font-medium text-accent-fg transition hover:opacity-90"
+        class="rounded-full border border-border px-4 py-2 text-sm font-medium text-fg-soft transition hover:border-fg hover:text-fg"
       >
         {t("nav.about")} →
       </a>
       <a
         href={localizedPath(lang, "/blog")}
-        class="rounded-full border border-border px-4 py-2 text-sm font-medium text-fg-soft transition hover:border-accentr(--color-fg)]"
+        class="rounded-full border border-border px-4 py-2 text-sm font-medium text-fg-soft transition hover:border-fg hover:text-fg"
       >
         {t("nav.blog")} →
       </a>

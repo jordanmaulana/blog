@@ -1,0 +1,51 @@
+---
+import { getLangFromUrl, useTranslations } from "~/i18n/utils";
+
+// Provider-agnostic email capture. Set PUBLIC_NEWSLETTER_ACTION to your form
+// endpoint (Buttondown / ConvertKit / Beehiiv embed URL, or your own Django
+// endpoint) — it POSTs an `email` field. Until then the form renders disabled.
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const action = import.meta.env.PUBLIC_NEWSLETTER_ACTION;
+const enabled = Boolean(action);
+---
+
+<section
+  class="rounded-(--radius-card) border border-border bg-bg-soft/40 p-6 md:p-8"
+>
+  <div class="max-w-prose space-y-2">
+    <h2 class="text-xl font-semibold tracking-tight md:text-2xl">
+      {t("newsletter.title")}
+    </h2>
+    <p class="text-sm text-fg-soft">{t("newsletter.sub")}</p>
+  </div>
+  <form
+    method="post"
+    action={action}
+    target="_blank"
+    class="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center"
+  >
+    <label class="sr-only" for="newsletter-email">
+      {t("newsletter.placeholder")}
+    </label>
+    <input
+      id="newsletter-email"
+      type="email"
+      name="email"
+      required
+      disabled={!enabled}
+      placeholder={t("newsletter.placeholder")}
+      class="w-full flex-1 rounded-full border border-border bg-bg px-4 py-2 text-sm text-fg placeholder:text-fg-soft focus:border-accent focus:outline-none disabled:opacity-60"
+    />
+    <button
+      type="submit"
+      disabled={!enabled}
+      class="shrink-0 rounded-full bg-accent px-5 py-2 text-sm font-medium text-accent-fg transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+    >
+      {t("newsletter.button")}
+    </button>
+  </form>
+  <p class="mt-3 text-xs text-fg-soft">
+    {enabled ? t("newsletter.note") : t("newsletter.disabled")}
+  </p>
+</section>

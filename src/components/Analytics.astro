@@ -1,0 +1,19 @@
+---
+// Privacy-friendly, provider-agnostic analytics.
+// Renders nothing unless env is set, so nothing loads in dev or before you pick a tool.
+//   Umami (self-host, free):  PUBLIC_UMAMI_SRC + PUBLIC_UMAMI_WEBSITE_ID
+//   Plausible (hosted):       PUBLIC_PLAUSIBLE_DOMAIN (+ optional PUBLIC_PLAUSIBLE_SRC)
+const umamiSrc = import.meta.env.PUBLIC_UMAMI_SRC;
+const umamiId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
+const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
+const plausibleSrc =
+  import.meta.env.PUBLIC_PLAUSIBLE_SRC ?? "https://plausible.io/js/script.js";
+---
+
+{
+  umamiSrc && umamiId ? (
+    <script is:inline defer src={umamiSrc} data-website-id={umamiId} />
+  ) : plausibleDomain ? (
+    <script is:inline defer data-domain={plausibleDomain} src={plausibleSrc} />
+  ) : null
+}

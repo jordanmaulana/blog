@@ -5,6 +5,8 @@ import { socials } from "~/data/socials";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const year = new Date().getFullYear();
+// Set PUBLIC_TIPJAR_URL to your Trakteer / Saweria / Ko-fi link to show a tip jar.
+const tipjarUrl = import.meta.env.PUBLIC_TIPJAR_URL;
 ---
 
 <footer class="border-t border-border/60 mt-24">
@@ -14,6 +16,18 @@ const year = new Date().getFullYear();
     <div>
       <p>© {year} Jordan Maulana</p>
       <p class="mt-1 text-xs">{t("footer.copy")}</p>
+      {
+        tipjarUrl && (
+          <a
+            href={tipjarUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-2 inline-block text-xs text-accent transition hover:opacity-80"
+          >
+            {t("footer.tip")}
+          </a>
+        )
+      }
     </div>
     <ul class="flex flex-wrap gap-x-4 gap-y-2">
       {

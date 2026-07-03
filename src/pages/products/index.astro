@@ -2,23 +2,88 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import ProductCard from "~/components/ProductCard.astro";
 import { getCollection } from "astro:content";
-import { getLangFromUrl, useTranslations } from "~/i18n/utils";
+import { getLangFromUrl, localizedPath, useTranslations } from "~/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const products = (await getCollection("products"))
-  .sort((a, b) => a.data.order - b.data.order);
+
+const statusWeight = { live: 0, wip: 1, prototype: 2 } as const;
+const products = (await getCollection("products")).sort(
+  (a, b) =>
+    statusWeight[a.data.status] - statusWeight[b.data.status] ||
+    a.data.order - b.data.order,
+);
+
+const featured =
+  products.find((p) => p.data.featured) ??
+  products.find((p) => p.data.status === "live");
+const rest = products.filter((p) => p !== featured);
 ---
 
 <BaseLayout title={`${t("nav.products")} — Jordan Maulana`}>
   <section class="space-y-8 py-16">
     <header class="space-y-2">
-      <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">{t("nav.products")}</p>
-      <h1 class="text-balance text-4xl font-semibold tracking-tight md:text-5xl">{t("section.products")}</h1>
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+        {t("nav.products")}
+      </p>
+      <h1
+        class="text-balance text-4xl font-semibold tracking-tight md:text-5xl"
+      >
+        {t("section.products")}
+      </h1>
       <p class="max-w-prose text-fg-soft">{t("section.products.sub")}</p>
     </header>
-    <div class="grid gap-4 md:grid-cols-2">
-      {products.map((p) => <ProductCard product={p} />)}
-    </div>
+
+    {
+      featured && (
+        <article class="rounded-(--radius-card) border border-accent/40 bg-accent/5 p-6 md:p-8">
+          <p class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-accent">
+            <span class="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
+            {t("products.spotlight")}
+          </p>
+          <h2 class="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
+            {featured.data.name}
+          </h2>
+          <p class="mt-2 max-w-prose text-fg-soft">{featured.data.tagline}</p>
+          {featured.data.stack.length > 0 && (
+            <ul class="mt-4 flex flex-wrap gap-1.5">
+              {featured.data.stack.slice(0, 6).map((s) => (
+                <li class="rounded-full border border-border px-2 py-0.5 font-mono text-[10px] text-fg-soft">
+                  {s}
+                </li>
+              ))}
+            </ul>
+          )}
+          <div class="mt-5 flex flex-wrap items-center gap-4">
+            {featured.data.url && (
+              <a
+                href={featured.data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-full bg-accent px-5 py-2 text-sm font-medium text-accent-fg transition hover:opacity-90"
+              >
+                {t("products.try")}
+              </a>
+            )}
+            <a
+              href={localizedPath(lang, `/products/${featured.id}`)}
+              class="text-sm text-fg-soft transition hover:text-fg"
+            >
+              {t("products.read")}
+            </a>
+          </div>
+        </article>
+      )
+    }
+
+    {
+      rest.length > 0 && (
+        <div class="grid gap-4 md:grid-cols-2">
+          {rest.map((p) => (
+            <ProductCard product={p} />
+          ))}
+        </div>
+      )
+    }
   </section>
 </BaseLayout>

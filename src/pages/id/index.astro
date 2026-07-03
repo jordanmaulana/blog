@@ -5,6 +5,7 @@ import ProductCard from "~/components/ProductCard.astro";
 import LapakCard from "~/components/LapakCard.astro";
 import GearCard from "~/components/GearCard.astro";
 import PostCard from "~/components/PostCard.astro";
+import NewsletterSignup from "~/components/NewsletterSignup.astro";
 import FadeIn from "~/components/motion/FadeIn.tsx";
 import { getCollection } from "astro:content";
 import { socials } from "~/data/socials";
@@ -14,8 +15,12 @@ import { getOgImageMetadata } from "~/lib/og-lookup";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const products = (await getCollection("products"))
-  .sort((a, b) => a.data.order - b.data.order);
+const statusWeight = { live: 0, wip: 1, prototype: 2 } as const;
+const products = (await getCollection("products")).sort(
+  (a, b) =>
+    statusWeight[a.data.status] - statusWeight[b.data.status] ||
+    a.data.order - b.data.order,
+);
 
 const lapakItems = (await getCollection("lapak", ({ data }) => data.status === "available"))
   .sort((a, b) => a.data.order - b.data.order)
@@ -122,6 +127,10 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
         )
       }
     </div>
+  </FadeIn>
+
+  <FadeIn client:visible className="py-12">
+    <NewsletterSignup />
   </FadeIn>
 
   <FadeIn client:visible className="space-y-6 py-12">

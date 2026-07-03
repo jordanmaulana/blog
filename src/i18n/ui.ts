@@ -58,6 +58,35 @@ export const ui = {
     "lang.switchTo": "Bahasa Indonesia",
     "theme.toggle": "Toggle theme",
     "about.portfolio": "View career portfolio →",
+    "products.try": "Try it free →",
+    "products.spotlight": "Live now",
+    "newsletter.title": "Notes in your inbox",
+    "newsletter.sub":
+      "Once in a while I email what I'm building and learning — AI, indie products, engineering. No spam.",
+    "newsletter.placeholder": "you@email.com",
+    "newsletter.button": "Subscribe",
+    "newsletter.note": "Unsubscribe anytime.",
+    "newsletter.disabled": "Signup opens soon.",
+    "gears.disclosure":
+      "Some links are Shopee affiliate links — if you buy through them I may earn a small commission, at no extra cost to you.",
+    "nav.work": "Work with me",
+    "work.eyebrow": "Available for select work",
+    "work.title": "Senior engineering, on demand",
+    "work.sub":
+      "8+ years shipping Flutter apps, full-stack systems, and AI automation. I take on a small number of focused, async engagements where senior judgment saves you months.",
+    "work.offer1.title": "AI Automation Audit",
+    "work.offer1.desc":
+      "I map your manual or n8n workflow, find the failure points, and hand you a concrete automation plan — often with a working proof of concept.",
+    "work.offer2.title": "MVP Sprint",
+    "work.offer2.desc":
+      "A fixed-scope sprint to ship a working MVP — Django/React or Flutter — from idea to something real users can touch.",
+    "work.offer3.title": "Architecture & Code Review",
+    "work.offer3.desc":
+      "A deep, written review of your codebase or AI integration: what's fragile, what to fix first, and how to scale it.",
+    "work.book": "Book a call →",
+    "work.email": "Email me →",
+    "work.note": "Async-first, remote. I usually reply within a day.",
+    "footer.tip": "Buy me a coffee ☕",
   },
   id: {
     "nav.home": "Beranda",
@@ -109,6 +138,35 @@ export const ui = {
     "lang.switchTo": "English",
     "theme.toggle": "Ganti tema",
     "about.portfolio": "Lihat portofolio karier →",
+    "products.try": "Coba gratis →",
+    "products.spotlight": "Sudah rilis",
+    "newsletter.title": "Catatan ke inbox kamu",
+    "newsletter.sub":
+      "Sesekali aku kirim email soal yang lagi aku bangun dan pelajari — AI, produk indie, engineering. Tanpa spam.",
+    "newsletter.placeholder": "kamu@email.com",
+    "newsletter.button": "Langganan",
+    "newsletter.note": "Berhenti kapan saja.",
+    "newsletter.disabled": "Pendaftaran segera dibuka.",
+    "gears.disclosure":
+      "Sebagian tautan adalah link afiliasi Shopee — kalau kamu beli lewat situ, aku bisa dapat komisi kecil tanpa nambah biaya buat kamu.",
+    "nav.work": "Kerja bareng",
+    "work.eyebrow": "Terbuka untuk proyek terpilih",
+    "work.title": "Engineering senior, sesuai kebutuhan",
+    "work.sub":
+      "8+ tahun bangun aplikasi Flutter, sistem full-stack, dan otomasi AI. Aku ambil sedikit proyek yang fokus dan async, di mana pengalaman senior hemat waktu kamu berbulan-bulan.",
+    "work.offer1.title": "Audit Otomasi AI",
+    "work.offer1.desc":
+      "Aku petakan alur kerja manual atau n8n kamu, cari titik gagalnya, dan kasih rencana otomasi konkret — sering plus proof of concept yang jalan.",
+    "work.offer2.title": "Sprint MVP",
+    "work.offer2.desc":
+      "Sprint scope tetap buat rilis MVP yang jalan — Django/React atau Flutter — dari ide ke produk yang bisa dipakai user beneran.",
+    "work.offer3.title": "Review Arsitektur & Kode",
+    "work.offer3.desc":
+      "Review tertulis mendalam buat codebase atau integrasi AI kamu: apa yang rapuh, apa yang harus dibenahi dulu, dan cara scale-nya.",
+    "work.book": "Jadwalkan panggilan →",
+    "work.email": "Email aku →",
+    "work.note": "Async-first, remote. Biasanya aku balas dalam sehari.",
+    "footer.tip": "Traktir kopi ☕",
   },
 } as const satisfies Record<Lang, Record<string, string>>;
 

@@ -48,20 +48,30 @@ const statusClass: Record<typeof status, string> = {
     )
   }
   <footer
-    class="mt-auto flex items-center justify-between text-xs text-fg-soft"
+    class="mt-auto flex items-center justify-between gap-3 text-xs text-fg-soft"
   >
     <span class="font-mono">{t("products.read")}</span>
     {
-      url && (
-        <a
-          href={url}
-          target="_blank"
-          rel="noreferrer"
-          class="relative z-10 transition hover:text-accent"
-        >
-          {t("products.visit")}
-        </a>
-      )
+      url &&
+        (status === "live" ? (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="relative z-10 rounded-full bg-accent px-3 py-1.5 font-medium text-accent-fg transition hover:opacity-90"
+          >
+            {t("products.try")}
+          </a>
+        ) : (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="relative z-10 transition hover:text-accent"
+          >
+            {t("products.visit")}
+          </a>
+        ))
     }
   </footer>
 </article>

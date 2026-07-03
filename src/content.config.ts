@@ -23,6 +23,7 @@ const products = defineCollection({
     repo: z.string().url().optional(),
     stack: z.array(z.string()).default([]),
     status: z.enum(["live", "prototype", "wip"]).default("wip"),
+    featured: z.boolean().default(false),
     order: z.number().default(99),
   }),
 });
