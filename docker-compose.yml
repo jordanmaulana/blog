@@ -3,6 +3,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        PUBLIC_TIPJAR_URL: ${PUBLIC_TIPJAR_URL}
+        PUBLIC_CONTACT_EMAIL: ${PUBLIC_CONTACT_EMAIL}
+        PUBLIC_BOOKING_URL: ${PUBLIC_BOOKING_URL}
+        PUBLIC_UMAMI_SRC: ${PUBLIC_UMAMI_SRC}
+        PUBLIC_UMAMI_WEBSITE_ID: ${PUBLIC_UMAMI_WEBSITE_ID}
+        PUBLIC_NEWSLETTER_ACTION: ${PUBLIC_NEWSLETTER_ACTION}
     image: jordanmaulana-blog:latest
     container_name: jordanmaulana-blog
     restart: unless-stopped
