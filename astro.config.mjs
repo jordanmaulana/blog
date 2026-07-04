@@ -7,7 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 import ogPrefetch from "./src/integrations/og-prefetch.ts";
 
 export default defineConfig({
-  site: "https://jordanmaulana.com",
+  site: "https://jordanmaulana.space",
   trailingSlash: "never",
   integrations: [
     ogPrefetch(),
