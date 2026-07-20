@@ -8,6 +8,7 @@ import {
   totalFollowers,
 } from "~/data/socials";
 import { formatCount } from "~/utils/format";
+import SocialIcon from "./SocialIcon.astro";
 import FadeIn from "./motion/FadeIn.tsx";
 
 const lang = getLangFromUrl(Astro.url);
@@ -96,6 +97,34 @@ const followerLine = t("hero.followers")
         </p>
       )
     }
+    <ul
+      class="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-2"
+    >
+      {
+        socials.map((s) => (
+          <li>
+            <a
+              href={s.url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={
+                s.followers
+                  ? `${s.label} — ${formatCount(s.followers, lang)} ${t("social.followers")}`
+                  : s.label
+              }
+              class="flex items-center gap-1 text-fg-soft transition hover:text-accent"
+            >
+              <SocialIcon label={s.label} />
+              {s.followers && (
+                <span class="font-mono text-xs">
+                  {formatCount(s.followers, lang)}
+                </span>
+              )}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
     <div
       class="pointer-events-none absolute -inset-6 -z-10 rounded-4xl blur-2xl"
       style="background: radial-gradient(circle at 30% 30%, color-mix(in oklch, var(--color-accent) 35%, transparent), transparent 60%);"

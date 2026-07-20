@@ -8,10 +8,8 @@ import PostCard from "~/components/PostCard.astro";
 import NewsletterSignup from "~/components/NewsletterSignup.astro";
 import FadeIn from "~/components/motion/FadeIn.tsx";
 import { getCollection } from "astro:content";
-import { socials } from "~/data/socials";
 import { getLangFromUrl, localizedPath, useTranslations } from "~/i18n/utils";
 import { getOgImageMetadata } from "~/lib/og-lookup";
-import { formatCount } from "~/utils/format";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -144,42 +142,6 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
         )
       }
     </div>
-  </FadeIn>
-
-  <FadeIn client:visible className="space-y-10 py-12">
-    <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">
-      {t("section.elsewhere")}
-    </h2>
-    <ul class="grid gap-3 md:grid-cols-3 mt-4">
-      {
-        socials.map((s) => (
-          <li>
-            <a
-              href={s.url}
-              target="_blank"
-              rel="noreferrer"
-              class="group flex items-center justify-between rounded-(--radius-card) border border-border bg-bg-soft/40 px-4 py-3 transition hover:border-accent"
-            >
-              <div>
-                <p class="text-sm font-medium">{s.label}</p>
-                <p class="font-mono text-xs text-fg-soft">{s.handle}</p>
-                {s.followers && (
-                  <p class="mt-0.5 font-mono text-xs text-accent">
-                    {formatCount(s.followers, lang)} {t("social.followers")}
-                  </p>
-                )}
-              </div>
-              <span
-                aria-hidden="true"
-                class="text-fg-soft transition group-hover:text-accent"
-              >
-                ↗
-              </span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
   </FadeIn>
 
   <FadeIn client:visible className="py-12">
