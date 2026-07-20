@@ -20,6 +20,8 @@ export const ui = {
     "hero.location": "Malang, East Java, Indonesia",
     "hero.tagline":
       "8+ years building Flutter apps and full-stack systems. I lead mobile teams, ship indie products, and share about what I learn.",
+    "hero.followers": "{count} followers across {n} platforms",
+    "social.followers": "followers",
     "section.products": "What I'm building",
     "section.products.sub": "Side projects that became real products.",
     "section.gears": "Gears I use",
@@ -101,6 +103,8 @@ export const ui = {
     "hero.location": "Malang, Jawa Timur, Indonesia",
     "hero.tagline":
       "8+ tahun bangun aplikasi Flutter dan sistem full-stack. Mimpin tim mobile, rilis produk indie, dan berbagi hasil belajar.",
+    "hero.followers": "{count} pengikut di {n} platform",
+    "social.followers": "pengikut",
     "section.products": "Yang lagi aku bangun",
     "section.products.sub": "Proyek sampingan yang jadi produk beneran.",
     "section.gears": "Gears yang aku pakai",

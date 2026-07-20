@@ -2,12 +2,21 @@
 import { Image } from "astro:assets";
 import meImage from "~/assets/me.jpg";
 import { getLangFromUrl, localizedPath, useTranslations } from "~/i18n/utils";
-import { socials } from "~/data/socials";
+import {
+  socials,
+  socialsWithFollowers,
+  totalFollowers,
+} from "~/data/socials";
+import { formatCount } from "~/utils/format";
 import FadeIn from "./motion/FadeIn.tsx";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const primary = socials.slice(0, 4);
+
+const followerLine = t("hero.followers")
+  .replace("{count}", formatCount(totalFollowers, lang))
+  .replace("{n}", String(socialsWithFollowers.length));
 ---
 
 <section
@@ -80,6 +89,13 @@ const primary = socials.slice(0, 4);
       >
       </div>
     </div>
+    {
+      totalFollowers > 0 && (
+        <p class="mt-4 text-center font-mono text-xs text-fg-soft">
+          {followerLine}
+        </p>
+      )
+    }
     <div
       class="pointer-events-none absolute -inset-6 -z-10 rounded-4xl blur-2xl"
       style="background: radial-gradient(circle at 30% 30%, color-mix(in oklch, var(--color-accent) 35%, transparent), transparent 60%);"

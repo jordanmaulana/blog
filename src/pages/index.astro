@@ -11,6 +11,7 @@ import { getCollection } from "astro:content";
 import { socials } from "~/data/socials";
 import { getLangFromUrl, localizedPath, useTranslations } from "~/i18n/utils";
 import { getOgImageMetadata } from "~/lib/og-lookup";
+import { formatCount } from "~/utils/format";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -145,10 +146,6 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
     </div>
   </FadeIn>
 
-  <FadeIn client:visible className="py-12">
-    <NewsletterSignup />
-  </FadeIn>
-
   <FadeIn client:visible className="space-y-10 py-12">
     <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">
       {t("section.elsewhere")}
@@ -166,6 +163,11 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
               <div>
                 <p class="text-sm font-medium">{s.label}</p>
                 <p class="font-mono text-xs text-fg-soft">{s.handle}</p>
+                {s.followers && (
+                  <p class="mt-0.5 font-mono text-xs text-accent">
+                    {formatCount(s.followers, lang)} {t("social.followers")}
+                  </p>
+                )}
               </div>
               <span
                 aria-hidden="true"
@@ -178,5 +180,9 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
         ))
       }
     </ul>
+  </FadeIn>
+
+  <FadeIn client:visible className="py-12">
+    <NewsletterSignup />
   </FadeIn>
 </BaseLayout>
