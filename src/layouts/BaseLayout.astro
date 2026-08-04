@@ -13,7 +13,11 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description = "Jordan Maulana — Software Engineer & Creator.", ogImage = meImage.src } = Astro.props;
+const {
+  title,
+  description = "Jordan Maulana — Software Engineer & Creator.",
+  ogImage = meImage.src,
+} = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 // Consolidate duplicate /id/* URLs onto their EN counterpart (self-no-op for EN pages).
 const canonicalPath = switchLangPath(Astro.url, defaultLang);
@@ -30,23 +34,42 @@ const canonical = new URL(canonicalPath, Astro.site).toString();
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" type="application/rss+xml" title="Jordan Maulana — Writing (EN)" href="/rss.xml" />
-    <link rel="alternate" type="application/rss+xml" title="Jordan Maulana — Tulisan (ID)" href="/id/rss.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Jordan Maulana — Writing (EN)"
+      href="/rss.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Jordan Maulana — Tulisan (ID)"
+      href="/id/rss.xml"
+    />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
+    <meta
+      property="og:image"
+      content={new URL(ogImage, Astro.site).toString()}
+    />
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
 
     <Analytics />
+    <script
+      defer
+      src="https://umami.jordanmaulana.space/recorder.js"
+      data-website-id="2b6d5786-d33c-495c-b02d-3fe391e4e709"></script>
 
     <script is:inline>
       (() => {
         try {
           const stored = localStorage.getItem("theme");
-          const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
           const isDark = stored ? stored === "dark" : prefersDark;
           document.documentElement.classList.toggle("dark", isDark);
         } catch {
@@ -56,7 +79,10 @@ const canonical = new URL(canonicalPath, Astro.site).toString();
     </script>
   </head>
   <body class="font-sans">
-    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-accent focus:px-3 focus:py-2 focus:text-accent-fg">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-accent focus:px-3 focus:py-2 focus:text-accent-fg"
+    >
       Skip to content
     </a>
     <Header />
