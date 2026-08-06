@@ -1,0 +1,45 @@
+---
+import "~/styles/global.css";
+import { getCollection } from "astro:content";
+import Slide from "~/components/carousel/Slide.astro";
+
+// Internal tooling page: renders every slide at Instagram's 1080x1350 so
+// scripts/render-carousel.mjs can screenshot each [data-slide] to a PNG.
+// Not part of the public site — no BaseLayout, no /id mirror, noindex.
+export async function getStaticPaths() {
+  const decks = await getCollection("carousels");
+  return decks.map((deck) => ({
+    params: { slug: deck.id.replace(/\.ya?ml$/, "") },
+    props: { deck },
+  }));
+}
+
+const { deck } = Astro.props;
+const { title, handle, slides } = deck.data;
+const zones = slides.filter((slide) => slide.kind === "zone");
+---
+
+<!doctype html>
+<html lang="id" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} — carousel</title>
+  </head>
+  <body class="bg-bg-soft">
+    <main class="flex w-fit flex-col items-center gap-10 p-10">
+      {
+        slides.map((slide, index) => (
+          <Slide
+            slide={slide}
+            index={index}
+            total={slides.length}
+            handle={handle}
+            zones={zones}
+          />
+        ))
+      }
+    </main>
+  </body>
+</html>

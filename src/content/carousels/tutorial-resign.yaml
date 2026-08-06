@@ -1,0 +1,71 @@
+title: Tutorial Resign
+handle: "@jordan.maulana"
+
+# Every line below is lifted from src/content/blog/tutorial-resign.mdx.
+# Nothing here was written to fill a slide. Keep it that way.
+slides:
+  - kind: plain
+    heading: Tutorial Resign
+    body: Bukan motivasi. Langkah konkret berdasarkan kekuatan finansialmu.
+
+  - kind: plain
+    label: Mendesak
+    heading: Jangan resign kecuali udah dapat kerjaan baru.
+    body: Mutlak.
+
+  - kind: plain
+    label: Ada uang buat minimal 3 bulan
+    heading: Boleh resign. Tapi 3 bulan itu ada isinya.
+    body: >-
+      Luangkan waktu sedikit aja buat cari kerjaan baru, sisanya istirahat,
+      tingkatkan ibadah & upgrade skill. Dan siapkan BACKUP PLAN kalo 3 bulan
+      belum dapet kerjaan baru.
+
+  - kind: plain
+    label: No risk
+    heading: "Orang tuamu kaya :v"
+    body: >-
+      Resign ga resign boleh. Cara ukurnya: taruh 2 sumbu ke perusahaanmu
+      sekarang. WAKTU — kamu punya waktu luang yang cukup atau lembur terus.
+      BELAJAR — ada hal yang masih bisa kamu pelajari ga di kantormu.
+
+  - kind: zone
+    label: Zona 1
+    heading: Banyak waktu & banyak belajar
+    verdict: STAY
+    body: >-
+      Zona masih ideal. Kamu masih punya waktu luang buat diri sendiri & masih
+      banyak hal yang bisa dipelajari dari kantor.
+
+  - kind: zone
+    label: Zona 2
+    heading: Banyak waktu & sedikit belajar
+    verdict: RESIGN
+    body: >-
+      Zona nyaman. Ada risiko pengalaman / skill yang kamu punya ga sebanding
+      sama lama kerja. "Kamu N tahun kerja di situ kok skill-nya segitu aja."
+      Kenaikan gaji nanti bakal kurang dari ekspektasi.
+
+  - kind: zone
+    label: Zona 3
+    heading: Sedikit waktu & banyak belajar
+    verdict: STAY
+    body: >-
+      Zona berkembang MAX. Lembur lembur terus. Tapi banyak ilmu yang bisa
+      diambil dari lembur itu.
+
+  - kind: zone
+    label: Zona 4
+    heading: Sedikit waktu & sedikit belajar
+    verdict: RESIGN
+    body: >-
+      Zona BAHAYA. Dah capek, stress, ga ada waktu buat diri sendiri &
+      keluarga. Keluar sebelum kamu kena asam lambung :v
+
+  - kind: matrix
+    label: Ringkasan
+    heading: Kamu ada di kuadran mana?
+
+  - kind: outro
+    heading: Tulisan lengkapnya di
+    body: jordanmaulana.space

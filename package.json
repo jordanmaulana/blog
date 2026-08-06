@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check"
+    "check": "astro check",
+    "carousel": "node scripts/render-carousel.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -31,7 +32,8 @@
   },
   "devDependencies": {
     "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7"
+    "@types/react-dom": "^19.1.7",
+    "playwright": "^1.56.1"
   },
   "packageManager": "pnpm@10.15.0"
 }

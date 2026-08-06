@@ -1,0 +1,148 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Deck = CollectionEntry<"carousels">["data"];
+type SlideData = Deck["slides"][number];
+
+interface Props {
+  slide: SlideData;
+  index: number;
+  total: number;
+  handle: string;
+  /** All `zone` slides in the deck — the `matrix` slide renders from these
+   * instead of duplicating their copy in the YAML. */
+  zones: SlideData[];
+}
+
+const { slide, index, total, handle, zones } = Astro.props;
+
+const number = String(index + 1).padStart(2, "0");
+const isLast = index === total - 1;
+
+const verdictClass = (verdict: SlideData["verdict"]) =>
+  verdict === "RESIGN"
+    ? "bg-accent text-accent-fg"
+    : "border-2 border-accent text-accent";
+---
+
+<section
+  data-slide={number}
+  class="relative flex h-[1350px] w-[1080px] shrink-0 flex-col justify-between overflow-hidden bg-bg px-[88px] py-[76px]"
+>
+  <header class="flex items-center justify-between">
+    <span class="font-mono text-[26px] tracking-[0.2em] text-fg-soft/60">
+      {number} / {String(total).padStart(2, "0")}
+    </span>
+    <span class="h-[3px] w-[120px] bg-accent"></span>
+  </header>
+
+  <main class="flex flex-1 flex-col justify-center py-[48px]">
+    {
+      slide.label && (
+        <p class="mb-[28px] font-mono text-[30px] uppercase tracking-[0.18em] text-accent">
+          {slide.label}
+        </p>
+      )
+    }
+
+    {
+      slide.kind === "plain" && (
+        <>
+          {slide.heading && (
+            <h2 class="text-[84px] font-bold leading-[1.03] tracking-tight text-fg">
+              {slide.heading}
+            </h2>
+          )}
+          {slide.body && (
+            <p class="mt-[40px] text-[42px] leading-[1.35] text-fg-soft">
+              {slide.body}
+            </p>
+          )}
+        </>
+      )
+    }
+
+    {
+      slide.kind === "zone" && (
+        <>
+          {slide.heading && (
+            <h2 class="text-[68px] font-bold leading-[1.08] tracking-tight text-fg">
+              {slide.heading}
+            </h2>
+          )}
+          {slide.verdict && (
+            <p
+              class:list={[
+                "mt-[44px] w-fit rounded-(--radius-card) px-[44px] py-[18px] font-mono text-[52px] font-bold tracking-[0.1em]",
+                verdictClass(slide.verdict),
+              ]}
+            >
+              {slide.verdict}
+            </p>
+          )}
+          {slide.body && (
+            <p class="mt-[44px] text-[40px] leading-[1.35] text-fg-soft">
+              {slide.body}
+            </p>
+          )}
+        </>
+      )
+    }
+
+    {
+      slide.kind === "matrix" && (
+        <>
+          {slide.heading && (
+            <h2 class="text-[60px] font-bold leading-[1.05] tracking-tight text-fg">
+              {slide.heading}
+            </h2>
+          )}
+          <div class="mt-[52px] grid grid-cols-2 gap-[24px]">
+            {zones.map((zone) => (
+              <div class="flex flex-col justify-between rounded-(--radius-card) border border-border bg-bg-soft/50 p-[36px]">
+                <div>
+                  <p class="font-mono text-[26px] uppercase tracking-[0.16em] text-fg-soft">
+                    {zone.label}
+                  </p>
+                  <p class="mt-[16px] text-[34px] font-semibold leading-[1.2] text-fg">
+                    {zone.heading}
+                  </p>
+                </div>
+                <p
+                  class:list={[
+                    "mt-[32px] w-fit rounded-full px-[28px] py-[10px] font-mono text-[32px] font-bold tracking-[0.1em]",
+                    verdictClass(zone.verdict),
+                  ]}
+                >
+                  {zone.verdict}
+                </p>
+              </div>
+            ))}
+          </div>
+        </>
+      )
+    }
+
+    {
+      slide.kind === "outro" && (
+        <>
+          {slide.heading && (
+            <p class="text-[48px] leading-[1.25] text-fg-soft">
+              {slide.heading}
+            </p>
+          )}
+          {slide.body && (
+            <p class="mt-[24px] text-[76px] font-bold tracking-tight text-accent">
+              {slide.body}
+            </p>
+          )}
+        </>
+      )
+    }
+  </main>
+
+  <footer class="flex items-center justify-between">
+    <span class="font-mono text-[30px] text-fg-soft">{handle}</span>
+    {!isLast && <span class="text-[44px] leading-none text-accent">→</span>}
+  </footer>
+</section>

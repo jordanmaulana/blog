@@ -53,4 +53,27 @@ const gears = defineCollection({
   }),
 });
 
-export const collections = { blog, products, lapak, gears };
+// Slide decks for Instagram carousels. Data-only (YAML), rendered by
+// /carousel/[slug] and screenshotted by scripts/render-carousel.mjs.
+// `kind` names stay neutral on purpose — the schema shouldn't nudge copy
+// toward hook-shaped writing.
+const carousels = defineCollection({
+  loader: glob({ pattern: "**/*.{yaml,yml}", base: "./src/content/carousels" }),
+  schema: z.object({
+    title: z.string(),
+    handle: z.string().default("@jordan.maulana"),
+    slides: z
+      .array(
+        z.object({
+          kind: z.enum(["plain", "zone", "matrix", "outro"]),
+          label: z.string().optional(),
+          heading: z.string().optional(),
+          body: z.string().optional(),
+          verdict: z.enum(["STAY", "RESIGN"]).optional(),
+        }),
+      )
+      .min(1),
+  }),
+});
+
+export const collections = { blog, products, lapak, gears, carousels };
