@@ -20,8 +20,6 @@ export const testimonials: Testimonial[] = [
     name: "Brian de Heus",
     role: "CTO",
     company: "Adgorithmics",
-    source: "LinkedIn · June 2025",
-    sourceUrl: "https://www.linkedin.com/in/jordan-maulana/",
   },
   {
     quote:
