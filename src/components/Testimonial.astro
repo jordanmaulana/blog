@@ -1,0 +1,48 @@
+---
+import type { Testimonial } from "~/data/testimonials";
+
+type Props = Testimonial;
+
+const { quote, name, role, company, source, sourceUrl } = Astro.props;
+const attribution = [role, company].filter(Boolean).join(", ");
+---
+
+<figure
+  class="flex flex-col gap-2 rounded-(--radius-card) border border-border bg-bg-soft/40 p-6"
+>
+  <blockquote class="whitespace-pre-line text-pretty text-sm text-fg-soft">
+    {quote}
+  </blockquote>
+  <figcaption
+    class="mt-auto flex flex-wrap items-center gap-x-2 pt-2 font-mono text-xs"
+  >
+    <span class="text-accent">{name}</span>
+    {
+      attribution && (
+        <span class="text-fg-soft">
+          {"· "}
+          <cite class="not-italic">{attribution}</cite>
+        </span>
+      )
+    }
+    {
+      source && (
+        <span class="text-fg-soft/70">
+          {"· "}
+          {sourceUrl ? (
+            <a
+              href={sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="transition hover:text-accent"
+            >
+              {source} ↗
+            </a>
+          ) : (
+            source
+          )}
+        </span>
+      )
+    }
+  </figcaption>
+</figure>

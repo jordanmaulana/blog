@@ -85,6 +85,7 @@ export const ui = {
     "work.offer3.desc":
       "A deep, written review of your codebase or AI integration: what's fragile, what to fix first, and how to scale it.",
     "work.price.from": "from",
+    "work.proof.eyebrow": "What clients say",
     "work.book": "Book a call →",
     "work.email": "Email me →",
     "work.note": "Async-first, remote. I usually reply within a day.",
@@ -167,6 +168,7 @@ export const ui = {
     "work.offer3.desc":
       "Review tertulis mendalam buat codebase atau integrasi AI kamu: apa yang rapuh, apa yang harus dibenahi dulu, dan cara scale-nya.",
     "work.price.from": "mulai dari",
+    "work.proof.eyebrow": "Kata klien",
     "work.book": "Jadwalkan panggilan →",
     "work.email": "Email aku →",
     "work.note": "Async-first, remote. Biasanya aku balas dalam sehari.",

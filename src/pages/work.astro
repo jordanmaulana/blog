@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import Testimonial from "~/components/Testimonial.astro";
+import { testimonials } from "~/data/testimonials";
 import { getLangFromUrl, useTranslations } from "~/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -13,8 +15,11 @@ const mailto = `mailto:${contactEmail}?subject=${encodeURIComponent("Work inquir
 
 const offers = [
   { title: t("work.offer1.title"), desc: t("work.offer1.desc"), price: "$600" },
-  { title: t("work.offer2.title"), desc: t("work.offer2.desc"), price: "$3,500" },
-  { title: t("work.offer3.title"), desc: t("work.offer3.desc"), price: "$500" },
+  {
+    title: t("work.offer2.title"),
+    desc: t("work.offer2.desc"),
+    price: "$3,500",
+  },
 ];
 ---
 
@@ -34,19 +39,31 @@ const offers = [
       </p>
     </header>
 
-    <div class="grid gap-4 md:grid-cols-3">
+    <div class="grid gap-4 md:grid-cols-2">
       {
         offers.map((o) => (
           <article class="flex flex-col gap-2 rounded-(--radius-card) border border-border bg-bg-soft/40 p-6">
             <h2 class="text-base font-semibold tracking-tight">{o.title}</h2>
             <p class="text-sm text-fg-soft">{o.desc}</p>
-            <p class="mt-auto pt-2 font-mono text-sm text-accent">
-              {t("work.price.from")} {o.price}
-            </p>
           </article>
         ))
       }
     </div>
+
+    {
+      testimonials.length > 0 && (
+        <section class="space-y-4">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+            {t("work.proof.eyebrow")}
+          </p>
+          <div class="grid gap-4 md:grid-cols-2">
+            {testimonials.map((item) => (
+              <Testimonial {...item} />
+            ))}
+          </div>
+        </section>
+      )
+    }
 
     <div
       class="rounded-(--radius-card) border border-accent/40 bg-accent/5 p-6 md:p-8"

@@ -58,14 +58,17 @@ the demand instead of waiting for it.
          underprice). Closed.
       4. Andik — not a fit; dropped
       5. Dwiki — not a fit; dropped
-      6. Brian · 7. Uwais · 8. Andan · 9. Zumy · 10. Sidik — bench (Week-2 DM batch)
-- [ ] **DM 5 warm contacts** a short, specific, genuine offer — one line on what you'd
-      build *for them*. No blast. *(~1 hr)*
+      6. Brian — **ex-CTO (Adgorithmics), public LinkedIn recommendation now on `/work`.**
+         Social proof, not a lead.
+      7. Uwais · 8. Andan · 9. Zumy · 10. Sidik — bench (Week-2 DM batch)
+- [x] **DM warm contacts** a short, specific, genuine offer — one line on what you'd
+      build *for them*. No blast. **Closed at 3/5 (2026-08-07)** — lever spent by
+      decision, not abandoned. *(~1 hr)*
   - [x] Haris — DM'd
   - [x] Dennis — DM'd (silent)
   - [x] Ivan — quote sent → declined (budget mismatch)
-  - [ ] ~~Andik~~ / ~~Dwiki~~ — dropped (not a fit). Warm lever ~spent — don't force 5/5.
-  - [ ] *(optional)* 1 bench contact (Brian / Andan / Zumy) **only if** it genuinely fits
+  - [x] ~~Andik~~ / ~~Dwiki~~ — dropped (not a fit). Warm lever ~spent — don't force 5/5.
+  - [x] *(optional)* 1 bench contact (Brian / Andan / Zumy) — skipped, no genuine fit
 
 ## Week 2 — First content asset  · COMPOUNDING
 
@@ -79,18 +82,19 @@ Top-of-funnel fuel. One post drives SEO discovery → newsletter capture → Car
   - [ ] Confirm newsletter CTA + Cariinkerja link fire (set `PUBLIC_NEWSLETTER_ACTION` if dead)
   - [ ] Publish (drop `draft: true`)
 - [ ] Post a **teaser on Threads/LinkedIn** linking back to the post. *(~20 min)*
-- [ ] **DM remaining bench contacts** — SKIP unless one genuinely fits (pivot: warm lever
-      ~spent). *(~45 min)*
+- [x] **DM remaining bench contacts** — **skipped by decision**, same call as Week 1:
+      warm lever ~spent, no genuine fit on the bench. Only Sidik survives (see below).
 
 ## Week 3 — Cariinkerja + audience  · CASH + COMPOUNDING
 
 Your one live + paying SaaS is the real scalable earner. Cheapest growth = the users
 you already have.
 
-- [ ] Testimonial/referral asks → folded into **Next levers → Grow Cariinkerja**
-      (see below) — same "talk to users" action, run it once there.
-- [ ] Add one strong testimonial to the Cariinkerja product page / `/work`.
-      **[→ Claude]** (needs the quotes first)
+- [x] Testimonial/referral asks → folded into **Next levers → Grow Cariinkerja**
+      (see below) — same "talk to users" action, run it once there. Not a task here.
+- [x] Add one strong testimonial to the Cariinkerja product page / `/work`.
+      **Done 2026-08-07** — 2 user quotes live on cariinkerja.id; 2 quotes (Brian +
+      Venanda) built into `/work` + `/id/work` but **pending commit + deploy**.
 - [ ] **One acquisition action for Cariinkerja** — help first, link second. *(~1 hr)*
   - [ ] Pick 1-2 ID job-seeker communities (loker TG / FB group / Threads / Reddit)
   - [ ] Answer one real *"gimana cara..."* question with genuine value
@@ -142,27 +146,36 @@ Warm-outreach lever is ~spent (10 contacts → 1 paying: Venanda). Ivan + Uwais 
 - [ ] **Grow Cariinkerja** *(biggest + only scalable earner)* — full human-action
       playbook in [`cariinkerja-growth-human.md`](./cariinkerja-growth-human.md).
       (Product/code growth = separate repo.)
-  - [ ] **Talk to 5 users** — the needle-mover, do this first. *(~2 hrs)*
-    - [ ] Pick 3 paying users + 2 who signed up free and stalled
-    - [ ] Reach out (WA / short voice call)
-    - [ ] Capture the real **hook** + real **objection** in their own words
+  - [ ] **Talk to 5 users** — the needle-mover. **2 of 5 done (2026-08-07)**; their
+        testimonials are live on cariinkerja.id. 3 conversations left. *(~2 hrs)*
+    - [x] Pick 3 paying users + 2 who signed up free and stalled
+    - [ ] Reach out (WA / short voice call) — **2 done, 3 to go**
+    - [x] Capture the real **hook** + real **objection** in their own words —
+          **2 of 5 captured (2026-08-07)**; paste their actual wording below, don't
+          paraphrase:
+      > user 1 — hook: `___` · objection: `___`
+      > user 2 — hook: `___` · objection: `___`
   - [ ] Founder **LinkedIn content ~2×/wk** (Bahasa) — a real 0-100 verdict / skill-gap
         teardown / "how to read a JD". Soft CTA ≤1 in 3.
   - [ ] **Seed value** in 1-2 ID loker groups — help-first, link second, no blast
   - [ ] **Referral + testimonial asks** to payers — close each user chat with the 2-line ask
   - [ ] Offer **Sidik-academy partnership** — free tier + Open-to-Work discount for his cohort
 - [ ] **Venanda referral + testimonial** — she's happy + paying; highest-trust growth.
-  - [ ] Ask for a 2-line quote
+  - [x] Ask for a 2-line quote — **given + published 2026-08-07**
   - [ ] Ask "know anyone who needs something similar?"
-  - [ ] **[→ Claude]** slot the quote into the `/work` proof section
+  - [x] **[→ Claude]** proof section **built — pending commit + deploy** on `/work` +
+        `/id/work` with **2 quotes**: Brian de Heus (CTO, Adgorithmics — public LinkedIn
+        rec, June 2025) and Venanda Putri (Business Owner). Both verbatim, same text on
+        both locales.
 - [ ] **Sidik** — only warm lead left; draft a concrete offer **only if** it fits the
       Venanda shape (simple tool / paid class), not a complex build.
 
 **[→ Claude, on demand]** in-repo builds — hand me the material and I ship:
-- `/work` **proof section** (needs the quotes above) — `Testimonial.astro` +
-  `work.proof.*` i18n (en + id), slotted between the offers grid and the CTA.
+- `/work` **proof section** — **built 2026-08-07, pending commit + deploy** with Brian +
+  Venanda. Add more quotes by appending to `src/data/testimonials.ts`; the section hides
+  itself when the array is empty.
 - **Post 1 / Post 2** drafts (outlines in [`content-engine.md`](./content-engine.md)).
-- Wire **`PUBLIC_BOOKING_URL`** (Calendly) → activates the dead "Book a call" button.
+- ~~Wire **`PUBLIC_BOOKING_URL`**~~ — set; "Book a call" is live on `/work` (Calendly).
 
 ---
 
@@ -170,7 +183,25 @@ Warm-outreach lever is ~spent (10 contacts → 1 paying: Venanda). Ivan + Uwais 
 
 | Week | Money landed | Advisory replies / calls | Newsletter subs | Cariinkerja signups | Posts published |
 |------|--------------|--------------------------|-----------------|---------------------|-----------------|
-| W1   | Venanda — 200k IDR/mo (storage mgr app) |                          |                 |                     |                 |
-| W2   |              |                          |                 |                     |                 |
-| W3   |              |                          |                 |                     |                 |
-| W4   |              |                          |                 |                     |                 |
+| W1 (Jul 4-10)  | Venanda — 200k IDR/mo (storage mgr app) |  |  |  | 0 blog |
+| W2 (Jul 11-17) | — | — | — | — | 0 blog |
+| W3 (Jul 18-24) | — | — | — | — | 0 blog |
+| W4 (Jul 25-31) | — | — | — | — | 0 blog |
+| Aug 4-7 (post-window) | — | — | — | — | 0 blog · carousel generator + proof section (undeployed) |
+
+### Day-34 status (2026-08-07) — window closed Aug 3
+
+- **Cash:** 1 deal, Venanda 200k IDR/mo. Warm lever spent as predicted.
+- **Distribution:** running, but **not on owned surfaces** — many Instagram + Threads posts
+  published; blog is still at 2 posts, newest `pubDate` 2026-06-17. Newsletter never sent.
+  The gap is the owned funnel (blog → newsletter → product), not reach.
+- **Users:** 2 of 5 Cariinkerja conversations done, quotes live on cariinkerja.id.
+- **Proof:** `/work` proof section built with 2 quotes (Brian + Venanda), both locales.
+- **Not shipped:** the proof-section code (`Testimonial.astro`, `testimonials.ts`,
+  `work.astro`, `id/work.astro`, `ui.ts`) is uncommitted as of 2026-08-07 — nothing on
+  jordanmaulana.space shows it until it's committed, pushed, and rebuilt.
+- **Only code shipped since Aug 4:** `d93f796 carousel generator` — distribution tooling,
+  not owned-funnel work. Confirms the diagnosis above rather than contradicting it.
+- **Next:** Post 1
+  (outline in [`content-engine.md`](./content-engine.md)). Repurpose the IG/Threads posts
+  that already landed well — don't write from scratch.
