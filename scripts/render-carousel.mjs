@@ -69,6 +69,16 @@ if (!response || !response.ok()) {
   process.exit(1);
 }
 
+// Astro's dev toolbar is position:fixed at the bottom of the viewport, so it
+// lands inside the bottom edge of every element screenshot.
+await page.addStyleTag({ content: "astro-dev-toolbar { display: none !important }" });
+
+// Decks with `evidence` slides carry <img>s; networkidle can land a beat
+// before they've decoded, which would screenshot an empty box.
+await page.waitForFunction(() =>
+  Array.from(document.images).every((img) => img.complete && img.naturalWidth > 0),
+);
+
 const slides = page.locator("[data-slide]");
 const count = await slides.count();
 

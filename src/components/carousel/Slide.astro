@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 
 type Deck = CollectionEntry<"carousels">["data"];
@@ -36,7 +37,14 @@ const verdictClass = (verdict: SlideData["verdict"]) =>
     <span class="h-[3px] w-[120px] bg-accent"></span>
   </header>
 
-  <main class="flex flex-1 flex-col justify-center py-[48px]">
+  <main
+    class:list={[
+      "flex flex-1 flex-col py-[48px]",
+      // `evidence` hands its leftover height to the screenshot, so it can't
+      // center its children the way the text-only kinds do.
+      slide.kind === "evidence" ? "min-h-0 justify-start" : "justify-center",
+    ]}
+  >
     {
       slide.label && (
         <p class="mb-[28px] font-mono text-[30px] uppercase tracking-[0.18em] text-accent">
@@ -84,6 +92,59 @@ const verdictClass = (verdict: SlideData["verdict"]) =>
             <p class="mt-[44px] text-[40px] leading-[1.35] text-fg-soft">
               {slide.body}
             </p>
+          )}
+        </>
+      )
+    }
+
+    {
+      slide.kind === "evidence" && (
+        <>
+          {slide.heading && (
+            <h2 class="text-[48px] font-bold leading-[1.08] tracking-tight text-fg">
+              {slide.heading}
+            </h2>
+          )}
+          {slide.body && (
+            <p class="mt-[24px] text-[34px] leading-[1.3] text-fg-soft">
+              {slide.body}
+            </p>
+          )}
+          {slide.image && (
+            <div class="mt-[36px] flex min-h-0 flex-1 items-center justify-center">
+              <Image
+                src={slide.image}
+                alt={slide.alt ?? ""}
+                loading="eager"
+                class="h-auto max-h-full w-auto max-w-full rounded-(--radius-card) border border-border"
+              />
+            </div>
+          )}
+        </>
+      )
+    }
+
+    {
+      slide.kind === "list" && (
+        <>
+          {slide.heading && (
+            <h2 class="text-[60px] font-bold leading-[1.06] tracking-tight text-fg">
+              {slide.heading}
+            </h2>
+          )}
+          {slide.items && (
+            <ul class="mt-[52px] flex flex-col gap-[28px]">
+              {slide.items.map((item, itemIndex) => (
+                <li class="flex gap-[28px]">
+                  <span class="mt-[8px] shrink-0 font-mono text-[32px] font-bold text-accent">
+                    {String(itemIndex + 1).padStart(2, "0")}
+                  </span>
+                  <span class="text-[38px] leading-[1.3] text-fg-soft">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
           )}
         </>
       )
@@ -142,7 +203,13 @@ const verdictClass = (verdict: SlideData["verdict"]) =>
   </main>
 
   <footer class="flex items-center justify-between">
-    <span class="font-mono text-[30px] text-fg-soft">{handle}</span>
+    {/* An outro that makes the handle its call to action shouldn't also
+        print it small in the corner. */}
+    {
+      slide.body !== handle && (
+        <span class="font-mono text-[30px] text-fg-soft">{handle}</span>
+      )
+    }
     {!isLast && <span class="text-[44px] leading-none text-accent">→</span>}
   </footer>
 </section>

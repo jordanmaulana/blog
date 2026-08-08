@@ -2,7 +2,6 @@
 dist/
 .astro/
 src/assets/og-cache/
-carousel-out/
 
 # deps
 node_modules/

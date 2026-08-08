@@ -59,21 +59,27 @@ const gears = defineCollection({
 // toward hook-shaped writing.
 const carousels = defineCollection({
   loader: glob({ pattern: "**/*.{yaml,yml}", base: "./src/content/carousels" }),
-  schema: z.object({
-    title: z.string(),
-    handle: z.string().default("@jordan.maulana"),
-    slides: z
-      .array(
-        z.object({
-          kind: z.enum(["plain", "zone", "matrix", "outro"]),
-          label: z.string().optional(),
-          heading: z.string().optional(),
-          body: z.string().optional(),
-          verdict: z.enum(["STAY", "RESIGN"]).optional(),
-        }),
-      )
-      .min(1),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      handle: z.string().default("@jordan.maulana"),
+      slides: z
+        .array(
+          z.object({
+            kind: z.enum(["plain", "zone", "matrix", "outro", "evidence", "list"]),
+            label: z.string().optional(),
+            heading: z.string().optional(),
+            body: z.string().optional(),
+            verdict: z.enum(["STAY", "RESIGN"]).optional(),
+            // `evidence`: a screenshot, path relative to this YAML file.
+            image: image().optional(),
+            alt: z.string().optional(),
+            // `list`: one row per string.
+            items: z.array(z.string()).optional(),
+          }),
+        )
+        .min(1),
+    }),
 });
 
 export const collections = { blog, products, lapak, gears, carousels };

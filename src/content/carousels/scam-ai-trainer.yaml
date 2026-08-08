@@ -1,0 +1,91 @@
+title: Scam AI Trainer
+handle: "@jordan.maulana"
+
+# Every line below is lifted from src/content/blog/scam-ai-trainer.mdx.
+# Nothing here was written to fill a slide. Keep it that way.
+#
+# The `evidence` screenshots are the censored copies under
+# src/assets/blog/ — never point a slide at scam_story/ (unredacted).
+slides:
+  - kind: plain
+    heading: Scam AI Trainer
+    body: Ada yang DM, udah ngerjain task dan udah dibayar. Justru itu masalahnya.
+
+  - kind: plain
+    label: Ceritanya
+    heading: Tasknya udah dikerjain, duitnya udah masuk. Dua kali.
+    body: >-
+      Yang bikin dia curiga malah kebalikannya.. dia dibayar, tapi transferannya
+      dari 2 rekening bank yang beda.
+
+  - kind: plain
+    label: Aku bales pendek aja
+    heading: mutlak scam
+    body: Dia nanya cara taunya gimana.
+
+  - kind: evidence
+    label: Flag 1
+    heading: >-
+      HR ngatasnamakan Dynamic Yield, tapi emailnya careerdigital.media dan
+      Gmail pribadi
+    image: ../../assets/blog/scam-ai-trainer/04-kontak-resmi.webp
+    alt: >-
+      Tanda tangan email: HR Manager Dynamic Yield, dengan kontak resmi
+      audia@careerdigital.media
+
+  - kind: evidence
+    label: Flag 2
+    heading: >-
+      Dia yang katanya keterima kerja, tapi dia yang disuruh lapor balik nama
+      lengkap dan email penerima
+    image: ../../assets/blog/scam-ai-trainer/03-lapor-balik.webp
+    alt: >-
+      Email minta dikirimkan nama lengkap dan alamat email yang menerima pesan
+
+  - kind: evidence
+    label: Flag 3
+    heading: Diarahkan ke Telegram
+    body: Tidak ada company legit manapun yang ngasih task dll di Telegram.
+    image: ../../assets/blog/scam-ai-trainer/05-telegram-intro.webp
+    alt: >-
+      Pesan Telegram: agensi promosi digital, gaji cair instan, rata-rata IDR
+      400K sampai 800K per hari
+
+  - kind: evidence
+    label: Flag 4
+    heading: Task sama sekali ga nyambung
+    body: '"Any generated result is accepted." Ga ada quality control sama sekali.'
+    image: ../../assets/blog/scam-ai-trainer/06-task.webp
+    alt: >-
+      Instruksi task: pakai deepai.org, tiga prompt sudah disiapkan, any
+      generated result is accepted
+
+  - kind: plain
+    label: Terus ujungnya mereka mau apa?
+    heading: Rp 50.000 di awal itu bukan gaji.
+    body: >-
+      Itu cuma buat bikin kamu percaya terus nurut. Next mereka akan nyuruh kamu
+      login-login dan minta OTP dan semacamnya. Dari situ itu nguras rekening.
+
+  - kind: list
+    heading: Kalo udah terlanjur
+    items:
+      - Blok Telegramnya. Blok dua-duanya email pengirimnya.
+      - Duit yang udah masuk GA USAH DIBALIKIN.
+      - Ditelpon nomer tak dikenal - block. Diemail - block.
+      - JANGAN PERNAH KIRIM OTP. Ke siapapun.
+
+  - kind: list
+    heading: Mindset dari aku
+    items:
+      - Gaada kerjaan gampang langsung cair cair gitu. Wajib waspada.
+      - >-
+        Coba double check semua profil dan kredibilitas pihak-pihak yang
+        disebut. Terus cari korelasinya. Nyambung ga sih mereka ini.
+      - >-
+        Coba lebih kritis untuk menanyakan banyak hal sebelum ngelakuin apa yang
+        mereka instruksikan.
+
+  - kind: outro
+    heading: Mau tau lebih banyak cerita dan insight? Follow
+    body: "@jordan.maulana"
