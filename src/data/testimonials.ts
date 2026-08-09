@@ -27,4 +27,9 @@ export const testimonials: Testimonial[] = [
     name: "Venanda Putri",
     role: "Business Owner",
   },
+  {
+    quote: "Selama kerja bareng Jordan, menurut saya dia punya ownership yang bagus. Dia nggak cuma ngerjain ticket sesuai requirement, tapi biasanya juga ikut mikirin kemungkinan masalah yang bisa muncul dan berusaha beresin dari awal sebelum jadi masalah. Yang saya suka, kalau sudah pegang suatu pekerjaan, Jordan nggak sekadar memastikan ticket- nya selesai, tapi benar - benar berusaha memastikan hasil akhirnya juga beres dan bisa dipakai dengan baik.",
+    name: "Cong Fandi",
+    role: "COO"
+  }
 ];
