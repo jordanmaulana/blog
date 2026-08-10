@@ -20,6 +20,16 @@
   --radius-card: 1rem;
 }
 
+:root {
+  /* Height of the sticky top bar: py-4 (2rem) + the h-9 control row + border. */
+  --header-h: calc(4.25rem + 1px);
+  --rail-w: 14rem;
+}
+
+:root[data-rail="collapsed"] {
+  --rail-w: 4rem;
+}
+
 :root.dark {
   --color-bg: oklch(0.16 0.01 270);
   --color-bg-soft: oklch(0.22 0.01 270);
@@ -48,6 +58,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -55,4 +66,101 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+/* --- Nav drawer -----------------------------------------------------------
+   CSS-only slide-out built on <details>. The scrim is summary::after, so a
+   click on it lands inside the summary's hit area and toggles the drawer
+   shut without JS. It starts at --header-h so the header row stays usable. */
+
+.nav-drawer>summary {
+  list-style: none;
+}
+
+.nav-drawer>summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Keep the panel rendered while closed so it can transition. Browsers
+   without ::details-content hide it with display:none and open instantly. */
+.nav-drawer::details-content {
+  content-visibility: visible;
+}
+
+.nav-drawer-panel {
+  top: var(--header-h);
+  bottom: 0;
+  translate: -100% 0;
+  visibility: hidden;
+  transition:
+    translate 220ms ease,
+    visibility 0s linear 220ms;
+}
+
+.nav-drawer[open] .nav-drawer-panel {
+  translate: 0 0;
+  visibility: visible;
+  transition:
+    translate 220ms ease,
+    visibility 0s;
+}
+
+.nav-drawer[open]>summary::after {
+  content: "";
+  position: fixed;
+  inset: var(--header-h) 0 0 0;
+  z-index: 40;
+  background: color-mix(in oklab, var(--color-bg) 65%, transparent);
+}
+
+.nav-icon-close,
+.nav-drawer[open] .nav-icon-open {
+  display: none;
+}
+
+.nav-drawer[open] .nav-icon-close {
+  display: block;
+}
+
+:root:has(.nav-drawer[open]) body {
+  overflow: hidden;
+}
+
+/* --- Nav rail (lg+) -------------------------------------------------------
+   Permanent sidebar that collapses to icons. Width lives in --rail-w on
+   :root so the rail and the content shift animate off the same value. */
+
+#site-rail {
+  width: var(--rail-w);
+  transition: width 200ms ease;
+}
+
+.app-shell {
+  transition: padding-left 200ms ease;
+}
+
+@media (min-width: 64rem) {
+  .app-shell {
+    padding-left: var(--rail-w);
+  }
+}
+
+/* Collapsed: labels leave the visual flow but stay in the a11y tree. */
+:root[data-rail="collapsed"] #site-rail .rail-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+:root[data-rail="collapsed"] #site-rail .rail-link {
+  justify-content: center;
+  padding-inline: 0;
+}
+
+:root[data-rail="collapsed"] .rail-chevron {
+  rotate: 180deg;
 }

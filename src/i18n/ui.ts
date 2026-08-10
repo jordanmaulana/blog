@@ -9,6 +9,8 @@ export const localeLabels: Record<Lang, string> = {
 
 export const ui = {
   en: {
+    "nav.menu": "Menu",
+    "nav.railToggle": "Toggle sidebar",
     "nav.home": "Home",
     "nav.about": "About",
     "nav.products": "Products",
@@ -92,6 +94,8 @@ export const ui = {
     "footer.tip": "Buy me a coffee ☕",
   },
   id: {
+    "nav.menu": "Menu",
+    "nav.railToggle": "Buka/tutup sidebar",
     "nav.home": "Beranda",
     "nav.about": "Tentang",
     "nav.products": "Produk",

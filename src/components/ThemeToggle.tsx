@@ -32,7 +32,7 @@ export default function ThemeToggle({ label }: { label: string }) {
       onClick={toggle}
       aria-label={label}
       title={label}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-borderr-bg-soft)] text-fg transition hover:scale-105 hover:border-accent"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-bg-soft text-fg transition hover:scale-105 hover:border-accent"
     >
       <span aria-hidden="true" className="text-sm">
         {theme === "dark" ? "☀" : "☾"}

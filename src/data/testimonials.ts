@@ -34,5 +34,10 @@ export const testimonials: Testimonial[] = [
     quote: "Selama kerja bareng Jordan, menurut saya dia punya **ownership yang bagus**. Dia nggak cuma ngerjain ticket sesuai requirement, tapi biasanya juga **ikut mikirin kemungkinan masalah yang bisa muncul** dan berusaha beresin dari awal sebelum jadi masalah. Yang saya suka, kalau sudah pegang suatu pekerjaan, Jordan nggak sekadar memastikan ticket- nya selesai, tapi benar - benar berusaha memastikan hasil akhirnya juga beres dan bisa dipakai dengan baik.",
     name: "Cong Fandi",
     role: "COO"
+  },
+  {
+    quote: "Selama bekerja bersama Jordan, saya merasakan **komunikasi yang sangat baik, efektif, dan terbuka.** Hal tersebut sangat membantu dalam memastikan penyampaian tugas, koordinasi pekerjaan, maupun hasil yang diberikan dapat berjalan sesuai dengan ekspektasi dan target yang telah ditetapkan. Dalam menghadapi berbagai kendala atau issue selama pekerjaan berlangsung, Jordan juga **mampu memberikan respons dan penanganan yang baik** sehingga permasalahan dapat diselesaikan secara efektif tanpa menimbulkan hambatan yang berarti terhadap proses pekerjaan. Hal yang paling saya apresiasi adalah **kedisiplinan dan komitmen** Jordan terhadap waktu serta tanggung jawab yang diberikan. Jordan menunjukkan **konsistensi dalam memenuhi target, menjaga kualitas pekerjaan, dan menyelesaikan tugas sesuai dengan waktu yang telah disepakati.** Secara keseluruhan, Jordan merupakan rekan kerja yang **profesional, dapat diandalkan, dan memiliki komitmen yang baik dalam menjalankan tanggung jawabnya.**",
+    name: "Ahmad Haris",
+    role: "Komisaris PT. Nenggala Kreatif Indonesia"
   }
 ];

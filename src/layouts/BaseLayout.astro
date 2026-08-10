@@ -72,6 +72,8 @@ const canonical = new URL(canonicalPath, Astro.site).toString();
           ).matches;
           const isDark = stored ? stored === "dark" : prefersDark;
           document.documentElement.classList.toggle("dark", isDark);
+          if (localStorage.getItem("rail") === "collapsed")
+            document.documentElement.dataset.rail = "collapsed";
         } catch {
           /* noop */
         }
@@ -86,9 +88,12 @@ const canonical = new URL(canonicalPath, Astro.site).toString();
       Skip to content
     </a>
     <Header />
-    <main id="main" class="mx-auto max-w-5xl px-6">
-      <slot />
-    </main>
-    <Footer />
+    {/* Clears the fixed rail on lg+; the sticky header stays full-width. */}
+    <div class="app-shell">
+      <main id="main" class="mx-auto max-w-5xl px-6">
+        <slot />
+      </main>
+      <Footer />
+    </div>
   </body>
 </html>
