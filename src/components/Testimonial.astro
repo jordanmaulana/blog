@@ -1,12 +1,14 @@
 ---
 import type { Testimonial } from "~/data/testimonials";
+import { getLangFromUrl } from "~/i18n/utils";
 
 type Props = Testimonial;
 
+const lang = getLangFromUrl(Astro.url);
 const { quote, name, role, company, source, sourceUrl } = Astro.props;
-const attribution = [role, company].filter(Boolean).join(", ");
+const attribution = [role[lang], company].filter(Boolean).join(", ");
 // `**bold**` in the quote → <strong>. Odd split indices are the captured group.
-const parts = quote.split(/\*\*([\s\S]+?)\*\*/g);
+const parts = quote[lang].split(/\*\*([\s\S]+?)\*\*/g);
 ---
 
 <figure
