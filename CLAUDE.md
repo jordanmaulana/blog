@@ -64,3 +64,4 @@ React is only used for small interactive bits — keep `.tsx` files focused on s
 - The `materials/` directory is **seed material only**; it is not read at build time. Edit files under `src/content/` and `src/data/` instead.
 - About-page content and socials are structured TypeScript in [`src/data/about.ts`](src/data/about.ts) and [`src/data/socials.ts`](src/data/socials.ts) — not MDX.
 - `sharp` is a direct dependency for Astro's image pipeline (used by the `lapak` collection's `image()` schema and the prefetched OG images).
+- Copy voice — blog, carousel decks, marketing lines — is governed by [`docs/voice.md`](docs/voice.md). Rule is **source or silence**: every published line traces to a file in this repo or to Jordan's own words. Never smooth, never invent, never bolt on a CTA.

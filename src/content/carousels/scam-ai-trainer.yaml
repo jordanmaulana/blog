@@ -2,32 +2,38 @@ title: Scam AI Trainer
 handle: "@jordan.maulana"
 
 # Every line below is lifted from src/content/blog/scam-ai-trainer.mdx.
-# Nothing here was written to fill a slide. Keep it that way.
+# Nothing here was written to fill a slide. Keep it that way — the rules are
+# in docs/voice.md. The jokes, the emoji, the ":v", the "Mungkiin" survive
+# compression BEFORE the explanation does; strip them and this reads like a
+# machine summarised his post.
 #
 # The `evidence` screenshots are the censored copies under
 # src/assets/blog/ — never point a slide at scam_story/ (unredacted).
 slides:
   - kind: plain
     heading: Scam AI Trainer
-    body: Ada yang DM, udah ngerjain task dan udah dibayar. Justru itu masalahnya.
+    body: Modus penipuan baru berkedok AI trainer. Cerita dari DM Threads.
 
   - kind: plain
     label: Ceritanya
-    heading: Tasknya udah dikerjain, duitnya udah masuk. Dua kali.
+    heading: Dapet email keterima kerja, terus task kerjanya lewat Telegram, langsung dibayar, dua kali.
     body: >-
-      Yang bikin dia curiga malah kebalikannya.. dia dibayar, tapi transferannya
-      dari 2 rekening bank yang beda.
+      Dia mulai curiga karena ditransfer 2 kalinya dari akun yang beda. Nah di situ dia baru berhenti.
 
   - kind: plain
-    label: Aku bales pendek aja
-    heading: mutlak scam
-    body: Dia nanya cara taunya gimana.
+    label: Aku langsung jawab
+    heading: MUTLAK SCAM
+    body: >-
+      Dia nanya cara taunya gimana. Aku minta dia ceritain dulu dari awal sampe
+      abis. Aku tunjukin flag flagnya di next slide. FLAG 2 PALING PENTING.
 
   - kind: evidence
     label: Flag 1
     heading: >-
-      HR ngatasnamakan Dynamic Yield, tapi emailnya careerdigital.media dan
-      Gmail pribadi
+      HR ngatasnamakan Dynamic Yield, tapi emailnya careerdigital.media
+    body: >-
+      careerdigital.media domainnya ga valid. Dynamic Yield beneran ada. Tapi kayaknya cuma dipake namanya doang. Jadi ya ga
+      nyambung.
     image: ../../assets/blog/scam-ai-trainer/04-kontak-resmi.webp
     alt: >-
       Tanda tangan email: HR Manager Dynamic Yield, dengan kontak resmi
@@ -38,6 +44,9 @@ slides:
     heading: >-
       Dia yang katanya keterima kerja, tapi dia yang disuruh lapor balik nama
       lengkap dan email penerima
+    body: >-
+      Itu email blast hasil crawling by robot. Kalo ada yang ngerespon ini,
+      yaudah kejaring deh. Mereka: "Naah dapet ini ikan 1"
     image: ../../assets/blog/scam-ai-trainer/03-lapor-balik.webp
     alt: >-
       Email minta dikirimkan nama lengkap dan alamat email yang menerima pesan
@@ -45,7 +54,10 @@ slides:
   - kind: evidence
     label: Flag 3
     heading: Diarahkan ke Telegram
-    body: Tidak ada company legit manapun yang ngasih task dll di Telegram.
+    body: >-
+      Tidak ada company legit manapun yang ngasih task dll di Telegram.
+      Interaktifnya cuma beberapa chat aja, sisanya kayak ngomong sama robot.
+      Dan bener.. balesannya rata-rata ga sampe 1 menit.
     image: ../../assets/blog/scam-ai-trainer/05-telegram-intro.webp
     alt: >-
       Pesan Telegram: agensi promosi digital, gaji cair instan, rata-rata IDR
@@ -54,25 +66,35 @@ slides:
   - kind: evidence
     label: Flag 4
     heading: Task sama sekali ga nyambung
-    body: '"Any generated result is accepted." Ga ada quality control sama sekali.'
+    body: >-
+      "Any generated result is accepted." Ga ada quality control sama sekali. Ya
+      iyalah.. hasilnya emang ga dipake buat apa-apa. Itu generate gambarnya
+      doang. Terus disubmit ke Telegram ybs 😂
     image: ../../assets/blog/scam-ai-trainer/06-task.webp
     alt: >-
       Instruksi task: pakai deepai.org, tiga prompt sudah disiapkan, any
       generated result is accepted
 
   - kind: plain
-    label: Terus ujungnya mereka mau apa?
+    label: Dia dibayar 50 ribu, ke ShopeePay
     heading: Rp 50.000 di awal itu bukan gaji.
+    body: Itu cuma buat bikin kamu percaya terus nurut. Apalagi udah dibayar.
+
+  - kind: plain
+    heading: Next mereka mungkin akan minta minta OTP.
     body: >-
-      Itu cuma buat bikin kamu percaya terus nurut. Next mereka akan nyuruh kamu
-      login-login dan minta OTP dan semacamnya. Dari situ itu nguras rekening.
+      Dari situ itu nguras rekening. Nomor ShopeePay-nya udah dikasih.
+      Kemungkinan mereka investigasi dan coba login, klik lupa password, terus minta kamu kirim
+      OTP yang masuk ke HP kamu itu ke Telegram mereka. Mungkiin. Aku sendiri ga
+      tau sih, belum pernah diceritain orang yang udah kena scamnya :v
 
   - kind: list
     heading: Kalo udah terlanjur
     items:
-      - Blok Telegramnya. Blok dua-duanya email pengirimnya.
+      - Blok Telegramnya. Blok emailnya. Bodo amat~
       - Duit yang udah masuk GA USAH DIBALIKIN.
-      - Ditelpon nomer tak dikenal - block. Diemail - block.
+      - 'Kalo mau nutup, satu pesan cukup. Yaa prank balik aja: "I resign, bye"'
+      - ditelpon nomer tak dikenal - block. diemail - block.
       - JANGAN PERNAH KIRIM OTP. Ke siapapun.
 
   - kind: list
@@ -80,12 +102,13 @@ slides:
     items:
       - Gaada kerjaan gampang langsung cair cair gitu. Wajib waspada.
       - >-
-        Coba double check semua profil dan kredibilitas pihak-pihak yang
-        disebut. Terus cari korelasinya. Nyambung ga sih mereka ini.
+        Double check semua pihak yang disebut. careerdigital.media, deepai.org, Dynamic Yield. Terus cari korelasinya. Nyambung ga sih mereka
+        ini.
       - >-
-        Coba lebih kritis untuk menanyakan banyak hal sebelum ngelakuin apa yang
-        mereka instruksikan.
+        Lebih kritis nanyain banyak hal sebelum ngelakuin yang mereka
+        instruksikan. Di kerjaan beneran, banyak nanya itu bagus kok.
 
   - kind: outro
-    heading: Mau tau lebih banyak cerita dan insight? Follow
-    body: "@jordan.maulana"
+    heading: "Follow for more stories"
+    body: Kalo kamu punya kisah scam, kamu bisa komen. DM juga boleh.
+      
