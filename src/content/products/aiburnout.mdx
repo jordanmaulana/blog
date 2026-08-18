@@ -1,0 +1,95 @@
+---
+name: AI Burnout
+tagline: A plain-English list of what AI made possible, in the order it arrived — what each capability is, what you can make with it, and how people managed before.
+url: https://aiburnout.jordanmaulana.space
+stack:
+  - React
+  - Vite
+  - TanStack Router
+  - Tailwind v4
+  - Django
+  - Google OAuth
+  - Cloudflare
+status: live
+order: 0
+---
+
+**AI Burnout** is a short list of things that became possible, in the order they arrived — 23 capabilities so far, from June 2022 to February 2025. Every entry says what it is, what you can make with it, and how people managed before. You don't have to master any of it. You just have to know what it lets you do now.
+
+Live at [aiburnout.jordanmaulana.space](https://aiburnout.jordanmaulana.space).
+
+## Why
+
+Most writing about AI is news. Something launched, someone raised money. It arrives constantly and tells you almost nothing about what you can do this year that you couldn't do last year.
+
+This is the other list. Every entry is a capability described in general rather than a product with a logo: one thing an ordinary person can do that had no practical route before. The list is short and it grows slowly.
+
+Nothing here needs mastering. Knowing that a thing exists, and what it replaced, is enough to recognise the moment you need it.
+
+## What earns a place
+
+Something is added only if it lets someone do work that was impossible or wildly impractical before.
+
+**In:**
+
+- A capability an ordinary person can now use that had no practical route before.
+- No slower version of this existed to be sped up.
+- Durable enough to still be true next quarter.
+- General enough to outlive whichever product shipped it first.
+
+**Out:** faster. Cheaper. A nicer version of an existing tool. Model releases and version bumps, benchmark results, funding and acquisition news, drama and opinion pieces.
+
+That is why there is no entry for a new model. A better model is worth reading about, but the list of things you can make stays the same length.
+
+## How to read an entry
+
+Every entry answers the same three questions, in the same order.
+
+1. **What is it?** — one plain sentence, written the way you would say it out loud.
+2. **What can I make with it?** — three or four concrete things, one per line, no bullets.
+3. **What did I have to do before?** — how people coped when this did not exist.
+
+Coding agents, filed under *Agents* and usable since February 2025, reads like this. **Before:** you copied code out of a chat window, pasted it in, ran it, copied the error back, and repeated — every loop needed a person to move text between two windows. **Now:** a model that can run the code sees whether it worked, so it retries without you. What you can make with it: a whole feature from a paragraph of description, delivered as a pull request; a dependency upgrade across two hundred files; a bug fix from nothing but a stack trace and a failing test; a migration from one framework to another, done overnight.
+
+## How entries get here
+
+1. Once a day, the Hacker News front page is pulled in.
+2. A free filter drops anything off-topic or below the points floor.
+3. Whatever survives is read once against the bar above — the same words a reader sees — judged by a model.
+4. Anything that passes is filed as a draft, and a draft is not published.
+5. A person reads the draft and publishes it, or doesn't.
+
+Most days nothing is published. A list that grew every morning would just be news again.
+
+## Categories
+
+Entries are filed by what they let you do.
+
+- **Build software** (7) — writing and shipping software.
+- **Automate work** (2) — getting routine work done without doing it by hand.
+- **Agents** (3) — systems that take multi-step action on your behalf.
+- **Media** (4) — making or editing images, audio, and video.
+- **Interfaces** (2) — new ways to talk to a machine: by voice, or by pointing a camera at it.
+- **Infrastructure** (5) — the plumbing: running, serving, and tuning models.
+
+## Features
+
+- **The list, in arrival order** — every entry carries the month it became usable, from June 2022 forward.
+- **Category filters with live counts**, plus a search box over the capabilities.
+- **Progress per capability** — mark each one *new*, *I've tried this*, *I'm practicing it*, or *I mastered this*.
+- **Start here and Source links** on every entry — one place to begin, one link to what it came from.
+
+## Stack
+
+- **React** + **Vite** — the whole site is a single-page app, built and served static.
+- **TanStack Router** — file-based routing for the list, the entries, and the about page.
+- **Tailwind v4** — styling.
+- **Django** — the API, on its own subdomain at `apiaiburnout.jordanmaulana.space`.
+- **Google OAuth** — sign-in, so your progress marks follow you.
+- **Cloudflare** — in front of both the site and the API.
+
+## Status
+
+Live, with 23 capabilities on the list and more only when something actually earns a place.
+
+Keeping this list current means reading the Hacker News front page every day and paying a model to judge what is actually new. That bill is real, and one person pays it — [support the list](https://github.com/sponsors/jordanmaulana).
