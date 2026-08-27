@@ -1,0 +1,77 @@
+title: Usaha Maksimal
+handle: "@jordan.maulana"
+
+# Every line below is lifted from src/content/blog/bertahan-dalam-karir.mdx.
+# Nothing here was written to fill a slide. Keep it that way — the rules are
+# in docs/voice.md.
+#
+# Deck 1 dari 3. Intro + nilai 1 (bangga) + nilai 2 (usaha maksimal).
+# Cerita Bintang sengaja ga dipakai — makan 3 slide sendiri.
+# Lanjutannya: karir-peduli.yaml, karir-rasa-penasaran.yaml.
+slides:
+  - kind: plain
+    heading: Kemampuanku beneran biasa-biasa aja.
+    body: >-
+      Bacalah ini jika kamu sedang merasa seperti impostor atau kamu baru saja
+      memulai karir.
+
+  - kind: plain
+    label: Motivasi awal
+    heading: >-
+      Posisi yang sudah aku capai saat ini adalah posisi yang sangat bisa
+      dikejar oleh teman-teman.
+    body: >-
+      Kalo kamu mengikuti acara-acara atau seminar-seminar tech, keberadaanku di
+      luar radar orang-orang hebat itu. Yang kulakukan hanyalah bertahan dan
+      terus belajar sejengkal demi sejengkal.
+
+  - kind: plain
+    heading: >-
+      Oke! Berikut ini nilai-nilai yang aku terapkan untuk mencapai posisi
+      sekarang.
+
+  - kind: plain
+    label: Hasilkan sesuatu sampai kamu bangga
+    heading: Bangga itu gimana?
+    body: >-
+      Bangga itu sampe kamu keluar kalimat "Wanjay keren banget ini" atau sampe
+      kamu merasa puas dengan apa yang kamu lakukan. Ga harus semuanya, yang
+      penting ada dulu aja.
+
+  - kind: plain
+    label: Bikin CV
+    heading: Bikin sampe kamu puas dulu aja.
+    body: >-
+      Kalo misal terus di-review sama orang yang memang kompeten, terus dia
+      bilang CVmu jelek, itu urusan nanti. Setidaknya kamu sudah mengerahkan
+      semua kemampuanmu sesuai kapasitas yang kamu miliki.
+
+  - kind: plain
+    heading: >-
+      Sesuatu yang membuatmu bangga tidak akan dihasilkan oleh usaha yang ala
+      kadarnya.
+    body: >-
+      Dan kalo hasil belum membanggakan, setidaknya, usahanya harus
+      membanggakan.
+
+  - kind: plain
+    label: Usaha maksimal
+    heading: Cliche ya?
+    body: >-
+      Semua orang juga tau harus usaha maksimal, tapi kenyataannya, tidak semua
+      orang bisa. Usaha maksimal itu tidak diukur dari hasil yang luar biasa.
+      Satu-satunya orang yang bisa mengukur usahamu sudah maksimal atau belum,
+      ya dirimu sendiri, karena situasi dan kondisi masing-masing orang
+      berbeda-beda.
+
+  - kind: plain
+    heading: >-
+      Maksimalkan usahamu dengan segala keterbatasan situasi & kondisi yang kamu
+      miliki.
+    body: >-
+      Jangan bandingin dirimu dengan orang yang lebih hebat dulu. Bandingin dirimu dengan dirimu sendiri, dan lihat apakah kamu
+      sudah mengerahkan semua kemampuanmu sesuai kapasitas yang kamu miliki. InsyaAllah you'll find the way.
+
+  - kind: outro
+    heading: Follow untuk lebih banyak insight
+    body: "@jordan.maulana"

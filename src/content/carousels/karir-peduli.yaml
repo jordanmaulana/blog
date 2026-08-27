@@ -1,0 +1,79 @@
+title: Peduli & Kesalahan
+handle: "@jordan.maulana"
+
+# Every line below is lifted from src/content/blog/bertahan-dalam-karir.mdx.
+# Nothing here was written to fill a slide. Keep it that way — the rules are
+# in docs/voice.md.
+#
+# Deck 2 dari 3. Nilai 3 (peduli) + 4 (mengakui kesalahan) + 5 (belajar dari
+# kesalahan). Sebelumnya: karir-usaha-maksimal.yaml.
+slides:
+  - kind: plain
+    label: Peduli
+    heading: Kampusmu punya gedung baru. Belum ada instalasi proyektor.
+    body: >-
+      Jadi ketika ada jadwal kuliah di ruang gedung ini, salah satu harus
+      meminjam ke ruang pinjam proyektor di gedung itu.
+
+  - kind: list
+    heading: 4 tipe kepedulian orang
+    items:
+      - Gak tau
+      - Tau tapi diam
+      - Tau tapi menyuruh orang lain
+      - Tau dan mau bergerak
+
+  - kind: plain
+    heading: >-
+      "Loh kan bakal gaada masalah kalo ditunjuk 1 orang jadi penanggung jawab
+      pinjam proyektor?"
+    body: >-
+      Iya bisa jadi, tapi tantangannya adalah ketika 1 orang ini gak masuk
+      kuliah atau datangnya terlambat.
+
+  - kind: plain
+    heading: >-
+      Orang ke-4 akan berkembang jauh lebih cepat karena kepedulian yang
+      terukur.
+    body: >-
+      Kendati demikian, ini tetap saja bukan penilaian absolut bahwa orang ke-4
+      akan sukses dan yang lainnya akan gagal.
+
+  - kind: plain
+    label: Mengakui kesalahan
+    heading: >-
+      Kebanyakan orang lebih suka repot-repot berkelit atau menyalahkan orang
+      lain.
+    body: >-
+      Sulit memang mengakui kesalahan dan ini memang datang dengan resiko kamu
+      dipandang buruk.
+
+  - kind: plain
+    heading: Tapi . . .
+    body: >-
+      Ketika kamu mengakui kesalahan, bisa mengatasi masalah itu, dan bisa
+      belajar untuk tidak melakukan itu lagi, maka nilaimu akan jauh lebih
+      tinggi di mata atasanmu.
+
+  - kind: plain
+    label: Belajar dari kesalahan
+    heading: Ok siap salah. Tapi masih aja ngelakuin hal yang sama.
+    body: >-
+      Rasa bersalah dan menyesal itu kadang belum cukup untuk melakukan apa yang
+      seharusnya dilakukan.
+
+  - kind: plain
+    label: Kasih dirimu sendiri CTA yang jelas
+    heading: Oke coba aku setup alarm 5 menit sebelum meeting.
+    body: >-
+      Ini sudah tindakan yang jelas sebagai bentuk nyata mitigasi kesalahan yang
+      sama.
+
+  - kind: plain
+    heading: >-
+      Kesalahan itu bukan hal yang salah karena semua orang bisa berbuat salah.
+      Yang salah adalah ketika tidak belajar dari kesalahan itu.
+
+  - kind: outro
+    heading: Follow untuk lebih banyak insight
+    body: jordanmaulana.space

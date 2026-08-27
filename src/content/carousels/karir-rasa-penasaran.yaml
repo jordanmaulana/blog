@@ -1,0 +1,54 @@
+title: Rasa Penasaran
+handle: "@jordan.maulana"
+
+# Every line below is lifted from src/content/blog/bertahan-dalam-karir.mdx.
+# Nothing here was written to fill a slide. Keep it that way — the rules are
+# in docs/voice.md.
+#
+# Deck 3 dari 3. Nilai 6 (rasa penasaran) + penutup post. Deck ini paling
+# pendek dan memang dibiarkan pendek — docs/voice.md: bagian pendek tidak
+# dipanjangin biar seimbang sama yang lain.
+slides:
+  - kind: plain
+    label: Tumbuhkan rasa penasaran
+    heading: Waduh lampunya kok gak nyala ya, harusnya nyala ini.
+    body: >-
+      Rasa penasaran, khususnya dalam dunia pemrograman, adalah salah satu
+      driver terbesar atas perkembangan skill kita, apalagi rasa penasaran atas
+      hal yang seharusnya bisa tapi gak bisa.
+
+  - kind: plain
+    heading: >-
+      Mungkin lampunya yang rusak, mungkin kabelnya yang rusak, mungkin
+      saklarnya yang rusak.
+    body: >-
+      Proses mencari tau apa yang rusak ini juga dilandaskan rasa penasaran.
+
+  - kind: plain
+    label: Jalan pintas
+    heading: '"Butuh cahaya kan berarti? Nyalain lilin aja kalo gitu"'
+
+  - kind: plain
+    heading: >-
+      Solusi cepat karena nihilnya rasa penasaran akan menimbulkan banyak efek
+      domino yang negatif.
+    body: >-
+      Nihilnya keinginan untuk menuntaskan akar dari masalah, dalam sesuatu yang
+      kita kerjakan itu.
+
+  - kind: plain
+    label: Penutup
+    heading: Kita semua punya keunikan, kelebihan dan kekurangan masing-masing.
+    body: >-
+      Semua 6 nilai tadi bisa jadi atau mungkin juga tidak bisa serta merta
+      diterapkan ke diri teman-teman sekalian. Teman-teman mungkin juga akan
+      memiliki keunikan dan nilai tersendiri yang tidak kusebutkan.
+
+  - kind: plain
+    heading: >-
+      In the phase of getting inspired and keep advancing, don't lose your own
+      sparks
+
+  - kind: outro
+    heading: Follow untuk lebih banyak insight
+    body: jordanmaulana.space
