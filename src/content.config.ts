@@ -11,6 +11,10 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     heroImage: z.string().optional(),
+    // Optional id of a `products` entry (filename without extension) — renders a
+    // link to that product under the post. Omit and the post just gets the
+    // newsletter box.
+    funnelsTo: z.string().optional(),
   }),
 });
 

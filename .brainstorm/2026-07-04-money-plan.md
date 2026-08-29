@@ -207,6 +207,7 @@ Warm-outreach lever is ~spent (10 contacts → 1 paying: Venanda). Ivan + Uwais 
 | W3 (Jul 18-24) | — | — | — | — | 0 blog |
 | W4 (Jul 25-31) | — | — | — | — | 0 blog |
 | Aug 4-7 (post-window) | — | — | — | — | 0 blog · carousel generator + proof section (live) |
+| Aug 8-30 | — | — | — | — | **3 blog** (scam-ai-trainer 8/8 · wealth 8/19 · bertahan-dalam-karir 8/27) · 26 carousel slides |
 
 ### Day-34 status (2026-08-07) — window closed Aug 3
 
@@ -225,3 +226,30 @@ Warm-outreach lever is ~spent (10 contacts → 1 paying: Venanda). Ivan + Uwais 
 - **Next:** Post 1
   (outline in [`content-engine.md`](./content-engine.md)). Repurpose the IG/Threads posts
   that already landed well — don't write from scratch.
+
+### Day-57 status (2026-08-30)
+
+- **Writing gap CLOSED.** Blog went 2 → 5 posts. The Aug-7 note ("nothing written")
+  no longer holds — but none of the 3 are the outline posts. W2/W4 "Publish Post 1 /
+  Post 2" is **superseded**: he wrote his own material instead (`scam-ai-trainer`,
+  `wealth`, `bertahan-dalam-karir`), all ID, all personal-voice.
+- **The gap moved again — posts were dead ends.** `grep` over `src/content/blog/*.mdx`
+  found **zero** product or newsletter mentions, and neither `src/pages/blog/[slug].astro`
+  nor `src/pages/id/blog/[slug].astro` rendered any CTA — `NewsletterSignup` mounted
+  only on the homepage and the blog *index*. Every post published since Jul 4 sent its
+  traffic nowhere. Content-engine rule #2 was never wired.
+- **FIXED today.** Both `[slug].astro` templates now render, below the article: an
+  optional product card + the newsletter box. Opt-in per post via a new `funnelsTo`
+  frontmatter field (a `products` collection id) on the `blog` schema in
+  `src/content.config.ts`; name/tagline/url come from the products entry, button copy
+  reuses the existing `products.try` key — no duplicated copy, no new i18n keys.
+  Set: `wealth` → ngaturduit · `scam-ai-trainer` + `bertahan-dalam-karir` → cariinkerja.
+  `tauhid` and `tutorial-resign` have none (tutorial-resign → cariinkerja is a
+  plausible add, Jordan's call). Verified in `dist/`: product link + Buttondown form
+  on both locales; `tauhid` gets the newsletter only.
+- **Still untouched since Aug 7:** newsletter never sent (0 issues, list collecting
+  since Jul 4) · Umami review never run · 3 of 5 Cariinkerja user calls · Venanda
+  referral ask · Sidik offer.
+- **Next, in order:** (1) send newsletter issue 1 — no new writing, intro + the 3 posts
+  + cariinkerja; (2) Umami review, there are finally 3 posts of data; (3) the 3
+  remaining user calls.
