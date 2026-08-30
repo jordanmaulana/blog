@@ -1,0 +1,89 @@
+---
+name: Product Idea Generator
+tagline: Mines public complaints for product ideas — scored against one builder profile, not a generic market.
+stack:
+  - Django
+  - DRF
+  - Postgres
+  - React 19
+  - Vite
+  - Tailwind v4
+  - Claude Code CLI
+status: prototype
+order: 6
+---
+
+**Product Idea Generator** harvests raw gripes from Hacker News, Reddit, App Store reviews and RSS, clusters them into evidenced pain themes, generates product ideas scored 1–5 on four axes, and runs a web-searching due-diligence brief on the ones worth keeping.
+
+Two things before anything else:
+
+- **The LLM is the local Claude Code CLI**, shelled out to as a subprocess. There is no `ANTHROPIC_API_KEY` in the project. If `claude` isn't on `PATH`, three of the four stages refuse to run.
+- **The scores are personal.** The builder profile and the rubric are hard-coded to one solo dev. Edit them or the ranking means nothing.
+
+## Why the pile has to be balanced
+
+Clustering takes an even slice from every source rather than the top of the pile by score. That evenness is the whole point: ranking the pile by its own numbers looks sensible and quietly breaks it, because an upvote count, a negated star rating and a feed item's nothing aren't measured on the same scale — the loudest source would crowd out the rest.
+
+The evidence floor does the other half. A theme has to point at two or more real complaints or it's thrown away. One person's bad day isn't a trend.
+
+## The flow
+
+```
+                      ┌─ cluster ─> Theme ─── generate ──> Idea ── deep dive ─> DeepDive
+Source ── harvest ─> Signal          (pain +              (scored /20)          (markdown
+ (config)            (raw)            audience)                                  brief)
+                      │
+                      └─ qualify ─> Lead ──── research ──> OutreachBrief
+                                    (a named person,       (who they are, what to
+                                     scored /20)            charge, what to send)
+```
+
+The same harvest feeds two independent branches, and `Source.purpose` (`ideas` / `leads` / `both`) decides which one reads a source. It isn't decoration: clustering splits its batch evenly across sources, so a hiring feed left in the idea branch quietly starves the complaint feeds.
+
+### Ideas
+
+**Harvest** is the only stage that doesn't think. It walks the enabled sources one at a time, asking each for what's appeared since it last ran, and stores whatever comes back against the id the site gave it — which is what makes re-running harmless. The clock only moves forward after a fetch that actually worked, so a failed run picks the same window back up instead of stepping over it.
+
+**Cluster** sends a per-source balanced batch to the model in one pass, along with the themes already open, and asks which of these are the same problem described by different people. When a cluster turns out to be a pain that already has a theme, the new evidence joins it rather than a near-duplicate appearing alongside. Coming back with nothing at all is a perfectly good answer: most of the internet is noise.
+
+**Generate** works one theme at a time. The model gets the pain, who has it, and the dozen most recent complaints behind it — then two lists that keep it honest: every idea already killed, and every idea already proposed for this theme. The first stops it circling back to something rejected last week. The second is why a second pass over a theme produces new angles instead of the same idea reworded. Four axes × 1–5 → a score out of 20: **buildable** (ship a v1 alone in 2–4 weeks?), **evidence** (does the source material really support this?), **willingness** (is money already moving?), **reachable** (can you find these people?).
+
+**Deep dive** is the only stage aimed at a single idea, and the only one allowed to read the web: a verdict, who already does this, what changed recently to make it possible, the smallest version worth shipping, where the first ten users are, and the three most likely ways it dies. It can take a quarter of an hour, so it runs in the background and the page comes straight back saying the dive has started.
+
+### Leads
+
+The lead branch asks a different question of the same raw posts: not "what could I build for a market" but "who is asking to hire someone right now, and can I do it". So it works one signal at a time rather than clustering — a market is an aggregate, a client is a person.
+
+One rule carries the whole stage: **a lead that cannot be quoted is not a lead.** Every lead must cite the signal it came from and copy a line out of it word for word. That quote is checked against the stored text before anything is saved — whitespace and capitals are forgiven, a paraphrase is not — and a lead that fails is dropped and logged. Without that check the output is a CRM full of people who never asked for anything, which is worse than an empty one, because you'd spend a week finding out.
+
+Every signal the batch looked at is stamped as qualified, rejects included. That's what stops the same noise coming back and being paid for again next run.
+
+The outreach brief is deep dive's counterpart aimed at a person: what the job actually is once translated into a scope you'd quote on, who else is bidding and at what price, a realistic range, a ready-to-send opener in their own register, and the honest case for why it's a waste of time.
+
+## Sources
+
+| Kind | What it pulls | What the number means |
+| --- | --- | --- |
+| Hacker News | A search phrase against HN's own index, newest first. No credentials | upvotes |
+| App Store | One app's public review feed, kept at or below a star ceiling | the star rating, negated — one star is the loudest |
+| RSS / Atom | Any feed URL — the "what's newly possible" input, not a pain input | nothing; always zero |
+| Reddit | One subreddit, searched or read newest-first. **Unavailable** — Reddit no longer issues API credentials | upvotes |
+
+## Design notes
+
+- **Nothing is scheduled.** `make brew` (harvest → cluster → generate) or a console button are the only triggers. `make qualify` sits outside brew — leads run on their own cadence.
+- **There is no job table.** Progress is visible as row counts, `Source.last_run_at`, and a dive's status. That's why every message says "started", never "done".
+- **Long work never runs in-request.** Gunicorn's timeout is 60s; the LLM calls allow 300–900s, so triggers hand off to a background thread that closes its own DB connection when it's finished.
+- **Plain forms in the console** — no JS, no HTMX. Every mutation is POST + redirect, with an open-redirect guard on `next=`.
+- Each stage brings its own instructions, replacing Claude Code's rather than sitting on top of them — the default persona is a coding agent that has read the repo's conventions, and none of that belongs in a prompt about clustering complaints.
+
+## Stack
+
+- **Django + DRF**, token auth, `uv` for dependencies. Empty `POSTGRES_HOST` means SQLite; set it and you're on Postgres.
+- **Server-rendered ops console** at `/dashboard/`, superuser-only — where the pipeline actually gets driven.
+- **React 19 + Vite + TanStack Router + Jotai + Tailwind v4** SPA for the read-and-triage side: ideas list, scores, evidence, notes, deep-dive trigger. It has no pipeline triggers — harvest, cluster and generate aren't on the API at all.
+- **Claude Code CLI** as the entire LLM layer.
+
+## Status
+
+Private and local-only. The Docker image doesn't ship Claude Code, so a deployed instance can harvest but not think — clustering, generation and deep dives run on the machine that has the CLI. 32 tests under `uv run manage.py test`.
