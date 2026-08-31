@@ -63,13 +63,6 @@ export const ui = {
     "about.portfolio": "View career portfolio →",
     "products.try": "Try it free →",
     "products.spotlight": "Live now",
-    "newsletter.title": "Notes in your inbox",
-    "newsletter.sub":
-      "Once in a while I email what I'm building and learning — AI, indie products, engineering. No spam.",
-    "newsletter.placeholder": "you@email.com",
-    "newsletter.button": "Subscribe",
-    "newsletter.note": "Unsubscribe anytime.",
-    "newsletter.disabled": "Signup opens soon.",
     "gears.disclosure":
       "Some links are Shopee affiliate links — if you buy through them I may earn a small commission, at no extra cost to you.",
     "nav.work": "Work with me",
@@ -148,13 +141,6 @@ export const ui = {
     "about.portfolio": "Lihat portofolio karier →",
     "products.try": "Coba gratis →",
     "products.spotlight": "Sudah rilis",
-    "newsletter.title": "Catatan ke inbox kamu",
-    "newsletter.sub":
-      "Sesekali aku kirim email soal yang lagi aku bangun dan pelajari — AI, produk indie, engineering. Tanpa spam.",
-    "newsletter.placeholder": "kamu@email.com",
-    "newsletter.button": "Langganan",
-    "newsletter.note": "Berhenti kapan saja.",
-    "newsletter.disabled": "Pendaftaran segera dibuka.",
     "gears.disclosure":
       "Sebagian tautan adalah link afiliasi Shopee — kalau kamu beli lewat situ, aku bisa dapat komisi kecil tanpa nambah biaya buat kamu.",
     "nav.work": "Kerja bareng",

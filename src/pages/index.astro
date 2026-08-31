@@ -5,7 +5,6 @@ import ProductCard from "~/components/ProductCard.astro";
 import LapakCard from "~/components/LapakCard.astro";
 import GearCard from "~/components/GearCard.astro";
 import PostCard from "~/components/PostCard.astro";
-import NewsletterSignup from "~/components/NewsletterSignup.astro";
 import FadeIn from "~/components/motion/FadeIn.tsx";
 import { getCollection } from "astro:content";
 import { getLangFromUrl, localizedPath, useTranslations } from "~/i18n/utils";
@@ -142,9 +141,5 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
         )
       }
     </div>
-  </FadeIn>
-
-  <FadeIn client:visible className="py-12">
-    <NewsletterSignup />
   </FadeIn>
 </BaseLayout>
