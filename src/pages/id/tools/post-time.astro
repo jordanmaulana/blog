@@ -1,0 +1,40 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import PostTime from "~/components/PostTime.tsx";
+import { getLangFromUrl, useTranslations } from "~/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={`${t("tools.postTime")} — Jordan Maulana`}
+  description={t("tools.postTime.desc")}
+>
+  <section class="space-y-8 py-16">
+    <header class="space-y-2">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+        {t("nav.tools")}
+      </p>
+      <h1
+        class="text-balance text-4xl font-semibold tracking-tight md:text-5xl"
+      >
+        {t("tools.postTime")}
+      </h1>
+      <p class="text-fg-soft">{t("tools.postTime.desc")}</p>
+    </header>
+
+    {/* client:only — output depends on the visitor's clock, not build time. */}
+    <PostTime
+      client:only="react"
+      lang={lang}
+      labels={{
+        next: t("tools.postTime.next"),
+        now: t("tools.postTime.now"),
+        none: t("tools.postTime.none"),
+        note: t("tools.postTime.note"),
+        sources: t("tools.postTime.sources"),
+      }}
+    />
+  </section>
+</BaseLayout>

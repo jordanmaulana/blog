@@ -91,6 +91,15 @@ export const ui = {
     "tools.colorViewer.window": "Full window",
     "tools.colorViewer.screen": "Full screen",
     "tools.colorViewer.exit": "Click or press Esc to exit",
+    "tools.postTime": "Best time to post",
+    "tools.postTime.desc":
+      "Short-video posting hours for today on TikTok, Instagram and YouTube, ranked by how many studies agree.",
+    "tools.postTime.next": "Next best",
+    "tools.postTime.now": "now",
+    "tools.postTime.none": "No more picks today",
+    "tools.postTime.note":
+      "Your local time. An hour counts once for each study that picks it. Instagram studies cover all post types.",
+    "tools.postTime.sources": "Sources",
   },
   id: {
     "nav.menu": "Menu",
@@ -176,6 +185,15 @@ export const ui = {
     "tools.colorViewer.window": "Jendela penuh",
     "tools.colorViewer.screen": "Layar penuh",
     "tools.colorViewer.exit": "Klik atau tekan Esc untuk keluar",
+    "tools.postTime": "Jam terbaik posting",
+    "tools.postTime.desc":
+      "Jam posting video pendek hari ini di TikTok, Instagram, dan YouTube, diurutkan dari jumlah studi yang setuju.",
+    "tools.postTime.next": "Berikutnya",
+    "tools.postTime.now": "sekarang",
+    "tools.postTime.none": "Tidak ada jam pilihan lagi hari ini",
+    "tools.postTime.note":
+      "Waktu lokal kamu. Satu jam dihitung sekali untuk tiap studi yang memilihnya. Studi Instagram mencakup semua jenis post.",
+    "tools.postTime.sources": "Sumber",
   },
 } as const satisfies Record<Lang, Record<string, string>>;
 
