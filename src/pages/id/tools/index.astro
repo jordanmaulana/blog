@@ -1,0 +1,44 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { getLangFromUrl, localizedPath, useTranslations } from "~/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const tools = [
+  {
+    href: localizedPath(lang, "/tools/color-viewer"),
+    name: t("tools.colorViewer"),
+    desc: t("tools.colorViewer.desc"),
+  },
+];
+---
+
+<BaseLayout title={`${t("nav.tools")} — Jordan Maulana`}>
+  <section class="space-y-8 py-16">
+    <header class="space-y-2">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+        {t("nav.tools")}
+      </p>
+      <h1
+        class="text-balance text-4xl font-semibold tracking-tight md:text-5xl"
+      >
+        {t("nav.tools")}
+      </h1>
+    </header>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      {
+        tools.map((tool) => (
+          <a
+            href={tool.href}
+            class="block rounded-(--radius-card) border border-border bg-bg-soft/40 p-6 transition hover:border-accent"
+          >
+            <h2 class="text-lg font-semibold tracking-tight">{tool.name}</h2>
+            <p class="mt-1 text-sm text-fg-soft">{tool.desc}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

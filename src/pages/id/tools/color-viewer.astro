@@ -1,0 +1,35 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import ColorViewer from "~/components/ColorViewer.tsx";
+import { getLangFromUrl, useTranslations } from "~/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={`${t("tools.colorViewer")} — Jordan Maulana`}
+  description={t("tools.colorViewer.desc")}
+>
+  <section class="space-y-8 py-16">
+    <header class="space-y-2">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+        {t("nav.tools")}
+      </p>
+      <h1
+        class="text-balance text-4xl font-semibold tracking-tight md:text-5xl"
+      >
+        {t("tools.colorViewer")}
+      </h1>
+    </header>
+
+    <ColorViewer
+      client:load
+      labels={{
+        window: t("tools.colorViewer.window"),
+        screen: t("tools.colorViewer.screen"),
+        exit: t("tools.colorViewer.exit"),
+      }}
+    />
+  </section>
+</BaseLayout>

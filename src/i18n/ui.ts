@@ -85,6 +85,12 @@ export const ui = {
     "work.email": "Email me →",
     "work.note": "Async-first, remote. I usually reply within a day.",
     "footer.tip": "Buy me a coffee ☕",
+    "nav.tools": "Tools",
+    "tools.colorViewer": "Color viewer",
+    "tools.colorViewer.desc": "Pick a color, show it full window or full screen.",
+    "tools.colorViewer.window": "Full window",
+    "tools.colorViewer.screen": "Full screen",
+    "tools.colorViewer.exit": "Click or press Esc to exit",
   },
   id: {
     "nav.menu": "Menu",
@@ -163,6 +169,13 @@ export const ui = {
     "work.email": "Email aku →",
     "work.note": "Async-first, remote. Biasanya aku balas dalam sehari.",
     "footer.tip": "Traktir kopi ☕",
+    "nav.tools": "Tools",
+    "tools.colorViewer": "Color viewer",
+    "tools.colorViewer.desc":
+      "Pilih warna, tampilkan satu jendela penuh atau layar penuh.",
+    "tools.colorViewer.window": "Jendela penuh",
+    "tools.colorViewer.screen": "Layar penuh",
+    "tools.colorViewer.exit": "Klik atau tekan Esc untuk keluar",
   },
 } as const satisfies Record<Lang, Record<string, string>>;
 
