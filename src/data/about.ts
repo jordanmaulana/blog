@@ -31,6 +31,10 @@ export const profile = {
     "Eight years of building software, mostly mobile. Flutter is home, but I've done plenty of full-stack work with Django, React, and other tools along the way. I've led mobile teams, shipped 20+ production apps, and helped junior developers grow into confident engineers. \"Creator\" in my title? Not only about content creation. I share the journey, and build things that I use myself.",
 } as const;
 
+/** LinkedIn About, verbatim — used by scripts/render-resume.mjs, not the site. */
+export const resumeSummary =
+  "Seasoned Software Engineer with 8+ years of experience in Flutter and full-stack development. Proven expertise in leading mobile teams, delivering scalable apps, and mentoring developers. Strong track record of enhancing development efficiency and launching dozens of successful applications. Adept at bridging technical and business needs, ensuring alignment between features and organizational goals. Passionate about knowledge sharing and building learning cultures in tech communities.";
+
 export const portfolioUrl = "https://drive.google.com/file/d/1vTXu9jBJf_9Q6rUq1loilNIl-VDc6EDO/view?usp=sharing";
 
 export const experience: Job[] = [
