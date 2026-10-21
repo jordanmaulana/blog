@@ -17,25 +17,25 @@ export const socials: Social[] = [
     label: "Instagram",
     handle: "@jordan.maulana",
     url: "https://www.instagram.com/jordan.maulana",
-    followers: 1224,
+    followers: 1540,
   },
   {
     label: "TikTok",
     handle: "@joewannalearn",
     url: "https://www.tiktok.com/@joewannalearn",
-    followers: 207,
+    followers: 877,
   },
   {
     label: "Threads",
     handle: "@jordan.maulana",
     url: "https://www.threads.com/@jordan.maulana",
-    followers: 667,
+    followers: 785,
   },
   {
     label: "YouTube",
     handle: "@jordan.maulana",
     url: "https://www.youtube.com/@jordan.maulana",
-    followers: 189,
+    followers: 212,
   },
 ];
 
