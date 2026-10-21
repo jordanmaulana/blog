@@ -1,0 +1,159 @@
+---
+import { experience } from "~/data/about";
+import { testimonials } from "~/data/testimonials";
+import { getLangFromUrl, useTranslations } from "~/i18n/utils";
+import FadeIn from "./motion/FadeIn.tsx";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const calendlyUrl = "https://calendly.com/jordanmaulana";
+
+const venanda = testimonials.find((x) => x.name === "Venanda Putri");
+const remoteJobs = experience.filter((job) => job.location.includes("Remote"));
+
+const appRows = [
+  t("hero.excel.app.stock"),
+  t("hero.excel.app.price"),
+  t("hero.excel.app.qty"),
+];
+// Bar widths (%) for the decorative spreadsheet — shapes only, no figures.
+const sheetRows = [
+  [70, 45, 30],
+  [55, 80, 40],
+  [85, 35, 60],
+  [40, 65, 50],
+  [75, 50, 35],
+];
+
+const titleClass =
+  "text-balance text-3xl font-semibold leading-[1.05] tracking-tight md:text-5xl";
+const ctaClass =
+  "inline-block rounded-full bg-accent px-5 py-2 text-sm font-medium text-accent-fg transition hover:opacity-90";
+---
+
+<section
+  class="grid gap-10 border-t border-border py-16 md:grid-cols-2 md:items-center md:gap-16 md:py-24"
+>
+  <FadeIn client:visible className="flex flex-col items-start gap-6 md:order-last">
+    <h2 class={titleClass}>{t("hero.excel.title")}</h2>
+    {
+      venanda && (
+        <blockquote class="max-w-prose space-y-2 border-l-2 border-accent pl-4">
+          <p class="text-pretty text-base text-fg-soft md:text-lg">
+            “…{t("hero.excel.quote")}”
+          </p>
+          <footer class="font-mono text-xs text-fg-soft">
+            {venanda.name} · {venanda.role[lang]}
+          </footer>
+        </blockquote>
+      )
+    }
+    <a
+      href={calendlyUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class={ctaClass}
+    >
+      {t("work.book")}
+    </a>
+  </FadeIn>
+
+  <FadeIn client:visible delay={0.15}>
+    <div class="flex items-center gap-3 sm:gap-4" aria-hidden="true">
+      <div
+        class="min-w-0 flex-1 overflow-hidden rounded-(--radius-card) border border-border bg-bg-soft/60"
+      >
+        <div
+          class="grid grid-cols-[1.5rem_repeat(3,1fr)] border-b border-border font-mono text-[10px] text-fg-soft"
+        >
+          <span></span>
+          {
+            ["A", "B", "C"].map((col) => (
+              <span class="border-l border-border px-2 py-1">{col}</span>
+            ))
+          }
+        </div>
+        {
+          sheetRows.map((widths, i) => (
+            <div class="grid grid-cols-[1.5rem_repeat(3,1fr)] border-b border-border last:border-b-0">
+              <span class="py-2 text-center font-mono text-[10px] text-fg-soft">
+                {i + 1}
+              </span>
+              {widths.map((w) => (
+                <span class="flex items-center border-l border-border px-2 py-2">
+                  <span
+                    class="block h-1.5 rounded-full bg-fg-soft/30"
+                    style={`width: ${w}%`}
+                  />
+                </span>
+              ))}
+            </div>
+          ))
+        }
+      </div>
+
+      <span class="shrink-0 text-2xl text-accent">→</span>
+
+      <div
+        class="min-w-0 flex-1 rounded-(--radius-card) border border-border bg-bg p-3 shadow-xl shadow-(--color-accent)/10"
+      >
+        <div class="mb-3 flex gap-1">
+          <span class="size-2 rounded-full bg-border"></span>
+          <span class="size-2 rounded-full bg-border"></span>
+          <span class="size-2 rounded-full bg-border"></span>
+        </div>
+        <ul class="space-y-2">
+          {
+            appRows.map((label) => (
+              <li class="flex items-center justify-between gap-2 rounded-lg border border-border bg-bg-soft/60 px-3 py-2 text-xs">
+                <span class="min-w-0">{label}</span>
+                <span class="size-2 shrink-0 rounded-full bg-accent" />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </FadeIn>
+</section>
+
+<section
+  class="grid gap-10 border-t border-border py-16 md:grid-cols-2 md:items-center md:gap-16 md:py-24"
+>
+  <FadeIn client:visible className="flex flex-col items-start gap-6">
+    <h2 class={titleClass}>{t("hero.remote.title")}</h2>
+    <p class="max-w-prose text-pretty text-base text-fg-soft md:text-lg">
+      {t("hero.remote.body")}
+    </p>
+    <a
+      href={calendlyUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class={ctaClass}
+    >
+      {t("work.book")}
+    </a>
+  </FadeIn>
+
+  <FadeIn client:visible delay={0.15}>
+    <ul class="space-y-3">
+      {
+        remoteJobs.map((job) => (
+          <li class="rounded-(--radius-card) border border-border bg-bg-soft/60 p-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <p class="text-sm font-semibold">{job.company}</p>
+              <span class="rounded-full border border-accent/40 bg-accent/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
+                {job.location}
+              </span>
+            </div>
+            <p class="mt-1 text-sm text-fg-soft">{job.role}</p>
+            <p class="mt-2 font-mono text-xs text-fg-soft">
+              {job.start} – {job.end}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </FadeIn>
+</section>

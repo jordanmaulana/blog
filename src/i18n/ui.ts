@@ -24,6 +24,15 @@ export const ui = {
       "8+ years building Flutter apps and full-stack systems. I lead mobile teams, ship indie products, and share about what I learn.",
     "hero.followers": "{count} followers across {n} platforms",
     "social.followers": "followers",
+    "hero.excel.title": "Turn Excel into an app",
+    "hero.excel.quote":
+      "with that app I can easily find stock differences, price differences, and quantity differences for the items in my warehouse",
+    "hero.excel.app.stock": "Stock difference",
+    "hero.excel.app.price": "Price difference",
+    "hero.excel.app.qty": "Quantity difference",
+    "hero.remote.title": "Practice finding remote work",
+    "hero.remote.body":
+      "June 23 I was frustrated trying n8n. August 18 I got a full-time n8n job.",
     "section.products": "What I'm building",
     "section.products.sub": "Side projects that became real products.",
     "section.gears": "Gears I use",
@@ -117,6 +126,15 @@ export const ui = {
       "8+ tahun bangun aplikasi Flutter dan sistem full-stack. Mimpin tim mobile, rilis produk indie, dan berbagi hasil belajar.",
     "hero.followers": "{count} pengikut di {n} platform",
     "social.followers": "pengikut",
+    "hero.excel.title": "Ubah Excel menjadi Aplikasi",
+    "hero.excel.quote":
+      "dgn aplikasi tsb sy bisa dgn mudah menemukan selisih stok, selisih harga, dan selisih quantity utk item yg ada di gudang sy",
+    "hero.excel.app.stock": "Selisih stok",
+    "hero.excel.app.price": "Selisih harga",
+    "hero.excel.app.qty": "Selisih quantity",
+    "hero.remote.title": "Praktek cari kerja remote",
+    "hero.remote.body":
+      "23 Juni aku frustrasi nyoba n8n. 18 Agustus aku dapat full time job n8n.",
     "section.products": "Yang lagi aku bangun",
     "section.products.sub": "Proyek sampingan yang jadi produk beneran.",
     "section.gears": "Gears yang aku pakai",
