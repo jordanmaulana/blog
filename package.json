@@ -12,7 +12,8 @@
     "astro": "astro",
     "check": "astro check",
     "carousel": "node scripts/render-carousel.mjs",
-    "resume": "node scripts/render-resume.mjs"
+    "resume": "node scripts/render-resume.mjs",
+    "og": "node scripts/render-og.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

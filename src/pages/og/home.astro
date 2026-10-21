@@ -1,0 +1,63 @@
+---
+import "~/styles/global.css";
+import { Image } from "astro:assets";
+import meImage from "~/assets/me.jpg";
+import ExcelToAppVisual from "~/components/ExcelToAppVisual.astro";
+import RemoteJobsVisual from "~/components/RemoteJobsVisual.astro";
+import { useTranslations } from "~/i18n/utils";
+
+// Internal tooling page: the homepage OG card at 1200x630, screenshotted by
+// scripts/render-og.mjs into public/og/home.png. ID copy only — the same PNG
+// serves / and /id. Not part of the public site — no BaseLayout, no /id
+// mirror, noindex.
+const t = useTranslations("id");
+---
+
+<!doctype html>
+<html lang="id" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>OG — home</title>
+  </head>
+  <body class="bg-bg">
+    <div
+      data-og
+      class="flex h-[630px] w-[1200px] flex-col justify-between overflow-hidden bg-bg px-14 py-12"
+    >
+      <header class="flex items-center gap-4">
+        <Image
+          src={meImage}
+          alt=""
+          width={112}
+          loading="eager"
+          class="size-14 rounded-full border border-border object-cover"
+        />
+        <span class="text-2xl font-semibold tracking-tight">Jordan Maulana</span>
+        <span class="ml-auto h-[3px] w-[120px] bg-accent"></span>
+      </header>
+
+      <main class="grid grid-cols-2 gap-14">
+        <section class="flex flex-col gap-8">
+          <h2 class="min-h-[2.1em] text-[44px] font-semibold leading-[1.05] tracking-tight">
+            {t("hero.excel.title")}
+          </h2>
+          <div style="zoom: 1.15">
+            <ExcelToAppVisual lang="id" />
+          </div>
+        </section>
+        <section class="flex flex-col gap-8">
+          <h2 class="min-h-[2.1em] text-[44px] font-semibold leading-[1.05] tracking-tight">
+            {t("hero.remote.title")}
+          </h2>
+          <div style="zoom: 0.8">
+            <RemoteJobsVisual />
+          </div>
+        </section>
+      </main>
+
+      <footer class="font-mono text-lg text-accent">jordanmaulana.space</footer>
+    </div>
+  </body>
+</html>

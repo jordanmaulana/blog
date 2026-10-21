@@ -1,0 +1,24 @@
+---
+import { experience } from "~/data/about";
+
+const remoteJobs = experience.filter((job) => job.location.includes("Remote"));
+---
+
+<ul class="space-y-3">
+  {
+    remoteJobs.map((job) => (
+      <li class="rounded-(--radius-card) border border-border bg-bg-soft/60 p-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <p class="text-sm font-semibold">{job.company}</p>
+          <span class="rounded-full border border-accent/40 bg-accent/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
+            {job.location}
+          </span>
+        </div>
+        <p class="mt-1 text-sm text-fg-soft">{job.role}</p>
+        <p class="mt-2 font-mono text-xs text-fg-soft">
+          {job.start} – {job.end}
+        </p>
+      </li>
+    ))
+  }
+</ul>

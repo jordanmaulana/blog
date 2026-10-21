@@ -41,7 +41,10 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .slice(0, 4);
 ---
 
-<BaseLayout title={`${t("hero.title")} — ${t("hero.role")}`}>
+<BaseLayout
+  title={`${t("hero.title")} — ${t("hero.role")}`}
+  ogImage="/og/home.png"
+>
   <Hero />
   <OfferHeroes />
 </BaseLayout>

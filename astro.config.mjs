@@ -18,8 +18,13 @@ export default defineConfig({
       // and drop hreflang alternates (the /id/* pages are duplicates, not translations).
       filter: (page) => {
         const p = new URL(page).pathname;
-        // /carousel/* is internal tooling for generating Instagram slides.
-        return p !== "/id" && !p.startsWith("/id/") && !p.startsWith("/carousel/");
+        // /carousel/* and /og/* are internal tooling for generating images.
+        return (
+          p !== "/id" &&
+          !p.startsWith("/id/") &&
+          !p.startsWith("/carousel/") &&
+          !p.startsWith("/og/")
+        );
       },
     }),
   ],
